@@ -1,45 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   constructors.c                                     :+:      :+:    :+:   */
+/*   colors_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/15 17:29:16 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/01/15 17:18:42 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/01/15 17:39:35 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_tuple	cons_point(double x, double y, double z)
-{
-	t_tuple	res;
-
-	res.x = x;
-	res.y = y;
-	res.z = z;
-	res.w = 1.0;
-	return (res);
-}
-
-t_tuple	cons_vector(double x, double y, double z)
-{
-	t_tuple	res;
-
-	res.x = x;
-	res.y = y;
-	res.z = z;
-	res.w = 0.0;
-	return (res);
-}
-
-t_color cons_color(double r, double g, double b)
+t_color	cop_add(t_color	a, t_color b)
 {
 	t_color res;
-
-	res.r = r;
-	res.g = g;
-	res.b = b;
+	
+	res.r = a.r + b.r;
+	res.g = a.g + b.g;
+	res.b = a.b + b.b;
 	return (res);
 }
+
+t_color	cop_subs(t_color a, t_color b)
+{
+	t_color res;
+	
+	res.r = a.r - b.r;
+	res.g = a.g - b.g;
+	res.b = a.b - b.b;
+	return (res);
+}
+
+t_color	cop_multi(t_color a, double scal)
+{
+	t_color res;
+	
+	res.r = a.r * scal;
+	res.g = a.g * scal;
+	res.b = a.b * scal;
+	return (res);
+}
+
+t_color	cop_blend(t_color a, t_color b)
+{
+	t_color res;
+	
+	res.r = a.r * b.r;
+	res.g = a.g * b.g;
+	res.b = a.b * b.b;
+	return (res);
+}
+

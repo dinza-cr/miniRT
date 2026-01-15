@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.c                                       :+:      :+:    :+:   */
+/*   tuples_op.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:14:18 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/15 16:52:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:32:03 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	op_compare(t_tuple a, t_tuple b)
+int	top_compare(t_tuple a, t_tuple b)
 {
 	if (fabs(a.x - b.x) <= EPSILON
 		&& fabs(a.y - b.y) <= EPSILON
@@ -23,7 +23,7 @@ int	op_compare(t_tuple a, t_tuple b)
 		return (0);
 }
 
-t_tuple	op_add(t_tuple a, t_tuple b)
+t_tuple	top_add(t_tuple a, t_tuple b)
 {
 	t_tuple	res;
 
@@ -34,7 +34,7 @@ t_tuple	op_add(t_tuple a, t_tuple b)
 	return (res);
 }
 
-t_tuple	op_subs(t_tuple a, t_tuple b)
+t_tuple	top_subs(t_tuple a, t_tuple b)
 {
 	t_tuple	res;
 
@@ -45,7 +45,7 @@ t_tuple	op_subs(t_tuple a, t_tuple b)
 	return (res);
 }
 
-t_tuple	op_negate(t_tuple a)
+t_tuple	top_negate(t_tuple a)
 {
 	t_tuple	res;
 
@@ -56,7 +56,7 @@ t_tuple	op_negate(t_tuple a)
 	return (res);
 }
 
-t_tuple	op_multi(t_tuple a, double scal)
+t_tuple	top_multi(t_tuple a, double scal)
 {
 	t_tuple	res;
 
@@ -67,7 +67,7 @@ t_tuple	op_multi(t_tuple a, double scal)
 	return (res);
 }
 
-t_tuple	op_divi(t_tuple a, double scal)
+t_tuple	top_divi(t_tuple a, double scal)
 {
 	t_tuple	res;
 
@@ -78,7 +78,7 @@ t_tuple	op_divi(t_tuple a, double scal)
 	return (res);
 }
 
-double	op_magnitude(t_tuple a)
+double	top_magnitude(t_tuple a)
 {
 	double	res;
 
@@ -86,7 +86,7 @@ double	op_magnitude(t_tuple a)
 	return (res);
 }
 
-t_tuple	op_normalize(t_tuple a)
+t_tuple	top_normalize(t_tuple a)
 {
 	t_tuple	res;
 	double	magn;
@@ -99,7 +99,7 @@ t_tuple	op_normalize(t_tuple a)
 	return (res);
 }
 
-double op_dot(t_tuple a, t_tuple b)
+double top_dot(t_tuple a, t_tuple b)
 {
 	double	res;
 
@@ -107,11 +107,11 @@ double op_dot(t_tuple a, t_tuple b)
 	return (res);
 }
 
-t_tuple	op_cross(t_tuple a, t_tuple b)
+t_tuple	top_cross(t_tuple a, t_tuple b)
 {
 	t_tuple	res;
 
-	res = ft_vector(a.y * b.z - a.z * b.y,
+	res = cons_vector(a.y * b.z - a.z * b.y,
 			a.z * b.x - a.x * b.z,
 			a.x * b.y - a.y * b.x);
 	return (res);

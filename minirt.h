@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/16 15:25:07 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/16 18:12:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,20 @@ typedef struct s_canva
 	t_color *pixels;
 }	t_canva;
 
+typedef struct s_matrix
+{
+	int		size;
+	double	m[4][4];  // [row][col]
+} t_matrix;
+
+# include "minirtt.h"
+
 //constructors
 t_tuple	cons_vector(double x, double y, double z);
 t_tuple	cons_point(double x, double y, double z);
 t_color	cons_color(double r, double g, double b);
 t_canva	*cons_canva(int width, int height);
+t_matrix cons_matrix(int size);
 
 //operations
 int		top_compare(t_tuple a, t_tuple b);

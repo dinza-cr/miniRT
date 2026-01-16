@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 15:14:18 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/15 17:32:03 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/15 19:22:48 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_tuple	top_normalize(t_tuple a)
 	t_tuple	res;
 	double	magn;
 
-	magn = op_magn(a); // if magn == 0, error
+	magn = top_magnitude(a); // if magn == 0, error
 	res.x = a.x / magn;
 	res.y = a.y / magn;
 	res.z = a.z / magn;

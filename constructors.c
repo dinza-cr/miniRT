@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/15 17:29:16 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/15 18:29:04 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,21 @@ t_color cons_color(double r, double g, double b)
 	res.r = r;
 	res.g = g;
 	res.b = b;
+	return (res);
+}
+
+t_canva	*cons_canva(int width, int height)
+{
+	t_canva *res;
+
+		
+	res = malloc (sizeof(t_canva));
+	if (!(res))
+		return (NULL);
+	res->width = width;
+	res->height = height;
+	res->pixels = ft_calloc(width * height, sizeof(t_color));
+	if (!res->pixels)
+		return (free(res), NULL);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/18 19:11:43 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:30:36 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # define EPSILON 0.00001
+# define PI 3.14159265358979323846
 
 # include <math.h>
 # include <stdlib.h>
@@ -58,6 +59,7 @@ t_tuple		cons_point(double x, double y, double z);
 t_pixel		cons_pixel(double r, double g, double b);
 t_canva		*cons_canva(int width, int height);
 t_matrix	cons_matrix(int size);
+t_matrix	cons_idmatrix(void);
 
 //operations
 int			top_compare(t_tuple a, t_tuple b);
@@ -82,6 +84,25 @@ t_tuple		mop_tupmulti(t_matrix a, t_tuple b);
 t_matrix	mop_transpose(t_matrix a);
 double		mop_det2(t_matrix a);
 t_matrix	mop_submatrix(t_matrix a, int row, int col);
+double		mop_minor3(t_matrix a, int row, int col);
+double		mop_cofactor3(t_matrix a, int row, int col);
+double		mop_det3(t_matrix a);
+double		mop_minor4(t_matrix a, int row, int col);
+double		mop_cofactor4(t_matrix a, int row, int col);
+double		mop_det4(t_matrix a);
+int			mop_isinvertible(t_matrix a);
+double		mop_det(t_matrix a);
+double		mop_cofactor(t_matrix a, int row, int col);
+t_matrix	mop_comat(t_matrix a);
+t_matrix	mop_inverse(t_matrix a);
+
+t_matrix	trsf_translation(double x, double y, double z);
+t_matrix	trsf_scaling(double x, double y, double z);
+t_matrix	trsf_rotx(double radian);
+t_matrix	trsf_roty(double radian);
+t_matrix	trsf_rotz(double radian);
+t_matrix	trsf_shearing(double xy, double xz, double yx, double yz, double zx, double zy);
+
 
 //canva
 void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_pixel pixel);

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/18 21:13:05 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:11:18 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,8 +238,6 @@ int	mop_isinvertible(t_matrix a)
 
 double	mop_det(t_matrix a)
 {
-	double	res;
-
 	if (a.size == 2)
 		return (mop_det2(a));
 	else if (a.size == 3)
@@ -252,8 +250,6 @@ double	mop_det(t_matrix a)
 
 double	mop_cofactor(t_matrix a, int row, int col)
 {
-	double	res;
-
 	if (a.size == 3)
 		return (mop_cofactor3(a, row, col));
 	else if (a.size == 4)

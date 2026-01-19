@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/18 19:10:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/19 17:14:04 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_tuple	cons_vector(double x, double y, double z)
 	return (res);
 }
 
-t_pixel	cons_pixelt_pixel(double r, double g, double b)
+t_pixel	cons_pixel(double r, double g, double b)
 {
 	t_pixel	res;
 

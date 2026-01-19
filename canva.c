@@ -6,16 +6,16 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:45:34 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/16 15:47:52 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/18 20:35:17 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_color color)
+void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_pixel color)
 {
-	int i;
-	
+	int	i;
+
 	if (!canva)
 		return ;
 	if (x_pos < 0
@@ -27,7 +27,7 @@ void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_color color)
 	canva->pixels[i] = color;
 }
 
-int		ft_convertcolor(double a)
+int	ft_convertcolor(double a)
 {
 	int	res;
 
@@ -39,10 +39,10 @@ int		ft_convertcolor(double a)
 	return (res);
 }
 
-void write_header(int fd, t_canva *canva)
+void	write_header(int fd, t_canva *canva)
 {
-	char *height;
-	char *width;
+	char	*height;
+	char	*width;
 
 	write(fd, "P3\n", 3);
 	height = ft_itoa(canva->height);
@@ -55,12 +55,12 @@ void write_header(int fd, t_canva *canva)
 	free(width);
 }
 
-void canvas_to_ppm(t_canva *canva)
+void	canvas_to_ppm(t_canva *canva)
 {
-	int fd;
-	int i;
-	int j;
-	char *color;
+	int		fd;
+	int		i;
+	int		j;
+	char	*color;
 
 	i = 0;
 	j = 0;

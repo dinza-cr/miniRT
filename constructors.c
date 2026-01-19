@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/16 18:41:30 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/18 19:10:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_tuple	cons_vector(double x, double y, double z)
 	return (res);
 }
 
-t_color cons_color(double r, double g, double b)
+t_pixel	cons_pixelt_pixel(double r, double g, double b)
 {
-	t_color res;
+	t_pixel	res;
 
 	res.r = r;
 	res.g = g;
@@ -46,21 +46,20 @@ t_color cons_color(double r, double g, double b)
 
 t_canva	*cons_canva(int width, int height)
 {
-	t_canva *res;
+	t_canva	*res;
 
-		
 	res = malloc (sizeof(t_canva));
 	if (!(res))
 		return (NULL);
 	res->width = width;
 	res->height = height;
-	res->pixels = ft_calloc(width * height, sizeof(t_color));
+	res->pixels = ft_calloc(width * height, sizeof(t_pixel));
 	if (!res->pixels)
 		return (free(res), NULL);
 	return (res);
 }
 
-t_matrix cons_matrix(int size)
+t_matrix	cons_matrix(int size)
 {
 	t_matrix	res;
 	int			i;
@@ -90,7 +89,7 @@ t_matrix cons_matrix(int size)
 t_matrix	cons_idmatrix(void)
 {
 	t_matrix	res;
-	
+
 	res = cons_matrix(4);
 	res.m[0][0] = 1.0;
 	res.m[1][1] = 1.0;

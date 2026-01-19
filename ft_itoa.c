@@ -5,62 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/16 13:56:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/16 15:07:59 by dinza-cr         ###   ########.fr       */
+/*   Created: 2025/04/29 19:00:57 by anbelose          #+#    #+#             */
+/*   Updated: 2026/01/18 18:43:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "minirt.h"
 
-#include "minirt.h"                                                                                                                                                                                                                                                                                          
-
-static size_t	count_size(long nb)
+int	count_len(long nb)
 {
-	size_t	size;
+	int	len;
 
-	size = 0;
+	len = 1;
 	if (nb < 0)
 	{
-		nb = nb * (-1);
-		size = 1;
+		len++;
+		nb *= -1;
 	}
-	if (nb == 0)
-		size = 1;
-	else
+	while (nb >= 10)
 	{
-		while (nb)
-		{
-			nb = nb / 10;
-			size++;
-		}
+		nb /= 10;
+		len++;
 	}
-	return (size);
+	return (len);
+}
+
+void	fill_res(long nb, char *res, int *i)
+{
+	if (nb >= 10)
+	{
+		fill_res(nb / 10, res, i);
+	}
+	res[*i] = (nb % 10) + '0';
+	(*i)++;
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	size;
 	long	nb;
-	char	*str;
-	int		is_negative;
+	char	*res;
+	int		i;
 
-	size = count_size((long) n);
-	str = (char *) malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
+	nb = (long)n;
+	i = 0;
+	res = (char *)malloc(sizeof(char) * (count_len(nb) + 1));
+	if (!res)
 		return (NULL);
-	nb = (long) n;
-	is_negative = 0;
 	if (nb < 0)
 	{
-		nb = nb * (-1);
-		str[0] = '-';
-		is_negative = 1;
+		res[i] = '-';
+		i++;
+		nb *= -1;
 	}
-	str[size] = '\0';
-	while (size > (size_t) is_negative)
-	{
-		str[size - 1] = nb % 10 + '0';
-		nb = nb / 10;
-		size--;
-	}
-	return (str);
+	fill_res(nb, res, &i);
+	res[i] = '\0';
+	return (res);
 }

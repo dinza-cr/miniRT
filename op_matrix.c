@@ -32,7 +32,7 @@ int	mop_compare(t_matrix a, t_matrix b)
 	return (1);
 }
 
-t_matrix	mop_matmulti(t_matrix a, t_matrix b)
+t_matrix	mop_multimat(t_matrix a, t_matrix b)
 {
 	t_matrix	res;
 	int			i;
@@ -56,7 +56,7 @@ t_matrix	mop_matmulti(t_matrix a, t_matrix b)
 	return (res);
 }
 
-t_tuple	mop_tupmulti(t_matrix a, t_tuple b)
+t_tuple	mop_multitup(t_matrix a, t_tuple b)
 {
 	t_tuple	res;
 

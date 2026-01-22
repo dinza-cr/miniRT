@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/19 17:14:04 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 12:26:27 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_tuple	cons_vector(double x, double y, double z)
 	return (res);
 }
 
-t_pixel	cons_pixel(double r, double g, double b)
+t_color	cons_color(double r, double g, double b)
 {
-	t_pixel	res;
+	t_color	res;
 
 	res.r = r;
 	res.g = g;
@@ -53,9 +53,14 @@ t_canva	*cons_canva(int width, int height)
 		return (NULL);
 	res->width = width;
 	res->height = height;
-	res->pixels = ft_calloc(width * height, sizeof(t_pixel));
+	res->pixels = ft_calloc(width * height, sizeof(t_color));
 	if (!res->pixels)
 		return (free(res), NULL);
+	res->mlx = mlx_init();
+	res->win = mlx_new_window((res->mlx), width, height, "miniRT");
+	res->img = mlx_new_image(res->mlx, res->width, res->height);
+	res->addr = mlx_get_data_addr(res->img, &res->bpp,
+		&res->line_len, &res->endian);
 	return (res);
 }
 

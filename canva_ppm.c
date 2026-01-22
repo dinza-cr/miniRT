@@ -12,7 +12,7 @@
 
 #include "minirt.h"
 
-void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_pixel color)
+void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_color color)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/19 17:30:36 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:02:38 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,28 @@ typedef struct s_tuple
 	double	w; // 1.0 for points 0.0 for vectors
 }	t_tuple;
 
-typedef struct s_pixel
+typedef struct s_color
 {
 	double	r;
 	double	g;
 	double	b;
-}	t_pixel;
+}	t_color;
 
 typedef struct s_canva
 {
 	int		width;
 	int		height;
-	t_pixel	*pixels;
+
+	void	*mlx;
+	void	*win;
+	
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	
+	t_color	*pixels;
 }	t_canva;
 
 typedef struct s_matrix
@@ -52,11 +62,12 @@ typedef struct s_matrix
 } t_matrix;
 
 # include "minirtt.h"
+# include "minilibx-linux/mlx.h"
 
 //constructors
-t_tuple		cons_vector(double x, double y, double z);
 t_tuple		cons_point(double x, double y, double z);
-t_pixel		cons_pixel(double r, double g, double b);
+t_tuple		cons_vector(double x, double y, double z);
+t_color		cons_color(double r, double g, double b);
 t_canva		*cons_canva(int width, int height);
 t_matrix	cons_matrix(int size);
 t_matrix	cons_idmatrix(void);
@@ -73,14 +84,14 @@ t_tuple		top_normalize(t_tuple a);
 double		top_dot(t_tuple a, t_tuple b);
 t_tuple		top_cross(t_tuple a, t_tuple b);
 
-t_pixel		cop_add(t_pixel	a, t_pixel b);
-t_pixel		cop_subs(t_pixel a, t_pixel b);
-t_pixel		cop_multi(t_pixel a, double scal);
-t_pixel		cop_blend(t_pixel a, t_pixel b);
+t_color		cop_add(t_color	a, t_color b);
+t_color		cop_subs(t_color a, t_color b);
+t_color		cop_multi(t_color a, double scal);
+t_color		cop_blend(t_color a, t_color b);
 
 int			mop_compare(t_matrix a, t_matrix b);
-t_matrix	mop_matmulti(t_matrix a, t_matrix b);
-t_tuple		mop_tupmulti(t_matrix a, t_tuple b);
+t_matrix	mop_multimat(t_matrix a, t_matrix b);
+t_tuple		mop_multitup(t_matrix a, t_tuple b);
 t_matrix	mop_transpose(t_matrix a);
 double		mop_det2(t_matrix a);
 t_matrix	mop_submatrix(t_matrix a, int row, int col);
@@ -105,8 +116,17 @@ t_matrix	trsf_shearing(double xy, double xz, double yx, double yz, double zx, do
 
 
 //canva
-void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_pixel pixel);
+void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_color pixel);
+int			ft_convertcolor(double a);
+void		write_header(int fd, t_canva *canva);
 void		canvas_to_ppm(t_canva *canva);
+void		canva_to_mlx(t_canva *canva);
+int			rgb_to_int(double r, double g, double b);
+int			key_hook(int keycode, t_canva *c);
+
+//free
+void		free_canva(t_canva *canva);
+int		safe_exit(t_canva *canva);
 
 //utils
 void		*ft_calloc(size_t nmemb, size_t size);

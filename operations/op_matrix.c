@@ -6,11 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/19 16:11:18 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:58:38 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
 int	mop_compare(t_matrix a, t_matrix b)
 {

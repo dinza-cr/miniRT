@@ -6,14 +6,15 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:32:29 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 12:59:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:57:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
 int rgb_to_int(double r, double g, double b)
 {
+	int res;
 	int r_res;
 	int	g_res;
 	int	b_res;
@@ -21,7 +22,8 @@ int rgb_to_int(double r, double g, double b)
 	r_res = ft_convertcolor(r);
 	g_res = ft_convertcolor(g);
 	b_res = ft_convertcolor(b);
-	return (r_res << 16 | g_res << 8 | b_res);
+	res = r_res << 16 | g_res << 8 | b_res;
+	return (res);
 }
 
 void	addr_put_pixel(t_canva *canva, int x, int y, int color)

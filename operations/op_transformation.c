@@ -6,11 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:31:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/19 16:36:26 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:58:41 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
 t_matrix	trsf_translation(double x, double y, double z)
 {

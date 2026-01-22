@@ -6,11 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 19:02:56 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:08:44 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:58:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
 t_projectile tick(t_environnement env, t_projectile proj)
 {

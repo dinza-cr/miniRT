@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anbelose <anbelose@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/29 19:00:57 by anbelose          #+#    #+#             */
-/*   Updated: 2026/01/18 18:43:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2025/04/29 19:01:05 by anbelose         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
 int	count_len(long nb)
 {

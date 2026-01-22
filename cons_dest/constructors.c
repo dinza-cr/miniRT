@@ -6,11 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 12:26:27 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 13:58:18 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
 t_tuple	cons_point(double x, double y, double z)
 {

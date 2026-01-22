@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:02:38 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:26:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ typedef struct s_matrix
 } t_matrix;
 
 # include "minirtt.h"
-# include "minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 
 //constructors
 t_tuple		cons_point(double x, double y, double z);
@@ -124,13 +125,8 @@ void		canva_to_mlx(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 int			key_hook(int keycode, t_canva *c);
 
-//free
+//exit
 void		free_canva(t_canva *canva);
-int		safe_exit(t_canva *canva);
-
-//utils
-void		*ft_calloc(size_t nmemb, size_t size);
-char		*ft_itoa(int n);
-int			ft_strlen(char *str);
+int			safe_exit(t_canva *canva);
 
 #endif

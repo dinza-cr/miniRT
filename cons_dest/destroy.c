@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:30:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:01:38 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/22 14:27:43 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "../inc/minirt.h"
 
-void	free_canva(t_canva *canva)
+void	dest_canva(t_canva *canva)
 {
 	if (!canva)
 		return ;
@@ -30,11 +30,9 @@ void	free_canva(t_canva *canva)
 	free(canva);
 }
 
-
-
 int	safe_exit(t_canva *canva)
 {
-	free_canva(canva);
+	dest_canva(canva);
 	exit(0);
 	return (0);
 }

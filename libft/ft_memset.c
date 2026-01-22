@@ -1,50 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: anbelose <anbelose@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 18:07:41 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/18 19:15:24 by dinza-cr         ###   ########.fr       */
+/*   Created: 2025/04/29 19:06:36 by anbelose          #+#    #+#             */
+/*   Updated: 2025/04/29 19:06:40 by anbelose         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "libft.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	*p;
+	unsigned char	*s1;
 
-	p = s;
 	i = 0;
+	if (n == 0)
+		return (s);
+	s1 = (unsigned char *)s;
 	while (i < n)
 	{
-		*p = (unsigned char)c;
-		p++;
+		s1[i] = (unsigned char)c;
 		i++;
 	}
 	return (s);
-}
-
-void *ft_calloc(size_t nmemb, size_t size)
-{
-	void *mem;
-	if (size == 0)
-		return (0);
-	mem = malloc(nmemb * size);
-	if (!mem)
-		return (0);
-	ft_memset(mem, 0, nmemb * size);
-	return (mem);
-}
-
-int	ft_strlen(char *str)
-{
-	int i = 0;
-
-	while(str[i])
-		i++;
-	return (i);
 }

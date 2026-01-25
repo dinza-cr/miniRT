@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/01/22 14:29:11 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/01/22 15:59:03 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LDLIBS		:= -lm
 RM			:= rm -rf
 
 
-SRC_DIRS	:= canva inc cons_dest main operations 
+SRC_DIRS	:= canva inc cons_dest main operations parsing gnl
 SRC			:= $(foreach d,$(SRC_DIRS),$(wildcard $(d)/*.c)) # TEMPORARY
 
 O_DIR		:= obj

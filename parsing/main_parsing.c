@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/15 18:30:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/24 13:53:07 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/01/23 11:58:18 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/01/23 18:43:06 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	dest_canva(t_canva *canva)
+int main(int argc, char **argv)
 {
-	if (!canva)
-		return ;
-	if (canva->img)
-		mlx_destroy_image(canva->mlx, canva->img);
-	if (canva->win)
-		mlx_destroy_window(canva->mlx, canva->win);
-	if (canva->pixels)
-		free(canva->pixels);
-	if (canva->mlx)
-	{
-		mlx_destroy_display(canva->mlx);
-		free(canva->mlx);
-	}
-	free(canva);
-}
+	t_scene *scene;
 
-int	safe_exit(t_canva *canva, t_scene *scene)
-{
-	dest_canva(canva);
-	free(scene);
-	exit(0);
+	if (argc == 2)
+	{
+		scene = parsing(argv);
+		if (!scene || !scene->valid)
+			return (1);
+	}
 	return (0);
 }

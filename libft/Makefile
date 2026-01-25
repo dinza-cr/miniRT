@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anbelose <anbelose@student.42.fr>          +#+  +:+       +#+         #
+#    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/29 19:28:01 by anbelose          #+#    #+#              #
-#    Updated: 2025/04/29 19:38:16 by anbelose         ###   ########.fr        #
+#    Updated: 2026/01/23 15:37:51 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,8 @@ SRC = ft_atoi.c \
 	ft_strnstr.c \
 	ft_strrchr.c \
 	ft_strtrim.c \
-	ft_substr.c
+	ft_substr.c \
+	ft_atof.c
 
 SRC_BONUS = ft_lstadd_back.c \
 	    	ft_lstadd_front.c \

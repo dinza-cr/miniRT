@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:32:29 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 15:04:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/25 14:45:20 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,6 @@ void	canva_to_mlx(t_canva *canva)
 int	key_hook(int keycode, t_canva *c)
 {
 	if (keycode == 65307)
-		safe_exit(c);
+		safe_exit(c, NULL);
 	return (0);
 }

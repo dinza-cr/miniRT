@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/23 11:26:40 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/25 14:44:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int			key_hook(int keycode, t_canva *c);
 
 //exit
 void		free_canva(t_canva *canva);
-int			safe_exit(t_canva *canva);
+int			safe_exit(t_canva *canva, t_scene *scene);
 
 char		*get_next_line(int fd);
 

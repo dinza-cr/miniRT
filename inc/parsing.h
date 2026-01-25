@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/24 15:27:19 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/25 12:10:14 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_scene		*parsing(char **argv);
 t_scene		*cons_scene(void);
 t_amblight	cons_amblight(char **elements, t_scene *scene);
 t_camera	cons_camera(char **elements, t_scene *scene);
+t_light		cons_light(char **elements, t_scene *scene);
 int			count_elem(char **t);
 void		free_split(char **t);
 int			in_range(double x, double a, double b);

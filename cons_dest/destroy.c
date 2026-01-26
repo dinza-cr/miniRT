@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:30:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 15:00:12 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:55:14 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,56 @@ void	dest_canva(t_canva *canva)
 	free(canva);
 }
 
+void	dest_spheres(t_sphere *sp)
+{
+	t_sphere *tmp;
+	
+	while(sp)
+	{
+		tmp = sp->next;
+		free(sp);
+		sp = tmp;
+	}
+}
+
+void	dest_planes(t_plane *pl)
+{
+	t_plane *tmp;
+	
+	while(pl)
+	{
+		tmp = pl->next;
+		free(pl);
+		pl = tmp;
+	}
+}
+
+void	dest_cylinders(t_cylinder *cy)
+{
+	t_cylinder *tmp;
+	
+	while(cy)
+	{
+		tmp = cy->next;
+		free(cy);
+		cy = tmp;
+	}
+}
+
+void	dest_scene(t_scene *scene)
+{
+	if (!scene)
+		return ;
+	dest_spheres(scene->spheres);
+	dest_planes(scene->planes);
+	dest_cylinders(scene->cylinders);
+	free(scene);
+}
+
 int	safe_exit(t_canva *canva, t_scene *scene)
 {
 	dest_canva(canva);
-	free(scene);
+	dest_scene(scene);
 	exit(0);
 	return (0);
 }

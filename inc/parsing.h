@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 14:35:46 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:56:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,25 @@ typedef struct s_scene
 	t_cylinder	*cylinders;
 } t_scene;
 
-t_scene		*parsing(char **argv);
-t_scene		*cons_scene(void);
+t_amblight	cons_amblight(char **info, t_scene *scene);
+t_camera	cons_camera(char **info, t_scene *scene);
+t_light	cons_light(char **info, t_scene *scene);
+t_scene	*cons_scene(void);
+t_cylinder	*init_cylinder(void);
+t_cylinder	*cons_cylinder(char **info);
+void	add_cylinder(char **info, t_scene *scene);
+t_plane	*init_plane(void);
+t_plane	*cons_plane(char **info);
+void	add_plane(char **info, t_scene *scene);
+t_sphere	*init_sphere(void);
+t_sphere	*cons_sphere(char **info);
+void	add_sphere(char **info, t_scene *scene);
+int	count_elem(char **t);
+void	free_split(char **t);
+int	in_range(double x, double a, double b);
+int	check_capital(char *info, t_scene *scene);
+int	pars_sort(char *line, t_scene *scene);
+int valid_scene(t_scene *scene);
+t_scene *parsing(char **argv);
 
-//coms
-t_amblight	cons_amblight(char **elements, t_scene *scene);
-t_camera	cons_camera(char **elements, t_scene *scene);
-t_light		cons_light(char **elements, t_scene *scene);
-void		add_sphere(char **elements, t_scene *scene);
-void	add_plane(char **elements, t_scene *scene);
-void	add_cylinder(char **elements, t_scene *scene);
-
-//utils
-int			count_elem(char **t);
-void		free_split(char **t);
-int			in_range(double x, double a, double b);
 #endif

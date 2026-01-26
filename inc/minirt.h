@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/25 14:44:31 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:57:26 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,8 +126,12 @@ void		canva_to_mlx(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 int			key_hook(int keycode, t_canva *c);
 
-//exit
-void		free_canva(t_canva *canva);
+//destructors
+void		dest_canva(t_canva *canva);
+void		dest_scene(t_scene *scene);
+void		dest_spheres(t_sphere *sp);
+void		dest_planes(t_plane *pl);
+void		dest_cylinders(t_cylinder *cy);
 int			safe_exit(t_canva *canva, t_scene *scene);
 
 char		*get_next_line(int fd);

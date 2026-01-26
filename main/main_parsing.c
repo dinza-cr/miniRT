@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 11:58:18 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 14:52:38 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:54:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	main(int argc, char **argv)
 {
 	t_scene	*scene;
 
-	(void)argc;
+	if (argc == 2)
+	{
 	scene = parsing(argv);
 	if (!scene)
 		return (printf("Parsing failed (NULL scene)\n"), 1);
@@ -29,30 +30,44 @@ int	main(int argc, char **argv)
 
 	/* ---------- AMBIENT ---------- */
 	printf("\n---- AMBIENT LIGHT ----\n");
-	printf("valid            : %d\n", scene->A.valid);
-	printf("ratio            : %f\n", scene->A.ratio);
-	printf("color            : R=%f G=%f B=%f\n",
-		scene->A.color.r, scene->A.color.g, scene->A.color.b);
-
+	if (!scene->has_ambient)
+		printf("no ambient light\n");
+	else
+	{
+		printf("valid            : %d\n", scene->A.valid);
+		printf("ratio            : %f\n", scene->A.ratio);
+		printf("color            : R=%f G=%f B=%f\n",
+			scene->A.color.r, scene->A.color.g, scene->A.color.b);
+	}
 	/* ---------- CAMERA ---------- */
 	printf("\n---- CAMERA ----\n");
-	printf("valid            : %d\n", scene->C.valid);
-	printf("coord            : x=%f y=%f z=%f\n",
-		scene->C.coord.x, scene->C.coord.y, scene->C.coord.z);
-	printf("orientation      : x=%f y=%f z=%f\n",
-		scene->C.orientation.x,
-		scene->C.orientation.y,
-		scene->C.orientation.z);
-	printf("FOV              : %f\n", scene->C.FOV);
+	if (!scene->has_camera)
+		printf("no camera\n");
+	else
+	{
+		printf("valid            : %d\n", scene->C.valid);
+		printf("coord            : x=%f y=%f z=%f\n",
+			scene->C.coord.x, scene->C.coord.y, scene->C.coord.z);
+		printf("orientation      : x=%f y=%f z=%f\n",
+			scene->C.orientation.x,
+			scene->C.orientation.y,
+			scene->C.orientation.z);
+		printf("FOV              : %f\n", scene->C.FOV);
+	}
 
 	/* ---------- LIGHT ---------- */
 	printf("\n---- LIGHT ----\n");
-	printf("valid            : %d\n", scene->L.valid);
-	printf("coord            : x=%f y=%f z=%f\n",
-		scene->L.coord.x, scene->L.coord.y, scene->L.coord.z);
-	printf("brightness       : %f\n", scene->L.brightness);
-	printf("color            : R=%f G=%f B=%f\n",
-		scene->L.color.r, scene->L.color.g, scene->L.color.b);
+	if (!scene->has_light)
+		printf("no light\n");
+	else
+	{
+		printf("valid            : %d\n", scene->L.valid);
+		printf("coord            : x=%f y=%f z=%f\n",
+			scene->L.coord.x, scene->L.coord.y, scene->L.coord.z);
+		printf("brightness       : %f\n", scene->L.brightness);
+		printf("color            : R=%f G=%f B=%f\n",
+			scene->L.color.r, scene->L.color.g, scene->L.color.b);
+	}
 
 	/* ---------- SPHERES ---------- */
 	printf("\n---- SPHERES ----\n");
@@ -136,6 +151,9 @@ int	main(int argc, char **argv)
 		}
 	}
 	printf("\n=======================\n");
-	free(scene);
+	dest_scene(scene);
+	}
+	else
+		printf("Please add a scene :)\n");
 	return (0);
 }

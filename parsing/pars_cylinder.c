@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 14:51:35 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 15:07:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_cylinder	*init_cylinder(void)
 	return (res);
 }
 
-t_cylinder	*cons_cylinder(char **elements)
+t_cylinder	*cons_cylinder(char **info)
 {
 	t_cylinder	*res;
 	char		**buff;
@@ -37,14 +37,14 @@ t_cylinder	*cons_cylinder(char **elements)
 	res = init_cylinder();
 	if (!res)
 		return (NULL);
-	if (count_elem(elements) != 6)
+	if (count_elem(info) != 6)
     	return (res);
-	buff = ft_split(elements[1], ',');
+	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res->coord = cons_point(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
-	buff = ft_split(elements[2], ',');
+	buff = ft_split(info[2], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res->axis =cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
@@ -52,13 +52,13 @@ t_cylinder	*cons_cylinder(char **elements)
 	if (!in_range(res->axis.x, -1.0, 1.0) || !in_range(res->axis.y, -1.0, 1.0) || !in_range(res->axis.z, -1.0, 1.0) || top_magnitude(res->axis) < EPSILON)
 		return (res);
 	res->axis = top_normalize(res->axis);
-	res->diameter = ft_atod(elements[3]);
+	res->diameter = ft_atod(info[3]);
 	if (res->diameter <= 0)
 		return (res);
-	res->height = ft_atod(elements[4]);
+	res->height = ft_atod(info[4]);
 	if (res->height <= 0)
 		return (res);
-	buff = ft_split(elements[5], ',');
+	buff = ft_split(info[5], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res->color = cons_color(ft_atod(buff[0]) / 255.0, ft_atod(buff[1]) / 255.0, ft_atod(buff[2]) / 255.0);
@@ -69,11 +69,11 @@ t_cylinder	*cons_cylinder(char **elements)
 	return (res);
 }
 
-void	add_cylinder(char **elements, t_scene *scene)
+void	add_cylinder(char **info, t_scene *scene)
 {
 	t_cylinder	*new;
 
-	new = cons_cylinder(elements);
+	new = cons_cylinder(info);
 	if (!new)
 		return ;
 	new->next = scene->cylinders;

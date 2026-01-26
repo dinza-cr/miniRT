@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:10:55 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 14:22:07 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:14:25 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-t_amblight	cons_amblight(char **elements, t_scene *scene)
+t_amblight	cons_amblight(char **info, t_scene *scene)
 {
 	t_amblight	res;
 	char		**rgb;
@@ -22,12 +22,12 @@ t_amblight	cons_amblight(char **elements, t_scene *scene)
 	res.valid = 0;
 	res.ratio = 0;
 	res.color = cons_color(0, 0, 0);
-	if (count_elem(elements) != 3)
+	if (count_elem(info) != 3)
 		return (res);
-	res.ratio = ft_atod(elements[1]);
+	res.ratio = ft_atod(info[1]);
 	if (res.ratio < 0.0 || res.ratio > 1.0)
 		return (res);
-	rgb = ft_split(elements[2], ',');
+	rgb = ft_split(info[2], ',');
 	if (!rgb)
 		return (res);
 	if (count_elem(rgb) != 3)
@@ -43,7 +43,7 @@ t_amblight	cons_amblight(char **elements, t_scene *scene)
 	return (res);
 }
 
-t_camera	cons_camera(char **elements, t_scene *scene)
+t_camera	cons_camera(char **info, t_scene *scene)
 {
 	t_camera res;
 	char **buff;
@@ -52,21 +52,22 @@ t_camera	cons_camera(char **elements, t_scene *scene)
 	res.coord = cons_point(0, 0, 0);
 	res.orientation = cons_vector(0, 0, 0);
 	res.FOV = 0;
-	if (count_elem(elements) != 4)
+	if (count_elem(info) != 4)
 		return (res);
-	buff = ft_split(elements[1], ',');
+	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res.coord = cons_point(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
-	buff = ft_split(elements[2], ',');
+	buff = ft_split(info[2], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res.orientation =cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
 	if (!in_range(res.orientation.x, -1.0, 1.0) || !in_range(res.orientation.y, -1.0, 1.0) || !in_range(res.orientation.z, -1.0, 1.0) || top_magnitude(res.orientation) < EPSILON)
 		return (res);
-	res.FOV = ft_atod(elements[3]);
+	res.orientation = top_normalize(res.orientation);
+	res.FOV = ft_atod(info[3]);
 	if (!in_range(res.FOV, 0.0, 180.0))
 		return (res);
 	res.valid = 1;
@@ -74,7 +75,7 @@ t_camera	cons_camera(char **elements, t_scene *scene)
 	return (res);
 }
 
-t_light	cons_light(char **elements, t_scene *scene)
+t_light	cons_light(char **info, t_scene *scene)
 {
 	t_light	res;
 	char **buff;
@@ -83,17 +84,17 @@ t_light	cons_light(char **elements, t_scene *scene)
 	res.coord = cons_point(0, 0, 0);
 	res.brightness = 0;
 	res.color = cons_color(0, 0, 0);
-	if (count_elem(elements) != 4)
+	if (count_elem(info) != 4)
 		return (res);
-	buff = ft_split(elements[1], ',');
+	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res.coord = cons_point(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
-	res.brightness = ft_atod(elements[2]);
+	res.brightness = ft_atod(info[2]);
 	if (!in_range(res.brightness, 0.0, 1.0))
 		return (res);
-	buff = ft_split(elements[3], ',');
+	buff = ft_split(info[3], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res.color = cons_color(ft_atod(buff[0]) / 255.0, ft_atod(buff[1]) / 255.0, ft_atod(buff[2]) / 255.0);
@@ -117,7 +118,7 @@ t_scene	*cons_scene(void)
 	res->has_camera = 0;
 	res->has_light = 0;
 	res->spheres = NULL;
-	// res->planes = NULL;
-	// res->cylinders = NULL;
+	res->planes = NULL;
+	res->cylinders = NULL;
 	return (res);
 }

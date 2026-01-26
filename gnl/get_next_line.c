@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 14:25:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 16:02:09 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 16:00:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ char	*get_next_line(int fd)
 	static char	*stash;
 	char		*line;
 
+	if (fd == -1)
+		return (free(stash), stash = NULL, NULL);
 	if ((fd < 0) || (BUFFER_SIZE <= 0) || (read(fd, 0, 0) < 0))
 		return (free(stash), stash = NULL, NULL);
 	stash = ft_readf(fd, stash);

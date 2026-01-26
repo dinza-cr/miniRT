@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 18:35:03 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/24 14:53:12 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:44:36 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	count_elem(char **t)
 {
-	int i = 0;
-	
+	int	i;
+
+	i = 0;
 	while (t && t[i])
 		i++;
 	return (i);
@@ -23,10 +24,10 @@ int	count_elem(char **t)
 
 void	free_split(char **t)
 {
-	int i;
-	
+	int	i;
+
 	if (!t)
-		return;
+		return ;
 	i = 0;
 	while (t[i])
 		free(t[i++]);

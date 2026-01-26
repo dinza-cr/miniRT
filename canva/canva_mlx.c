@@ -6,19 +6,19 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:32:29 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/25 14:45:20 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:37:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int rgb_to_int(double r, double g, double b)
+int	rgb_to_int(double r, double g, double b)
 {
-	int res;
-	int r_res;
+	int	res;
+	int	r_res;
 	int	g_res;
 	int	b_res;
-	
+
 	r_res = ft_convertcolor(r);
 	g_res = ft_convertcolor(g);
 	b_res = ft_convertcolor(b);
@@ -31,7 +31,7 @@ void	addr_put_pixel(t_canva *canva, int x, int y, int color)
 	char	*dst;
 
 	if (x < 0 || y < 0 || x >= canva->width || y >= canva->height)
-		return;
+		return ;
 	dst = canva->addr + (y * canva->line_len + x * (canva->bpp / 8));
 	*(unsigned int *)dst = (unsigned int)color;
 }
@@ -39,13 +39,13 @@ void	addr_put_pixel(t_canva *canva, int x, int y, int color)
 void	canva_to_mlx(t_canva *canva)
 {
 	int	i;
-	int x;
-	int y;
-	int color;	
+	int	x;
+	int	y;
+	int	color;	
 
 	i = 0;
 	y = 0;
-	while(y < canva->height)
+	while (y < canva->height)
 	{
 		x = 0;
 		while (x < canva->width)

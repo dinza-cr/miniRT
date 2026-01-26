@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 16:51:24 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:44:56 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_capital(char *info, t_scene *scene)
 
 int	pars_sort(char *line, t_scene *scene)
 {
-	char **info;
+	char	**info;
 
 	info = ft_split(line, ' ');
 	if (check_capital(info[0], scene))
@@ -46,12 +46,12 @@ int	pars_sort(char *line, t_scene *scene)
 	return (0);
 }
 
-int valid_scene(t_scene *scene)
+int	valid_scene(t_scene *scene)
 {
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
-	
+
 	if (!scene)
 		return (0);
 	if (!scene->has_ambient || !scene->has_camera || !scene->has_light)
@@ -82,9 +82,9 @@ int valid_scene(t_scene *scene)
 	return (1);
 }
 
-t_scene *parsing(char **argv)
+t_scene	*parsing(char **argv)
 {
-	t_scene *res;
+	t_scene	*res;
 	char	*line;
 	int		fd;
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 16:57:26 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:38:41 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ typedef struct s_canva
 
 	void	*mlx;
 	void	*win;
-	
+
 	void	*img;
 	char	*addr;
 	int		bpp;
 	int		line_len;
 	int		endian;
-	
+
 	t_color	*pixels;
 }	t_canva;
 
@@ -115,7 +115,6 @@ t_matrix	trsf_rotx(double radian);
 t_matrix	trsf_roty(double radian);
 t_matrix	trsf_rotz(double radian);
 t_matrix	trsf_shearing(double xy, double xz, double yx, double yz, double zx, double zy);
-
 
 //canva
 void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_color pixel);

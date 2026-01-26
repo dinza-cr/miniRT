@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 15:07:31 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:43:02 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ t_cylinder	*cons_cylinder(char **info)
 {
 	t_cylinder	*res;
 	char		**buff;
-	
+
 	res = init_cylinder();
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 6)
-    	return (res);
+		return (res);
 	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
@@ -47,7 +47,7 @@ t_cylinder	*cons_cylinder(char **info)
 	buff = ft_split(info[2], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
-	res->axis =cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
+	res->axis = cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
 	if (!in_range(res->axis.x, -1.0, 1.0) || !in_range(res->axis.y, -1.0, 1.0) || !in_range(res->axis.z, -1.0, 1.0) || top_magnitude(res->axis) < EPSILON)
 		return (res);

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 16:50:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/23 11:55:14 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:37:42 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_canva	*cons_canva(int width, int height)
 	res->win = mlx_new_window((res->mlx), width, height, "miniRT");
 	res->img = mlx_new_image(res->mlx, res->width, res->height);
 	res->addr = mlx_get_data_addr(res->img, &res->bpp,
-		&res->line_len, &res->endian);
+			&res->line_len, &res->endian);
 	return (res);
 }
 
@@ -102,4 +102,3 @@ t_matrix	cons_idmatrix(void)
 	res.m[3][3] = 1.0;
 	return (res);
 }
-

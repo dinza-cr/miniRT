@@ -6,19 +6,17 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:10:55 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 16:14:25 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:43:48 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-
-
 t_amblight	cons_amblight(char **info, t_scene *scene)
 {
 	t_amblight	res;
 	char		**rgb;
-	
+
 	res.valid = 0;
 	res.ratio = 0;
 	res.color = cons_color(0, 0, 0);
@@ -34,8 +32,8 @@ t_amblight	cons_amblight(char **info, t_scene *scene)
 		return (free_split(rgb), res);
 	res.color = cons_color(ft_atod(rgb[0]) / 255, ft_atod(rgb[1]) / 255, ft_atod(rgb[2]) / 255);
 	if (res.color.r < 0 || res.color.r > 1
-	 || res.color.g < 0 || res.color.g > 1
-	 || res.color.b < 0 || res.color.b > 1)
+		|| res.color.g < 0 || res.color.g > 1
+		|| res.color.b < 0 || res.color.b > 1)
 		return (free_split(rgb), res);
 	res.valid = 1;
 	scene->has_ambient = 1;
@@ -45,9 +43,9 @@ t_amblight	cons_amblight(char **info, t_scene *scene)
 
 t_camera	cons_camera(char **info, t_scene *scene)
 {
-	t_camera res;
-	char **buff;
-	
+	t_camera	res;
+	char		**buff;
+
 	res.valid = 0;
 	res.coord = cons_point(0, 0, 0);
 	res.orientation = cons_vector(0, 0, 0);
@@ -62,7 +60,7 @@ t_camera	cons_camera(char **info, t_scene *scene)
 	buff = ft_split(info[2], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
-	res.orientation =cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
+	res.orientation = cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
 	if (!in_range(res.orientation.x, -1.0, 1.0) || !in_range(res.orientation.y, -1.0, 1.0) || !in_range(res.orientation.z, -1.0, 1.0) || top_magnitude(res.orientation) < EPSILON)
 		return (res);
@@ -78,8 +76,8 @@ t_camera	cons_camera(char **info, t_scene *scene)
 t_light	cons_light(char **info, t_scene *scene)
 {
 	t_light	res;
-	char **buff;
-	
+	char	**buff;
+
 	res.valid = 0;
 	res.coord = cons_point(0, 0, 0);
 	res.brightness = 0;

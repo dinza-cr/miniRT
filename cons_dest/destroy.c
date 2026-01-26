@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 18:30:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 15:55:14 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:38:03 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	dest_canva(t_canva *canva)
 
 void	dest_spheres(t_sphere *sp)
 {
-	t_sphere *tmp;
-	
-	while(sp)
+	t_sphere	*tmp;
+
+	while (sp)
 	{
 		tmp = sp->next;
 		free(sp);
@@ -44,9 +44,9 @@ void	dest_spheres(t_sphere *sp)
 
 void	dest_planes(t_plane *pl)
 {
-	t_plane *tmp;
-	
-	while(pl)
+	t_plane	*tmp;
+
+	while (pl)
 	{
 		tmp = pl->next;
 		free(pl);
@@ -56,9 +56,9 @@ void	dest_planes(t_plane *pl)
 
 void	dest_cylinders(t_cylinder *cy)
 {
-	t_cylinder *tmp;
-	
-	while(cy)
+	t_cylinder	*tmp;
+
+	while (cy)
 	{
 		tmp = cy->next;
 		free(cy);

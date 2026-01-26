@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 15:07:06 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:44:11 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_sphere	*cons_sphere(char **info)
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 4)
-    	return (res);
+		return (res);
 	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
@@ -58,7 +58,7 @@ t_sphere	*cons_sphere(char **info)
 
 void	add_sphere(char **info, t_scene *scene)
 {
-	t_sphere *new;
+	t_sphere	*new;
 
 	new = cons_sphere(info);
 	if (!new)
@@ -66,4 +66,3 @@ void	add_sphere(char **info, t_scene *scene)
 	new->next = scene->spheres;
 	scene->spheres = new;
 }
-

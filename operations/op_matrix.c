@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:58:38 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:47:44 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ double	mop_minor3(t_matrix a, int row, int col)
 {
 	t_matrix	submat;
 	double		res;
-	
+
 	submat = mop_submatrix(a, row, col);
 	res = mop_det2(submat);
 	return (res);
@@ -172,7 +172,7 @@ double	mop_det3(t_matrix a)
 {
 	double	res;
 	int		j;
-	
+
 	j = 0;
 	res = 0;
 	while (j < 3)
@@ -195,7 +195,7 @@ double	mop_cofactor4(t_matrix a, int row, int col)
 {
 	double	minor;
 	double	res;
-	
+
 	minor = mop_minor4(a, row, col);
 	if ((row + col) % 2 == 0)
 		res = minor;
@@ -204,11 +204,11 @@ double	mop_cofactor4(t_matrix a, int row, int col)
 	return (res);
 }
 
-double mop_det4(t_matrix a)
+double	mop_det4(t_matrix a)
 {
 	double	res;
 	int		j;
-	
+
 	j = 0;
 	res = 0;
 	while (j < 4)
@@ -221,7 +221,7 @@ double mop_det4(t_matrix a)
 
 int	mop_isinvertible(t_matrix a)
 {
-	double det;
+	double	det;
 
 	det = 0.0;
 	if (a.size == 2)
@@ -284,7 +284,7 @@ t_matrix	mop_inverse(t_matrix a)
 	double		det;
 	int			i;
 	int			j;
-	
+
 	det = mop_det(a);
 	if (fabs(det) <= EPSILON)
 		return (cons_matrix(0));

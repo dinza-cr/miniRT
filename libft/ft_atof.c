@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:37:17 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/23 15:38:00 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 17:46:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static int	ft_isspace(char c)
 		|| c == '\r' || c == '\n' || c == '\f');
 }
 
-static int ft_count(char *str)
+static int	ft_count(char *str)
 {
-	int i;
-	int res;
+	int	i;
+	int	res;
 
 	i = 0;
 	res = 1;
@@ -32,7 +32,7 @@ static int ft_count(char *str)
 	while (str[i] && ft_isdigit(str[i]))
 		i++;
 	if (str[i] != '.')
-        return 1;
+		return (1);
 	i++;
 	while (str[i] && ft_isdigit(str[i]))
 	{
@@ -72,10 +72,10 @@ double	ft_atod(char *str)
 	{
 		i++;
 		while (str[i] && ft_isdigit(str[i]))
-        {
-            res = res * 10 + (str[i] - '0');
-            i++;
-        }
+		{
+			res = res * 10 + (str[i] - '0');
+			i++;
+		}
 	}
 	return (res * sign / (double)vir);
 }

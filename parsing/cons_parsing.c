@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 12:10:55 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/24 15:37:43 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:22:07 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,49 +96,14 @@ t_light	cons_light(char **elements, t_scene *scene)
 	buff = ft_split(elements[3], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
-	res.color = cons_color(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
+	res.color = cons_color(ft_atod(buff[0]) / 255.0, ft_atod(buff[1]) / 255.0, ft_atod(buff[2]) / 255.0);
 	free_split(buff);
-	if (!in_range(res.color.r, 0.0, 255.0) || !in_range(res.color.g, 0.0, 255.0) || !in_range(res.color.b, 0.0, 255.0))
+	if (!in_range(res.color.r, 0.0, 1.0) || !in_range(res.color.g, 0.0, 1.0) || !in_range(res.color.b, 0.0, 1.0))
 		return (res);
 	res.valid = 1;
 	scene->has_light = 1;
 	return (res);
 }
-
-// t_sphere	cons_sphere(t_tuple	c, double	d, t_color	col)
-// {
-// 	t_sphere	res;
-
-// 	res.coord = c;
-// 	res.diameter = d;
-// 	res.color = col;
-// 	res.next = NULL;
-// 	return (res);
-// }
-
-// t_plane	cons_plane(t_tuple c, t_tuple n, t_color col)
-// {
-// 	t_plane	res;
-
-// 	res.coord = c;
-// 	res.normal = top_normalize(n);
-// 	res.color = col;
-// 	res.next = NULL;
-// 	return (res);
-// }
-
-// t_cylinder cons_cylinder(t_tuple c, t_tuple a, double d, double h, t_color col)
-// {
-// 	t_cylinder res;
-
-// 	res.coord = c;
-// 	res.axis = top_normalize(a);
-// 	res.diameter = d;
-// 	res.height = h;
-// 	res.color = col;
-// 	res.next = NULL;
-// 	return (res);
-// }
 
 t_scene	*cons_scene(void)
 {
@@ -151,5 +116,8 @@ t_scene	*cons_scene(void)
 	res->has_ambient = 0;
 	res->has_camera = 0;
 	res->has_light = 0;
+	res->spheres = NULL;
+	// res->planes = NULL;
+	// res->cylinders = NULL;
 	return (res);
 }

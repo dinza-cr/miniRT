@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/25 12:10:14 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:35:46 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_light // unique
 
 typedef struct s_sphere
 {
+	int				valid;
 	t_tuple			coord;
 	double			diameter;
 	t_color			color;
@@ -48,6 +49,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
+	int				valid;
 	t_tuple 		coord;
 	t_tuple			normal; // vector to normalise -1.0 - 1.0
 	t_color			color;
@@ -56,6 +58,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
+	int					valid;
 	t_tuple 			coord;
 	t_tuple 			axis; // vector to normalise -1.0 - 1.0
 	double				diameter;
@@ -81,9 +84,16 @@ typedef struct s_scene
 
 t_scene		*parsing(char **argv);
 t_scene		*cons_scene(void);
+
+//coms
 t_amblight	cons_amblight(char **elements, t_scene *scene);
 t_camera	cons_camera(char **elements, t_scene *scene);
 t_light		cons_light(char **elements, t_scene *scene);
+void		add_sphere(char **elements, t_scene *scene);
+void	add_plane(char **elements, t_scene *scene);
+void	add_cylinder(char **elements, t_scene *scene);
+
+//utils
 int			count_elem(char **t);
 void		free_split(char **t);
 int			in_range(double x, double a, double b);

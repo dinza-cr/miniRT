@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/24 15:23:07 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/26 14:56:12 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,14 @@ int	pars_sort(char *line, t_scene *scene)
 		scene->C = cons_camera(elements, scene);
 	else if (!ft_strcmp(elements[0], "L") && !scene->has_light)
 		scene->L = cons_light(elements, scene);
+	else if (!strcmp(elements[0], "sp"))
+		add_sphere(elements, scene);
+	else if (!strcmp(elements[0], "pl"))
+		add_plane(elements, scene);
+	else if (!strcmp(elements[0], "cy"))
+		add_cylinder(elements, scene);
 	i = 0;
-	while (elements[i])
-		free(elements[i++]);
-	free(elements);
+	free_split(elements);
 	return (0);
 }
 

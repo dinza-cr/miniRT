@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:47:44 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/27 17:29:58 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	mop_compare(t_matrix a, t_matrix b)
 				return (0);
 			j++;
 		}
-		j++;
+		i++;
 	}
 	return (1);
 }
@@ -87,10 +87,10 @@ t_matrix	mop_transpose(t_matrix a)
 
 	i = 0;
 	res = cons_matrix(a.size);
-	while (i < 4)
+	while (i < a.size)
 	{
 		j = 0;
-		while (j < 4)
+		while (j < a.size)
 		{
 			res.m[i][j] = a.m[j][i];
 			j++;

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:38:41 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/01/28 16:59:59 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_color		cons_color(double r, double g, double b);
 t_canva		*cons_canva(int width, int height);
 t_matrix	cons_matrix(int size);
 t_matrix	cons_idmatrix(void);
+t_matrix	cons_mat4(double a0, double a1, double a2, double a3, double b0, double b1, double b2, double b3, double c0, double c1, double c2, double c3, double d0, double d1, double d2, double d3);
 
 //operations
 int			top_compare(t_tuple a, t_tuple b);

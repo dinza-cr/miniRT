@@ -7,6 +7,7 @@ Test(colors, colors0)
 	t_color c;
 
 	c = cons_color(-0.5, 0.4, 1.7);
+
 	cr_expect(c.r == -0.5);
 	cr_expect(c.g == 0.4);
 	cr_expect(c.b == 1.7);
@@ -16,6 +17,7 @@ Test(colors, colors1)
 {
 	t_color c1 = cons_color(0.9, 0.6, 0.75);
 	t_color c2 = cons_color(0.7, 0.1, 0.25);
+
 	t_color res = cop_add(c1, c2);
 
 	cr_expect(res.r == 1.6);
@@ -27,6 +29,7 @@ Test(colors, colors2)
 {
 	t_color c1 = cons_color(0.9, 0.6, 0.75);
 	t_color c2 = cons_color(0.7, 0.1, 0.25);
+	
 	t_color res = cop_subs(c1, c2);
 
 	cr_expect(res.r - 0.2 < EPSILON);
@@ -37,6 +40,7 @@ Test(colors, colors2)
 Test(colors, colors3)
 {
 	t_color c1 = cons_color(0.2, 0.3, 0.4);
+
 	t_color res = cop_multi(c1, 2);
 
 	cr_expect(res.r == 0.4);
@@ -48,6 +52,7 @@ Test(colors, colors4)
 {
 	t_color c1 = cons_color(1, 0.2, 0.4);
 	t_color c2 = cons_color(0.9, 1, 0.1);
+	
 	t_color res = cop_blend(c1, c2);
 
 	cr_expect(res.r == 0.9);

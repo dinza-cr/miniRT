@@ -6,17 +6,12 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:31:43 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 16:47:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/12 17:17:27 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MATRIX_H
 # define MATRIX_H
-
-# define EPSILON 0.00001
-
-# include <stdio.h>
-# include <math.h>
 
 # include "../Tuples/tuple.h"
 

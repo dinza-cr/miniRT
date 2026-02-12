@@ -6,38 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:45:34 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:58:09 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/12 14:27:11 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-void	write_pixel(t_canva *canva, int x_pos, int y_pos, t_color color)
-{
-	int	i;
-
-	if (!canva)
-		return ;
-	if (x_pos < 0
-		|| y_pos < 0
-		|| x_pos >= canva->width
-		|| y_pos >= canva->height)
-		return ;
-	i = x_pos + (canva->width * y_pos);
-	canva->pixels[i] = color;
-}
-
-int	ft_convertcolor(double a)
-{
-	int	res;
-
-	if (a < 0.0)
-		a = 0.0;
-	else if (a > 1.0)
-		a = 1.0;
-	res = a * 255;
-	return (res);
-}
 
 void	write_header(int fd, t_canva *canva)
 {

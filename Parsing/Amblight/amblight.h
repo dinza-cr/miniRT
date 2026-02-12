@@ -1,0 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   amblight.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/12 12:42:51 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/12 16:59:43 by dinza-cr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef AMBLIGHT_H
+# define AMBLIGHT_H
+
+# include "../../Exec/Color/color.h"
+# include "../libft/libft.h"
+
+typedef struct s_scene t_scene;
+
+typedef struct s_amblight // unique
+{
+	int		valid;
+	double	ratio;
+	t_color	color;
+}	t_amblight;
+
+//constructeur
+t_amblight	cons_amblight(char **info, t_scene *scene);
+
+//utils
+int			count_elem(char **t);
+void		free_split(char **t);
+
+#endif

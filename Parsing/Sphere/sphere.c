@@ -1,64 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_cylinder.c                                    :+:      :+:    :+:   */
+/*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:43:02 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/12 17:12:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_cylinder	*init_cylinder(void)
+t_sphere	*init_sphere(void)
 {
-	t_cylinder	*res;
+	t_sphere	*res;
 
-	res = malloc(sizeof(t_cylinder));
+	res = malloc(sizeof(t_sphere));
 	if (!res)
 		return (NULL);
 	res->valid = 0;
 	res->coord = cons_point(0, 0, 0);
-	res->axis = cons_vector(0, 0, 0);
 	res->diameter = 0;
-	res->height = 0;
 	res->color = cons_color(0, 0, 0);
 	res->next = NULL;
 	return (res);
 }
 
-t_cylinder	*cons_cylinder(char **info)
+t_sphere	*cons_sphere(char **info)
 {
-	t_cylinder	*res;
+	t_sphere	*res;
 	char		**buff;
 
-	res = init_cylinder();
+	res = init_sphere();
 	if (!res)
 		return (NULL);
-	if (count_elem(info) != 6)
+	if (count_elem(info) != 4)
 		return (res);
 	buff = ft_split(info[1], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res->coord = cons_point(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
-	buff = ft_split(info[2], ',');
-	if (!buff || count_elem(buff) != 3)
-		return (free_split(buff), res);
-	res->axis = cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
-	free_split(buff);
-	if (!in_range(res->axis.x, -1.0, 1.0) || !in_range(res->axis.y, -1.0, 1.0) || !in_range(res->axis.z, -1.0, 1.0) || top_magnitude(res->axis) < EPSILON)
+	res->diameter = ft_atod(info[2]);
+	if (res->diameter <= 0.0)
 		return (res);
-	res->axis = top_normalize(res->axis);
-	res->diameter = ft_atod(info[3]);
-	if (res->diameter <= 0)
-		return (res);
-	res->height = ft_atod(info[4]);
-	if (res->height <= 0)
-		return (res);
-	buff = ft_split(info[5], ',');
+	buff = ft_split(info[3], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
 	res->color = cons_color(ft_atod(buff[0]) / 255.0, ft_atod(buff[1]) / 255.0, ft_atod(buff[2]) / 255.0);
@@ -69,13 +56,26 @@ t_cylinder	*cons_cylinder(char **info)
 	return (res);
 }
 
-void	add_cylinder(char **info, t_scene *scene)
+void	add_sphere(char **info, t_scene *scene)
 {
-	t_cylinder	*new;
+	t_sphere	*new;
 
-	new = cons_cylinder(info);
+	new = cons_sphere(info);
 	if (!new)
 		return ;
-	new->next = scene->cylinders;
-	scene->cylinders = new;
+	new->next = scene->spheres;
+	scene->spheres = new;
+}
+
+//destructeur
+void	dest_spheres(t_sphere *sp)
+{
+	t_sphere	*tmp;
+
+	while (sp)
+	{
+		tmp = sp->next;
+		free(sp);
+		sp = tmp;
+	}
 }

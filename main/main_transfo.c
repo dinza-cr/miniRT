@@ -6,11 +6,11 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 16:43:54 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/23 18:34:11 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/12 15:47:48 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+// #include "../inc/minirt.h"
 
 // int main()
 // {

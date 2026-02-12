@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/01/28 10:31:24 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/02/12 16:04:11 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CPPFLAGS		=	-Iinc -Ilibft -Iminilibx-linux
 LDLIBS			=	-lm
 RM				= 	rm -rf
 
-SRC_DIRS_CORE	=	canva cons_dest operations parsing gnl
+SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Parsing Parsing/Amblight Parsing/Camera Parsing/Cylinder Parsing/Light Parsing/Plane Parsing/Scene Parsing/Sphere
 SRC_CORE		=	$(foreach d,$(SRC_DIRS_CORE),$(wildcard $(d)/*.c)) ## TEMPORARY
 
 SRC_DIRS_MAIN	=	main

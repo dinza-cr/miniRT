@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_sphere.c                                      :+:      :+:    :+:   */
+/*   plane.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:44:11 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/01/26 14:21:34 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/12 17:12:04 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_sphere	*init_sphere(void)
+t_plane	*init_plane(void)
 {
-	t_sphere	*res;
+	t_plane	*res;
 
-	res = malloc(sizeof(t_sphere));
+	res = malloc(sizeof(t_plane));
 	if (!res)
 		return (NULL);
 	res->valid = 0;
 	res->coord = cons_point(0, 0, 0);
-	res->diameter = 0;
+	res->normal = cons_vector(0, 0, 0);
 	res->color = cons_color(0, 0, 0);
 	res->next = NULL;
 	return (res);
 }
 
-t_sphere	*cons_sphere(char **info)
+t_plane	*cons_plane(char **info)
 {
-	t_sphere	*res;
-	char		**buff;
+	t_plane	*res;
+	char	**buff;
 
-	res = init_sphere();
+	res = init_plane();
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 4)
@@ -42,9 +42,14 @@ t_sphere	*cons_sphere(char **info)
 		return (free_split(buff), res);
 	res->coord = cons_point(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
 	free_split(buff);
-	res->diameter = ft_atod(info[2]);
-	if (res->diameter <= 0.0)
+	buff = ft_split(info[2], ',');
+	if (!buff || count_elem(buff) != 3)
+		return (free_split(buff), res);
+	res->normal = cons_vector(ft_atod(buff[0]), ft_atod(buff[1]), ft_atod(buff[2]));
+	free_split(buff);
+	if (!in_range(res->normal.x, -1.0, 1.0) || !in_range(res->normal.y, -1.0, 1.0) || !in_range(res->normal.z, -1.0, 1.0) || top_magnitude(res->normal) < EPSILON)
 		return (res);
+	res->normal = top_normalize(res->normal);
 	buff = ft_split(info[3], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);
@@ -56,13 +61,26 @@ t_sphere	*cons_sphere(char **info)
 	return (res);
 }
 
-void	add_sphere(char **info, t_scene *scene)
+void	add_plane(char **info, t_scene *scene)
 {
-	t_sphere	*new;
+	t_plane	*new;
 
-	new = cons_sphere(info);
+	new = cons_plane(info);
 	if (!new)
 		return ;
-	new->next = scene->spheres;
-	scene->spheres = new;
+	new->next = scene->planes;
+	scene->planes = new;
+}
+
+//destructor
+void	dest_planes(t_plane *pl)
+{
+	t_plane	*tmp;
+
+	while (pl)
+	{
+		tmp = pl->next;
+		free(pl);
+		pl = tmp;
+	}
 }

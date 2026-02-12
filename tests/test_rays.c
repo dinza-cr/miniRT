@@ -1,12 +1,12 @@
-// #include <criterion.h>
-// #include "../inc/minirt.h"
+#include <criterion.h>
+#include "../inc/minirt.h"
 
 // Test(ray, Creating_and_querying_a_ray)
 // {
 // 	t_tuple origin = cons_point(1, 2, 3);
 // 	t_tuple direction = cons_vector(4, 5, 6);
 
-// 	// ray(origin, direction)
+// 	ray(origin, direction)
 
 // 	cr_expect(r.origin == origin);
 // 	cr_expect(r.direction == direction);

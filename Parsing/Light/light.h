@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_utils.c                                       :+:      :+:    :+:   */
+/*   light.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/23 18:35:03 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:44:36 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/02/12 12:46:35 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/12 17:03:05 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef LIGHT_H
+# define LIGHT_H
 
-int	count_elem(char **t)
+#include "../../Exec/Color/color.h"
+# include "../../Exec/Tuples/tuple.h"
+
+typedef struct s_scene t_scene; 
+
+typedef struct s_light // unique
 {
-	int	i;
+	int		valid;
+	t_tuple	coord;
+	double	brightness;
+	t_color	color;
+}	t_light;
 
-	i = 0;
-	while (t && t[i])
-		i++;
-	return (i);
-}
+//constructeur
+t_light		cons_light(char **info, t_scene *scene);
 
-void	free_split(char **t)
-{
-	int	i;
-
-	if (!t)
-		return ;
-	i = 0;
-	while (t[i])
-		free(t[i++]);
-	free(t);
-}
-
-int	in_range(double x, double a, double b)
-{
-	return (x >= a && x <= b);
-}
+#endif

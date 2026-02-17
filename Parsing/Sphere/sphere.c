@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:12:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/12 18:25:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_sphere	*cons_sphere(char **info)
 	res->diameter = ft_atod(info[2]);
 	if (res->diameter <= 0.0)
 		return (res);
+	res->radius = res->diameter/2;
 	buff = ft_split(info[3], ',');
 	if (!buff || count_elem(buff) != 3)
 		return (free_split(buff), res);

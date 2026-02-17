@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 16:39:38 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/16 17:45:02 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # include "../Exec/Color/color.h"
 # include "../Exec/Matrix/matrix.h"
 # include "../Exec/Canva/canva.h"
+# include "../Exec/Ray/ray.h"
+# include "../Exec/Intersection/intersection.h"
 
 # include "minirtt.h"
 

@@ -3,42 +3,68 @@
 
 Test(hit, The_hit_when_all_intersections_have_positive_t)
 {
-	t_sphere *s = cons_sphere();
-	s->radius =1;
-	t_intersection i1 = intersection(1, s);
-	t_intersection i2 = intersection(2, s);
-
-	t_intersect xs = intersections(i2, i1);
+	t_sphere *s = init_sphere();
+	s->radius = 1;
+	t_intersection i1 = cons_intersection(1, s);
+	t_intersection i2 = cons_intersection(2, s);
+	t_intersection arr[2];
+	arr[0] = i1;
+	arr[1] = i2;
+	t_intersections xs = intersections(2, arr);
 
 	double i = hit(xs);
 
-	cr_expect(i == i1);
+	cr_expect(i == i1.t);
 }
 
 Test(hit, The_hit_when_some_intersections_have_negative_t)
 {
-	t_sphere *s = cons_sphere();
-	s->radius =1;
-	t_intersection i1 = intersection(-1, s);
-	t_intersection i2 = intersection(1, s);
-
-	t_intersect xs = intersections(i2, i1);
+	t_sphere *s = init_sphere();
+	s->radius = 1;
+	t_intersection i1 = cons_intersection(-1, s);
+	t_intersection i2 = cons_intersection(1, s);
+	t_intersection arr[2];
+	arr[0] = i1;
+	arr[1] = i2;
+	t_intersections xs = intersections(2, arr);
 
 	double i = hit(xs);
 
-	cr_expect(i == i2);
+	cr_expect(i == i2.t);
 }
 
 Test(hit, The_hit_when_all_intersections_have_negative_t)
 {
-	t_sphere *s = cons_sphere();
-	s->radius =1;
-	t_intersection i1 = intersection(-2, s);
-	t_intersection i2 = intersection(-1, s);
-
-	t_intersect xs = intersections(i2, i1);
+	t_sphere *s = init_sphere();
+	s->radius = 1;
+	t_intersection i1 = cons_intersection(-2, s);
+	t_intersection i2 = cons_intersection(-1, s);
+	t_intersection arr[2];
+	arr[0] = i1;
+	arr[1] = i2;
+	t_intersections xs = intersections(2, arr);
 
 	double i = hit(xs);
 
-	cr_expect(i == i2);
+	cr_expect(i == INFINITY);
+}
+
+Test(hit, The_hit_is_always_the_lowest_nonnegative_intersection)
+{
+	t_sphere *s = init_sphere();
+	s->radius = 1;
+	t_intersection i1 = cons_intersection(5, s);
+	t_intersection i2 = cons_intersection(7, s);
+	t_intersection i3 = cons_intersection(-3, s);
+	t_intersection i4 = cons_intersection(2, s);
+	t_intersection arr[4];
+	arr[0] = i1;
+	arr[1] = i2;
+	arr[2] = i3;
+	arr[3] = i4;
+	t_intersections xs = intersections(4, arr);
+
+	double i = hit(xs);
+
+	cr_expect(i == i4.t);
 }

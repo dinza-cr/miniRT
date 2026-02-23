@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:42:51 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 16:59:43 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:35:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../../Exec/Color/color.h"
 # include "../libft/libft.h"
 
-typedef struct s_scene t_scene;
+typedef struct s_scene	t_scene;
 
 typedef struct s_amblight // unique
 {

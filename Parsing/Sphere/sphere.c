@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 18:25:31 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:59:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_sphere	*init_sphere(void)
 	res->coord = cons_point(0, 0, 0);
 	res->diameter = 0;
 	res->color = cons_color(0, 0, 0);
+	res->transform = cons_idmatrix();
 	res->next = NULL;
 	return (res);
 }
@@ -79,4 +80,9 @@ void	dest_spheres(t_sphere *sp)
 		free(sp);
 		sp = tmp;
 	}
+}
+
+void	set_transform(t_sphere *s, t_matrix t)
+{
+	s->transform = mop_copy(t);
 }

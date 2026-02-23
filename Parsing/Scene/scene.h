@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:48:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:06:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:38:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include "../Camera/camera.h"
 # include "../Light/light.h"
 
-typedef struct s_sphere t_sphere;
-typedef struct s_plane t_plane;
-typedef struct s_cylinder t_cylinder;
+typedef struct s_sphere		t_sphere;
+typedef struct s_plane		t_plane;
+typedef struct s_cylinder	t_cylinder;
 
 typedef struct s_scene
 {

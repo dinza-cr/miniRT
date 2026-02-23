@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:31:43 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:17:27 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:56:58 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ double		mop_det(t_matrix a);
 double		mop_cofactor(t_matrix a, int row, int col);
 t_matrix	mop_comat(t_matrix a);
 t_matrix	mop_inverse(t_matrix a);
+t_matrix	mop_copy(t_matrix a);
 
 //matric transformation(trsf)
 t_matrix	trsf_translation(double x, double y, double z);

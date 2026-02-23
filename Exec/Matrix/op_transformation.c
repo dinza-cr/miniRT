@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/19 15:31:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:13:12 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:44:42 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_matrix	trsf_translation(double x, double y, double z)
 	return (res);
 }
 
-t_matrix		trsf_scaling(double x, double y, double z)
+t_matrix	trsf_scaling(double x, double y, double z)
 {
 	t_matrix	res;
 
@@ -34,7 +34,7 @@ t_matrix		trsf_scaling(double x, double y, double z)
 	return (res);
 }
 
-t_matrix		trsf_rotx(double radian)
+t_matrix	trsf_rotx(double radian)
 {
 	t_matrix	res;
 
@@ -46,7 +46,7 @@ t_matrix		trsf_rotx(double radian)
 	return (res);
 }
 
-t_matrix		trsf_roty(double radian)
+t_matrix	trsf_roty(double radian)
 {
 	t_matrix	res;
 
@@ -58,7 +58,7 @@ t_matrix		trsf_roty(double radian)
 	return (res);
 }
 
-t_matrix		trsf_rotz(double radian)
+t_matrix	trsf_rotz(double radian)
 {
 	t_matrix	res;
 

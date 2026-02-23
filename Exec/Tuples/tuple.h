@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:28:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 16:44:33 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:45:35 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ double		top_magnitude(t_tuple a);
 t_tuple		top_normalize(t_tuple a);
 double		top_dot(t_tuple a, t_tuple b);
 t_tuple		top_cross(t_tuple a, t_tuple b);
-
 
 #endif

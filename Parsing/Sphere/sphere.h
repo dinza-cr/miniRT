@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 18:24:39 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 17:01:00 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
 
-typedef struct s_scene t_scene;
+typedef struct s_scene	t_scene;
 
 typedef struct s_sphere
 {
@@ -26,6 +26,7 @@ typedef struct s_sphere
 	double			radius;
 	t_color			color;
 	struct s_sphere	*next;
+	t_matrix		transform;
 }	t_sphere;
 
 //constructor
@@ -37,5 +38,8 @@ void		add_sphere(char **info, t_scene *scene);
 
 //destructor
 void		dest_spheres(t_sphere *sp);
+
+//fonctions
+void	set_transform(t_sphere *s, t_matrix t);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 17:26:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 19:10:45 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:41:15 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 //constructeur
 t_ray	cons_ray(t_tuple origin, t_tuple direction)
 {
-	t_ray res;
+	t_ray	res;
 
 	res.origin = origin;
 	res.direction = direction;
@@ -23,14 +23,21 @@ t_ray	cons_ray(t_tuple origin, t_tuple direction)
 }
 
 //fonctions
-t_tuple	position(t_ray r, float t)
+t_tuple	rop_position(t_ray r, float t)
 {
 	t_tuple	res;
 	t_tuple	distance;
-	
+
 	distance = top_multi(r.direction, t);
 	res = top_add(r.origin, distance);
 	return (res);
 }
 
+t_ray	rop_transform(t_ray ray, t_matrix matrix)
+{
+	t_ray res;
 
+	res.origin = mop_multitup(matrix, ray.origin);
+	res.direction = mop_multitup(matrix, ray.direction);
+	return (res);
+}

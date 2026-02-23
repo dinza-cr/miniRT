@@ -10,9 +10,9 @@ Test(hit, The_hit_when_all_intersections_have_positive_t)
 	t_intersection arr[2];
 	arr[0] = i1;
 	arr[1] = i2;
-	t_intersections xs = intersections(2, arr);
+	t_intersections xs = iop_intersections(2, arr);
 
-	double i = hit(xs);
+	double i = iop_hit(xs);
 
 	cr_expect(i == i1.t);
 }
@@ -26,9 +26,9 @@ Test(hit, The_hit_when_some_intersections_have_negative_t)
 	t_intersection arr[2];
 	arr[0] = i1;
 	arr[1] = i2;
-	t_intersections xs = intersections(2, arr);
+	t_intersections xs = iop_intersections(2, arr);
 
-	double i = hit(xs);
+	double i = iop_hit(xs);
 
 	cr_expect(i == i2.t);
 }
@@ -42,9 +42,9 @@ Test(hit, The_hit_when_all_intersections_have_negative_t)
 	t_intersection arr[2];
 	arr[0] = i1;
 	arr[1] = i2;
-	t_intersections xs = intersections(2, arr);
+	t_intersections xs = iop_intersections(2, arr);
 
-	double i = hit(xs);
+	double i = iop_hit(xs);
 
 	cr_expect(i == INFINITY);
 }
@@ -62,9 +62,9 @@ Test(hit, The_hit_is_always_the_lowest_nonnegative_intersection)
 	arr[1] = i2;
 	arr[2] = i3;
 	arr[3] = i4;
-	t_intersections xs = intersections(4, arr);
+	t_intersections xs = iop_intersections(4, arr);
 
-	double i = hit(xs);
+	double i = iop_hit(xs);
 
 	cr_expect(i == i4.t);
 }

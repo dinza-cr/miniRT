@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:30:18 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 14:30:45 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:09:08 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//constructor
+//constructors
 t_tuple	cons_point(double x, double y, double z)
 {
 	t_tuple	res;

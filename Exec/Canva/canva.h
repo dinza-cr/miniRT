@@ -6,14 +6,14 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:35:25 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 16:44:03 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 15:39:33 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVA_H
 # define CANVA_H
 
-typedef struct s_color t_color;
+typedef struct s_color	t_color;
 
 typedef struct s_canva
 {

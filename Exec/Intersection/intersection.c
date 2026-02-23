@@ -6,25 +6,25 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 15:33:14 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 14:48:50 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/18 16:41:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-t_intersection cons_intersection(double t, t_sphere *object)
+//constructeur
+t_intersection	cons_intersection(double t, t_sphere *object)
 {
-	t_intersection res;
-	
+	t_intersection	res;
+
 	res.t = t;
 	res.object = object;
 	return (res);
 }
 
-
-double	hit(t_intersections xs)
+double	iop_hit(t_intersections xs)
 {
-	double best;
+	double	best;
 	int		i;
 
 	if (xs.count <= 0 || xs.solutions == NULL)

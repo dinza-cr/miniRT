@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:46:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:37:34 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:54:29 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
-
+# include "../../Exec/Material/material.h"
+typedef struct s_sphere t_sphere;
 typedef struct s_scene	t_scene;
 
 typedef struct s_light // unique
@@ -27,6 +28,12 @@ typedef struct s_light // unique
 }	t_light;
 
 //constructeur
+t_light	point_light(t_tuple position, t_color color);
+
 t_light		cons_light(char **info, t_scene *scene);
+
+t_tuple normal_at(t_sphere *s, t_tuple p);
+t_tuple reflect(t_tuple in, t_tuple normal);
+t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple normalv);
 
 #endif

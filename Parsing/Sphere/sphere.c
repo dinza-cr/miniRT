@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 16:59:49 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:02:16 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_sphere	*init_sphere(void)
 	res->diameter = 0;
 	res->color = cons_color(0, 0, 0);
 	res->transform = cons_idmatrix();
+	res->m = init_material();
 	res->next = NULL;
 	return (res);
 }

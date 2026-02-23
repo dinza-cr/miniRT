@@ -122,7 +122,7 @@ Test(inter, Intersecting_a_translated_sphere_with_a_ray)
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
 	t_sphere *s = init_sphere();
 	s->radius = 1;
-
+	
 	set_transform(s, trsf_translation(5, 0, 0));
 	t_intersections xs = iop_intersect(s, r);
 

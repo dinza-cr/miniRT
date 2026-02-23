@@ -5,23 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 10:12:12 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 10:53:36 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/02/23 17:12:49 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/23 18:08:26 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int main(void)
+int main(int argc, char **argv)
 {
+	(void)argc;
 	int nb_xpixel = 500;
 	int nb_ypixel = 500;
 	t_canva *canva = cons_canva(nb_xpixel, nb_ypixel);
 	
-	t_scene *scene = cons_scene();
-	scene->spheres = init_sphere();
-	scene->spheres->color = cons_color(1, 0, 0);
-	scene->spheres->radius = 1;
+	t_scene *scene = parsing(argv);
+	if (!scene)
+		return (printf("Parsing failed\n"), 1);
+	t_sphere *save = scene->spheres;
+	while (scene->spheres)
+	{
+		scene->spheres->m = init_material();
+		scene->spheres->m.color = cons_color(255.0 /255.0, 195.0 /255.0, 170.0 /255.0);
+		scene->spheres = scene->spheres->next;
+	}
+	scene->spheres = save;
 	
 	t_camera camera;
 	camera.coord = cons_point(0, 0, -5);
@@ -43,9 +51,21 @@ int main(void)
 			t_tuple dir = top_normalize(top_subs(wall_point, camera.coord));
 
 			t_ray ray = cons_ray(camera.coord, dir);
-			t_intersections xs = iop_intersect(scene->spheres, ray);
-			if (xs.count > 0)
-				write_pixel(canva, x, y, scene->spheres->color);
+			while (scene->spheres)
+			{
+				t_intersections xs = iop_intersect(scene->spheres, ray);
+				if (xs.count > 0)
+				{
+					t_tuple point = rop_position(ray, iop_hit(xs));
+					t_tuple normal = normal_at(scene->spheres, point);
+					t_tuple eye = top_negate(ray.direction);
+					t_color color = lighting(scene->spheres->m, scene->L, point, eye, normal);
+					write_pixel(canva, x, y, color);
+					break;
+				}
+				scene->spheres = scene->spheres->next;
+			}
+			scene->spheres = save;
 		}
 	}
 

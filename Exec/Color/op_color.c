@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:18:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/22 13:58:37 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/23 15:50:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,14 @@ t_color	cop_blend(t_color a, t_color b)
 	res.g = a.g * b.g;
 	res.b = a.b * b.b;
 	return (res);
+}
+
+int cop_compare(t_color a, t_color b)
+{
+	if (fabs(a.r - b.r) <= EPSILON
+	&& fabs(a.g - b.g) <= EPSILON
+	&& fabs(a.b - b.b) <= EPSILON)
+		return (1);
+	else
+		return (0);
 }

@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 12:30:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 15:51:08 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/02/23 15:52:43 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/23 15:56:25 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H 
+#ifndef MATERIAL_H
+# define MATERIAL_H
 
-typedef struct s_color
+typedef struct s_material
 {
-	double	r;
-	double	g;
-	double	b;
-}	t_color;
+	t_color color;
+	double ambient;
+	double diffuse;
+	double specular;
+	double shininess;
+} t_material;
 
-//constructeur
-t_color		cons_color(double r, double g, double b);
-
-//color operation (cop)
-t_color		cop_add(t_color	a, t_color b);
-t_color		cop_subs(t_color a, t_color b);
-t_color		cop_multi(t_color a, double scal);
-t_color		cop_blend(t_color a, t_color b);
-int			cop_compare(t_color a, t_color b);
-
+t_material init_material();
 #endif

@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.h                                            :+:      :+:    :+:   */
+/*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 12:30:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 15:51:08 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/02/23 15:53:01 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/23 15:57:30 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef COLOR_H
-# define COLOR_H 
+#include "../inc/minirt.h"
 
-typedef struct s_color
+t_material init_material()
 {
-	double	r;
-	double	g;
-	double	b;
-}	t_color;
+	t_material res;
 
-//constructeur
-t_color		cons_color(double r, double g, double b);
-
-//color operation (cop)
-t_color		cop_add(t_color	a, t_color b);
-t_color		cop_subs(t_color a, t_color b);
-t_color		cop_multi(t_color a, double scal);
-t_color		cop_blend(t_color a, t_color b);
-int			cop_compare(t_color a, t_color b);
-
-#endif
+	res.color = cons_color(1, 1, 1);
+	res.ambient = 0.1;
+	res.diffuse = 0.9;
+	res.specular = 0.9;
+	res.shininess = 200.0;
+	return (res);
+}

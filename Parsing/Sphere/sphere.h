@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 17:01:00 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:01:54 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
-
+# include "../Exec/Material/material.h"
 typedef struct s_scene	t_scene;
 
 typedef struct s_sphere
@@ -27,6 +27,7 @@ typedef struct s_sphere
 	t_color			color;
 	struct s_sphere	*next;
 	t_matrix		transform;
+	t_material		m;
 }	t_sphere;
 
 //constructor

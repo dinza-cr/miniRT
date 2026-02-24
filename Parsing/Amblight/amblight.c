@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:17:36 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:35:39 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:10:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_amblight	cons_amblight(char **info, t_scene *scene)
+t_amblight	cons_amblight(char **info, t_world *world)
 {
 	t_amblight	res;
 	char		**rgb;
@@ -36,7 +36,7 @@ t_amblight	cons_amblight(char **info, t_scene *scene)
 		|| res.color.b < 0 || res.color.b > 1)
 		return (free_split(rgb), res);
 	res.valid = 1;
-	scene->has_ambient = 1;
+	world->has_ambient = 1;
 	free_split(rgb);
 	return (res);
 }

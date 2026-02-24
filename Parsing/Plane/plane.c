@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:21:34 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:12:04 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:09:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,15 @@ t_plane	*cons_plane(char **info)
 	return (res);
 }
 
-void	add_plane(char **info, t_scene *scene)
+void	add_plane(char **info, t_world *world)
 {
 	t_plane	*new;
 
 	new = cons_plane(info);
 	if (!new)
 		return ;
-	new->next = scene->planes;
-	scene->planes = new;
+	new->next = world->planes;
+	world->planes = new;
 }
 
 //destructor

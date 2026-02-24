@@ -14,71 +14,71 @@
 
 // int	main(int argc, char **argv)
 // {
-// 	t_scene	*scene;
+// 	t_world	*world;
 
 // 	if (argc == 2)
 // 	{
-// 	scene = parsing(argv);
-// 	if (!scene)
-// 		return (printf("Parsing failed (NULL scene)\n"), 1);
+// 	world = parsing(argv);
+// 	if (!world)
+// 		return (printf("Parsing failed (NULL world)\n"), 1);
 
-// // 	printf("==== SCENE ====\n");
-// 	printf("scene valid      : %d\n", scene->valid);
-// 	printf("has ambient      : %d\n", scene->has_ambient);
-// 	printf("has camera       : %d\n", scene->has_camera);
-// 	printf("has light        : %d\n", scene->has_light);
+// // 	printf("==== world ====\n");
+// 	printf("world valid      : %d\n", world->valid);
+// 	printf("has ambient      : %d\n", world->has_ambient);
+// 	printf("has camera       : %d\n", world->has_camera);
+// 	printf("has light        : %d\n", world->has_light);
 
 // 	/* ---------- AMBIENT ---------- */
 // 	printf("\n---- AMBIENT LIGHT ----\n");
-// 	if (!scene->has_ambient)
+// 	if (!world->has_ambient)
 // 		printf("no ambient light\n");
 // 	else
 // 	{
-// 		printf("valid            : %d\n", scene->A.valid);
-// 		printf("ratio            : %f\n", scene->A.ratio);
+// 		printf("valid            : %d\n", world->A.valid);
+// 		printf("ratio            : %f\n", world->A.ratio);
 // 		printf("color            : R=%f G=%f B=%f\n",
-// 			scene->A.color.r, scene->A.color.g, scene->A.color.b);
+// 			world->A.color.r, world->A.color.g, world->A.color.b);
 // 	}
 // 	/* ---------- CAMERA ---------- */
 // 	printf("\n---- CAMERA ----\n");
-// 	if (!scene->has_camera)
+// 	if (!world->has_camera)
 // 		printf("no camera\n");
 // 	else
 // 	{
-// 		printf("valid            : %d\n", scene->C.valid);
+// 		printf("valid            : %d\n", world->C.valid);
 // 		printf("coord            : x=%f y=%f z=%f\n",
-// 			scene->C.coord.x, scene->C.coord.y, scene->C.coord.z);
+// 			world->C.coord.x, world->C.coord.y, world->C.coord.z);
 // 		printf("orientation      : x=%f y=%f z=%f\n",
-// 			scene->C.orientation.x,
-// 			scene->C.orientation.y,
-// 			scene->C.orientation.z);
-// 		printf("FOV              : %f\n", scene->C.FOV);
+// 			world->C.orientation.x,
+// 			world->C.orientation.y,
+// 			world->C.orientation.z);
+// 		printf("FOV              : %f\n", world->C.FOV);
 // 	}
 
 // 	/* ---------- LIGHT ---------- */
 // 	printf("\n---- LIGHT ----\n");
-// 	if (!scene->has_light)
+// 	if (!world->has_light)
 // 		printf("no light\n");
 // 	else
 // 	{
-// 		printf("valid            : %d\n", scene->L.valid);
+// 		printf("valid            : %d\n", world->L.valid);
 // 		printf("coord            : x=%f y=%f z=%f\n",
-// 			scene->L.coord.x, scene->L.coord.y, scene->L.coord.z);
-// 		printf("brightness       : %f\n", scene->L.brightness);
+// 			world->L.coord.x, world->L.coord.y, world->L.coord.z);
+// 		printf("brightness       : %f\n", world->L.brightness);
 // 		printf("color            : R=%f G=%f B=%f\n",
-// 			scene->L.color.r, scene->L.color.g, scene->L.color.b);
+// 			world->L.color.r, world->L.color.g, world->L.color.b);
 // 	}
 
 // 	/* ---------- SPHERES ---------- */
 // 	printf("\n---- SPHERES ----\n");
-// 	if (!scene->spheres)
+// 	if (!world->spheres)
 // 		printf("no spheres\n");
 // 	else
 // 	{
 // 		t_sphere	*sp;
 // 		int			i;
 
-// 		sp = scene->spheres;
+// 		sp = world->spheres;
 // 		i = 0;
 // 		while (sp)
 // 		{
@@ -97,14 +97,14 @@
 
 // 	/* ---------- PLANES ---------- */
 // 	printf("\n---- PLANES ----\n");
-// 	if (!scene->planes)
+// 	if (!world->planes)
 // 		printf("no planes\n");
 // 	else
 // 	{
 // 		t_plane	*pl;
 // 		int		i;
 
-// 		pl = scene->planes;
+// 		pl = world->planes;
 // 		i = 0;
 // 		while (pl)
 // 		{
@@ -124,14 +124,14 @@
 
 // 	/* ---------- CYLINDERS ---------- */
 // 	printf("\n---- CYLINDERS ----\n");
-// 	if (!scene->cylinders)
+// 	if (!world->cylinders)
 // 		printf("no cylinders\n");
 // 	else
 // 	{
 // 		t_cylinder	*cy;
 // 		int			i;
 
-// 		cy = scene->cylinders;
+// 		cy = world->cylinders;
 // 		i = 0;
 // 		while (cy)
 // 		{
@@ -151,9 +151,9 @@
 // 		}
 // 	}
 // 	printf("\n=======================\n");
-// 	dest_scene(scene);
+// 	dest_world(world);
 // 	}
 // 	else
-// 		printf("Please add a scene :)\n");
+// 		printf("Please add a world :)\n");
 // 	return (0);
 // }

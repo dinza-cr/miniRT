@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:37:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:10:09 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
-typedef struct s_scene	t_scene;
+typedef struct s_world	t_world;
 
 typedef struct s_cylinder
 {
@@ -33,7 +33,7 @@ t_cylinder	*init_cylinder(void);
 t_cylinder	*cons_cylinder(char **info);
 
 //add
-void		add_cylinder(char **info, t_scene *scene);
+void		add_cylinder(char **info, t_world *world);
 
 //destructeur
 void		dest_cylinders(t_cylinder *cy);

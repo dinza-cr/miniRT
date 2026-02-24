@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 18:35:03 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:16:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:07:27 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	in_range(double x, double a, double b)
 	return (x >= a && x <= b);
 }
 
-int	safe_exit(t_canva *canva, t_scene *scene)
+int	safe_exit(t_canva *canva, t_world *world)
 {
 	dest_canva(canva);
-	dest_scene(scene);
+	dest_world(world);
 	exit(0);
 	return (0);
 }

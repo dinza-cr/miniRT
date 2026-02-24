@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 16:54:25 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:09:50 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_light	point_light(t_tuple position, t_color color)
 	return (res);
 }
 
-t_light	cons_light(char **info, t_scene *scene)
+t_light	cons_light(char **info, t_world *world)
 {
 	t_light	res;
 	char	**buff;
@@ -50,7 +50,7 @@ t_light	cons_light(char **info, t_scene *scene)
 	if (!in_range(res.color.r, 0.0, 1.0) || !in_range(res.color.g, 0.0, 1.0) || !in_range(res.color.b, 0.0, 1.0))
 		return (res);
 	res.valid = 1;
-	scene->has_light = 1;
+	world->has_light = 1;
 	return (res);
 }
 

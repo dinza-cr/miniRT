@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.h                                            :+:      :+:    :+:   */
+/*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:48:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:38:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 14:27:03 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCENE_H
-# define SCENE_H
+#ifndef WORLD_H
+# define WORLD_H
 
 # include "../Amblight/amblight.h"
 # include "../Camera/camera.h"
@@ -21,7 +21,7 @@ typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
 typedef struct s_cylinder	t_cylinder;
 
-typedef struct s_scene
+typedef struct s_world
 {
 	int			valid;
 	int			has_ambient;
@@ -34,11 +34,13 @@ typedef struct s_scene
 	t_sphere	*spheres;
 	t_plane		*planes;
 	t_cylinder	*cylinders;
-}	t_scene;
+}	t_world;
 
 //constructeur
-t_scene		*cons_scene(void);
+t_world		*cons_world(void);
 
 //destructeur
-void		dest_scene(t_scene *scene);
+void		dest_world(t_world *world);
+
+t_world		*default_world(void);
 #endif

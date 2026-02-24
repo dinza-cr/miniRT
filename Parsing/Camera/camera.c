@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:11:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:10:21 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_camera	cons_camera(char **info, t_scene *scene)
+t_camera	cons_camera(char **info, t_world *world)
 {
 	t_camera	res;
 	char		**buff;
@@ -40,6 +40,6 @@ t_camera	cons_camera(char **info, t_scene *scene)
 	if (!in_range(res.FOV, 0.0, 180.0))
 		return (res);
 	res.valid = 1;
-	scene->has_camera = 1;
+	world->has_camera = 1;
 	return (res);
 }

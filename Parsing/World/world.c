@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   scene.c                                            :+:      :+:    :+:   */
+/*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:15:59 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 14:27:30 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 //constructor
-t_scene	*cons_scene(void)
+t_world	*cons_world(void)
 {
-	t_scene	*res;
+	t_world	*res;
 
-	res = malloc(sizeof(t_scene));
+	res = malloc(sizeof(t_world));
 	if (!res)
 		return (NULL);
 	res->valid = 0;
@@ -31,12 +31,27 @@ t_scene	*cons_scene(void)
 }
 
 //destructor
-void	dest_scene(t_scene *scene)
+void	dest_world(t_world *world)
 {
-	if (!scene)
+	if (!world)
 		return ;
-	dest_spheres(scene->spheres);
-	dest_planes(scene->planes);
-	dest_cylinders(scene->cylinders);
-	free(scene);
+	dest_spheres(world->spheres);
+	dest_planes(world->planes);
+	dest_cylinders(world->cylinders);
+	free(world);
+}
+
+t_world *default_world(void)
+{
+	t_world *res;
+
+	res = cons_world();
+	res->L = point_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
+	res->spheres = init_sphere();
+	res->spheres->m.color = cons_color(0.8, 1.0, 0.6);
+	res->spheres->m.ambient = 0.7;
+	res->spheres->m.specular = 0.2;
+	res->spheres->next = init_sphere();
+	res->spheres->next->transform = trsf_scaling(0.5, 0.5, 0.5);
+	return (res);
 }

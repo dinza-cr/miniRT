@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 17:11:58 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/24 11:10:04 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,15 @@ t_cylinder	*cons_cylinder(char **info)
 	return (res);
 }
 
-void	add_cylinder(char **info, t_scene *scene)
+void	add_cylinder(char **info, t_world *world)
 {
 	t_cylinder	*new;
 
 	new = cons_cylinder(info);
 	if (!new)
 		return ;
-	new->next = scene->cylinders;
-	scene->cylinders = new;
+	new->next = world->cylinders;
+	world->cylinders = new;
 }
 
 //destructor

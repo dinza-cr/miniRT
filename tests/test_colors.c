@@ -76,4 +76,7 @@ Test(canvas, canvas0)
 // {
 // 	t_world *w = default_world();
 // 	t_ray	r = cons_ray(cons_point(0,0,-5), cons_vector(0, 0, 1));
+// 	w->spheres = init_sphere();
+
+
 // }

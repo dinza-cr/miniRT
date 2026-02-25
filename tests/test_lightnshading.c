@@ -4,7 +4,6 @@
 Test(normal, The_normal_on_a_sphere_at_a_point_on_the_x_axis)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 
 	t_tuple n = normal_at(s, cons_point(1, 0, 0));
 
@@ -14,7 +13,6 @@ Test(normal, The_normal_on_a_sphere_at_a_point_on_the_x_axis)
 Test(normalt, The_normal_on_a_sphere_at_a_point_on_the_y_axis)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 
 	t_tuple n = normal_at(s, cons_point(0, 1, 0));
 
@@ -24,7 +22,6 @@ Test(normalt, The_normal_on_a_sphere_at_a_point_on_the_y_axis)
 Test(normal, The_normal_on_a_sphere_at_a_point_on_the_z_axis)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 
 	t_tuple n = normal_at(s, cons_point(0, 0, 1));
 
@@ -34,7 +31,6 @@ Test(normal, The_normal_on_a_sphere_at_a_point_on_the_z_axis)
 Test(normal, The_normal_on_a_sphere_at_a_nonaxial_point)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 
 	t_tuple n = normal_at(s, cons_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
 
@@ -44,7 +40,6 @@ Test(normal, The_normal_on_a_sphere_at_a_nonaxial_point)
 Test(normal, The_normal_is_a_normalized_vector)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 
 	t_tuple n = normal_at(s, cons_point(sqrt(3) / 3, sqrt(3) / 3, sqrt(3) / 3));
 
@@ -54,7 +49,6 @@ Test(normal, The_normal_is_a_normalized_vector)
 Test(normal, Computing_the_normal_on_a_translated_sphere)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 	set_transform(s, trsf_translation(0, 1, 0));
 
 	t_tuple n = normal_at(s, cons_point(0, 1.70711, -0.70711));
@@ -65,7 +59,6 @@ Test(normal, Computing_the_normal_on_a_translated_sphere)
 Test(normal, Computing_the_normal_on_a_transformed_sphere)
 {
 	t_sphere *s = init_sphere();
-	s->radius = 1;
 	t_matrix m = mop_multimat(trsf_scaling(1, 0.5, 1), trsf_rotz(PI/5));
 	set_transform(s, m);
 

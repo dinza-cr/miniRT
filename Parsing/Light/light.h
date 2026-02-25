@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:46:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:09:39 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:03:45 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ typedef struct s_light // unique
 	t_color	color;
 }	t_light;
 
+//parisng
+t_light	pars_light(char **info, t_world *world);
+
 //constructeur
-t_light	point_light(t_tuple position, t_color color);
+t_light	cons_light(t_tuple position, t_color color);
 
-t_light		cons_light(char **info, t_world *world);
-
+//fonctions
 t_tuple normal_at(t_sphere *s, t_tuple p);
 t_tuple reflect(t_tuple in, t_tuple normal);
 t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple normalv);

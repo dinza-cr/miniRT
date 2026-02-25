@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 14:27:30 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:06:30 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ t_world *default_world(void)
 	t_world *res;
 
 	res = cons_world();
-	res->L = point_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
-	res->spheres = init_sphere();
+	res->L = cons_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
+	res->spheres = cons_sphere();
 	res->spheres->m.color = cons_color(0.8, 1.0, 0.6);
-	res->spheres->m.ambient = 0.7;
+	res->spheres->m.diffuse = 0.7;
 	res->spheres->m.specular = 0.2;
-	res->spheres->next = init_sphere();
+	res->spheres->next = cons_sphere();
 	res->spheres->next->transform = trsf_scaling(0.5, 0.5, 0.5);
 	return (res);
 }

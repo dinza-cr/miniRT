@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:07:50 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:58:29 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	pars_sort(char *line, t_world *world)
 	if (check_capital(info[0], world))
 		return (free_split(info), 1);
 	else if (!ft_strcmp(info[0], "A"))
-		world->A =  cons_amblight(info, world);
+		world->A =  pars_amblight(info, world);
 	else if (!ft_strcmp(info[0], "C"))
-		world->C = cons_camera(info, world);
+		world->C = pars_camera(info, world);
 	else if (!ft_strcmp(info[0], "L"))
-		world->L = cons_light(info, world);
+		world->L = pars_light(info, world);
 	else if (!strcmp(info[0], "sp"))
 		add_sphere(info, world);
 	else if (!strcmp(info[0], "pl"))

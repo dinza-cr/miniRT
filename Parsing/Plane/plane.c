@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:21:34 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:09:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:06:06 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_plane	*init_plane(void)
+t_plane	*cons_plane(void)
 {
 	t_plane	*res;
 
@@ -27,12 +27,12 @@ t_plane	*init_plane(void)
 	return (res);
 }
 
-t_plane	*cons_plane(char **info)
+t_plane	*pars_plane(char **info)
 {
 	t_plane	*res;
 	char	**buff;
 
-	res = init_plane();
+	res = cons_plane();
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 4)
@@ -65,7 +65,7 @@ void	add_plane(char **info, t_world *world)
 {
 	t_plane	*new;
 
-	new = cons_plane(info);
+	new = pars_plane(info);
 	if (!new)
 		return ;
 	new->next = world->planes;

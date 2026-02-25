@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 13:57:18 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:12:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_sphere	*init_sphere(void)
+t_sphere	*cons_sphere(void)
 {
 	t_sphere	*res;
 
@@ -43,12 +43,12 @@ t_matrix sp_transform(t_sphere *s)
 	return (res);
 }
 
-t_sphere	*cons_sphere(char **info)
+t_sphere	*pars_sphere(char **info)
 {
 	t_sphere	*res;
 	char		**buff;
 
-	res = init_sphere();
+	res = cons_sphere();
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 4)
@@ -78,7 +78,7 @@ void	add_sphere(char **info, t_world *world)
 {
 	t_sphere	*new;
 
-	new = cons_sphere(info);
+	new = pars_sphere(info);
 	if (!new)
 		return ;
 	new->next = world->spheres;

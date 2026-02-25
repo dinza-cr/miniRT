@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:31:43 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 16:56:58 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 16:17:16 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_matrix	mop_comat(t_matrix a);
 t_matrix	mop_inverse(t_matrix a);
 t_matrix	mop_copy(t_matrix a);
 
+
 //matric transformation(trsf)
 t_matrix	trsf_translation(double x, double y, double z);
 t_matrix	trsf_scaling(double x, double y, double z);
@@ -53,5 +54,6 @@ t_matrix	trsf_rotx(double radian);
 t_matrix	trsf_roty(double radian);
 t_matrix	trsf_rotz(double radian);
 t_matrix	trsf_shearing(double xy, double xz, double yx, double yz, double zx, double zy);
+t_matrix	trsf_view_transform(t_tuple from, t_tuple to, t_tuple up);
 
 #endif

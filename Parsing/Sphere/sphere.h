@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:31:39 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:05:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,20 @@ typedef struct s_sphere
 	struct s_sphere	*next;
 }	t_sphere;
 
-//constructor
-t_sphere	*cons_sphere(char **info);
-t_sphere	*init_sphere(void);
+//parsing
+t_sphere	*pars_sphere(char **info);
 
-//add
-void		add_sphere(char **info, t_world *world);
+//constructor
+t_sphere	*cons_sphere(void);
 
 //destructor
 void		dest_spheres(t_sphere *sp);
 
 //fonctions
-void	set_transform(t_sphere *s, t_matrix t);
+void		set_transform(t_sphere *s, t_matrix t);
+
+//utils
+void		add_sphere(char **info, t_world *world);
+
 
 #endif

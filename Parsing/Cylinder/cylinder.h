@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:10:09 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:02:47 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,16 @@ typedef struct s_cylinder
 	struct s_cylinder	*next;
 }	t_cylinder;
 
-//constructeur
-t_cylinder	*init_cylinder(void);
-t_cylinder	*cons_cylinder(char **info);
+//parsing
+t_cylinder	*pars_cylinder(char **info);
 
-//add
-void		add_cylinder(char **info, t_world *world);
+//constructeur
+t_cylinder	*cons_cylinder(void);
 
 //destructeur
 void		dest_cylinders(t_cylinder *cy);
+
+//utils
+void		add_cylinder(char **info, t_world *world);
+
 #endif

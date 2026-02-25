@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:10:04 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:05:57 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_cylinder	*init_cylinder(void)
+t_cylinder	*cons_cylinder(void)
 {
 	t_cylinder	*res;
 
@@ -29,12 +29,12 @@ t_cylinder	*init_cylinder(void)
 	return (res);
 }
 
-t_cylinder	*cons_cylinder(char **info)
+t_cylinder	*pars_cylinder(char **info)
 {
 	t_cylinder	*res;
 	char		**buff;
 
-	res = init_cylinder();
+	res = cons_cylinder();
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 6)
@@ -73,7 +73,7 @@ void	add_cylinder(char **info, t_world *world)
 {
 	t_cylinder	*new;
 
-	new = cons_cylinder(info);
+	new = pars_cylinder(info);
 	if (!new)
 		return ;
 	new->next = world->cylinders;

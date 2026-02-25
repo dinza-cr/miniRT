@@ -44,7 +44,7 @@ Test(world, Intersect_a_world_with_a_ray)
 Test(world, Precomputing_the_state_of_an_intersection)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *shape = init_sphere();
+	t_sphere *shape = cons_sphere();
 	t_intersection i = cons_intersection(4, shape);
 
 	t_comps comps = cons_comps(i, r);
@@ -59,7 +59,7 @@ Test(world, Precomputing_the_state_of_an_intersection)
 Test(world, The_hit_when_an_intersection_occurs_on_the_outside)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *shape = init_sphere();
+	t_sphere *shape = cons_sphere();
 	t_intersection i = cons_intersection(4, shape);
 
 	t_comps comps = cons_comps(i, r);
@@ -70,7 +70,7 @@ Test(world, The_hit_when_an_intersection_occurs_on_the_outside)
 Test(world, The_hit_when_an_intersection_occurs_on_the_inside)
 {
 	t_ray r = cons_ray(cons_point(0, 0, 0), cons_vector(0, 0, 1));
-	t_sphere *shape = init_sphere();
+	t_sphere *shape = cons_sphere();
 	t_intersection i = cons_intersection(1, shape);
 
 	t_comps comps = cons_comps(i, r);

@@ -3,7 +3,7 @@
 
 Test(hit, The_hit_when_all_intersections_have_positive_t)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 	t_intersection i1 = cons_intersection(1, s);
 	t_intersection i2 = cons_intersection(2, s);
 	t_intersection arr[2];
@@ -18,7 +18,7 @@ Test(hit, The_hit_when_all_intersections_have_positive_t)
 
 Test(hit, The_hit_when_some_intersections_have_negative_t)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 	t_intersection i1 = cons_intersection(-1, s);
 	t_intersection i2 = cons_intersection(1, s);
 	t_intersection arr[2];
@@ -33,7 +33,7 @@ Test(hit, The_hit_when_some_intersections_have_negative_t)
 
 Test(hit, The_hit_when_all_intersections_have_negative_t)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 	t_intersection i1 = cons_intersection(-2, s);
 	t_intersection i2 = cons_intersection(-1, s);
 	t_intersection arr[2];
@@ -48,7 +48,7 @@ Test(hit, The_hit_when_all_intersections_have_negative_t)
 
 Test(hit, The_hit_is_always_the_lowest_nonnegative_intersection)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 	t_intersection i1 = cons_intersection(5, s);
 	t_intersection i2 = cons_intersection(7, s);
 	t_intersection i3 = cons_intersection(-3, s);

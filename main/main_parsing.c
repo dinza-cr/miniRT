@@ -6,7 +6,7 @@
 // /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2026/01/23 11:58:18 by dinza-cr          #+#    #+#             */
-// /*   Updated: 2026/02/23 12:21:54 by dinza-cr         ###   ########.fr       */
+// /*   Updated: 2026/02/25 19:15:00 by dinza-cr         ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -52,7 +52,7 @@
 // 			world->C.orientation.x,
 // 			world->C.orientation.y,
 // 			world->C.orientation.z);
-// 		printf("FOV              : %f\n", world->C.FOV);
+// 		printf("FOV              : %f\n", world->C.field_of_view);
 // 	}
 
 // 	/* ---------- LIGHT ---------- */
@@ -88,7 +88,7 @@
 // 				sp->coord.x, sp->coord.y, sp->coord.z);
 // 			printf("  diameter  : %f\n", sp->diameter);
 // 			printf("  color     : R=%f G=%f B=%f\n",
-// 				sp->color.r, sp->color.g, sp->color.b);
+// 				sp->m.color.r, sp->m.color.g, sp->m.color.b);
 // 			printf("\n");
 // 			sp = sp->next;
 // 			i++;

@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:17:36 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:10:31 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 18:56:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_amblight	cons_amblight(char **info, t_world *world)
+t_amblight	pars_amblight(char **info, t_world *world)
 {
 	t_amblight	res;
 	char		**rgb;

@@ -6,13 +6,13 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:09:50 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 19:12:33 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_light	point_light(t_tuple position, t_color color)
+t_light	cons_light(t_tuple position, t_color color)
 {
 	t_light res;
 
@@ -23,7 +23,7 @@ t_light	point_light(t_tuple position, t_color color)
 	return (res);
 }
 
-t_light	cons_light(char **info, t_world *world)
+t_light	pars_light(char **info, t_world *world)
 {
 	t_light	res;
 	char	**buff;

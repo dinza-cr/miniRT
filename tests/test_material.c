@@ -14,7 +14,7 @@ Test(material, The_default_material)
 
 Test(material, A_sphere_has_a_default_material)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 
 	cr_expect(cop_compare(s->m.color, cons_color(1, 1, 1)));
 	cr_expect(s->m.ambient == 0.1);
@@ -25,7 +25,7 @@ Test(material, A_sphere_has_a_default_material)
 
 Test(material, A_sphere_may_be_assigned_a_material)
 {
-	t_sphere *s = init_sphere();
+	t_sphere *s = cons_sphere();
 	t_material m = init_material();
 	m.ambient = 1;
 

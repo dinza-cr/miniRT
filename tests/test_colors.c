@@ -71,3 +71,9 @@ Test(canvas, canvas0)
 		cr_expect(c->pixels->b == 0);
 	}
 }
+
+// Test(shading, Shading_an_intersection)
+// {
+// 	t_world *w = default_world();
+// 	t_ray	r = cons_ray(cons_point(0,0,-5), cons_vector(0, 0, 1));
+// }

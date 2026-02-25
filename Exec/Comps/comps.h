@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   comps.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 15:53:01 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 11:14:47 by dinza-cr         ###   ########.fr       */
+/*   Created: 2026/02/24 18:06:06 by dinza-cr          #+#    #+#             */
+/*   Updated: 2026/02/25 11:49:21 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#ifndef COMPS_H
+# define COMPS_H
 
-t_material cons_material()
+# include "../Tuples/tuple.h"
+# include "../Intersection/intersection.h"
+# include "../Ray/ray.h"
+typedef struct s_sphere t_sphere;
+
+typedef struct s_comps
 {
-	t_material res;
+    double      t;
+    t_sphere    *s;
 
-	res.color = cons_color(0, 0, 0);
-	res.ambient = 0.0;
-	res.diffuse = 0.0;
-	res.specular = 0.0;
-	res.shininess = 0.0;
-	return (res);
-}
+    t_tuple     point;
+    t_tuple     eyev;
+    t_tuple     normalv;
 
-t_material init_material()
-{
-	t_material res;
+    int         inside;
+} t_comps;
 
-	res.color = cons_color(1, 1, 1);
-	res.ambient = 0.1;
-	res.diffuse = 0.9;
-	res.specular = 0.9;
-	res.shininess = 200.0;
-	return (res);
-}
+//constructeur
+t_comps cons_comps(t_intersection i,t_ray r);
+
+#endif

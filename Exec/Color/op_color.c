@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:18:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 15:50:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:46:19 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,3 +61,8 @@ int cop_compare(t_color a, t_color b)
 	else
 		return (0);
 }
+
+// t_color cop_shade_hit(t_world *world, t_comps comps)
+// {
+	
+// }

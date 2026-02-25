@@ -6,12 +6,15 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:30:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/23 15:51:08 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:19:34 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H 
+
+#include "../Comps/comps.h"
+typedef struct s_world t_world;
 
 typedef struct s_color
 {
@@ -29,5 +32,6 @@ t_color		cop_subs(t_color a, t_color b);
 t_color		cop_multi(t_color a, double scal);
 t_color		cop_blend(t_color a, t_color b);
 int			cop_compare(t_color a, t_color b);
+t_color		cop_shade_hit(t_world *world, t_comps comps);
 
 #endif

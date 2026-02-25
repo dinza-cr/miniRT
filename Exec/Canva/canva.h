@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:35:25 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 15:39:33 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:20:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_canva
 //constructeur
 t_canva		*cons_canva(int width, int height);
 
+//destructeur
+void		dest_canva(t_canva *canva);
+
 //canva actions
 void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_color pixel);
 int			ft_convertcolor(double a);
@@ -43,8 +46,5 @@ void		canvas_to_ppm(t_canva *canva);
 void		canva_to_mlx(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 int			key_hook(int keycode, t_canva *c);
-
-//destructor
-void		dest_canva(t_canva *canva);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 16:04:05 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:31:54 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_intersections	cons_intersections(int count)
 }
 
 //destructeur
-void	free_intersections(t_intersections *xs)
+void	dest_intersections(t_intersections *xs)
 {
 	if (!xs)
 		return ;
@@ -37,7 +37,7 @@ void	free_intersections(t_intersections *xs)
 	xs->count = 0;
 }
 
-double	discriminant(t_sphere *s, t_ray r)
+double	discriminant(t_sphere *s, t_ray r) 
 {
 	double	a;
 	double	b;
@@ -148,9 +148,10 @@ void	sort_intersections(t_intersections *xs)
 	}
 }
 
-t_intersections	intersect_world(t_world *w, t_ray r)
+t_intersections	iop_intersect_world(t_world *w, t_ray r)
 {
 	t_intersections		res;
+	t_intersections		xs;
 	t_sphere			*sp;
 	int					max_hits;
 	int					k;
@@ -168,11 +169,11 @@ t_intersections	intersect_world(t_world *w, t_ray r)
 	sp = w->spheres;
 	while (sp)
 	{
-		t_intersections xs = iop_intersect(sp, r);
+		xs = iop_intersect(sp, r);
 		i = 0;
 		while (i < xs.count)
 			res.solutions[k++] = xs.solutions[i++];
-		free_intersections(&xs);
+		dest_intersections(&xs);
 		sp = sp->next;
 	}
 	res.count = k;

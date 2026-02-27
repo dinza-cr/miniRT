@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 19:06:30 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:28:22 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	dest_world(t_world *world)
 	free(world);
 }
 
-t_world *default_world(void)
+t_world	*default_world(void)
 {
-	t_world *res;
+	t_world	*res;
 
 	res = cons_world();
 	res->L = cons_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));

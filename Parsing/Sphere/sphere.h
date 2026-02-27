@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 19:05:24 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:27:29 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
 # include "../Exec/Material/material.h"
+
 typedef struct s_world	t_world;
 
 typedef struct s_sphere
@@ -39,10 +40,8 @@ t_sphere	*cons_sphere(void);
 void		dest_spheres(t_sphere *sp);
 
 //fonctions
+t_matrix	sp_transform(t_sphere *s);
 void		set_transform(t_sphere *s, t_matrix t);
-
-//utils
 void		add_sphere(char **info, t_world *world);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 19:02:47 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:12:02 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
+
 typedef struct s_world	t_world;
 
 typedef struct s_cylinder

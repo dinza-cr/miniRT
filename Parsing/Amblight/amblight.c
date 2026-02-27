@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:17:36 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 18:56:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:02:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_amblight	pars_amblight(char **info, t_world *world)
 {
 	t_amblight	res;
-	char		**rgb;
 
 	res.valid = 0;
 	res.ratio = 0;
@@ -25,18 +24,10 @@ t_amblight	pars_amblight(char **info, t_world *world)
 	res.ratio = ft_atod(info[1]);
 	if (res.ratio < 0.0 || res.ratio > 1.0)
 		return (res);
-	rgb = ft_split(info[2], ',');
-	if (!rgb)
+	res.color = get_color(info[2]);
+	if (res.color.r == -1)
 		return (res);
-	if (count_elem(rgb) != 3)
-		return (free_split(rgb), res);
-	res.color = cons_color(ft_atod(rgb[0]) / 255, ft_atod(rgb[1]) / 255, ft_atod(rgb[2]) / 255);
-	if (res.color.r < 0 || res.color.r > 1
-		|| res.color.g < 0 || res.color.g > 1
-		|| res.color.b < 0 || res.color.b > 1)
-		return (free_split(rgb), res);
 	res.valid = 1;
 	world->has_ambient = 1;
-	free_split(rgb);
 	return (res);
 }

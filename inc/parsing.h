@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 11:10:39 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:06:20 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int			check_capital(char *info, t_world *world);
 int			pars_sort(char *line, t_world *world);
 int			valid_world(t_world *world);
 t_world		*parsing(char **argv);
+t_tuple		get_point(char *info);
+t_tuple		get_vector(char *info);
+t_color		get_color(char *info);
 
 int			safe_exit(t_canva *canva, t_world *world);
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:55:53 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 19:04:21 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:21:16 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
+
 typedef struct s_world t_world;
-
-
 
 typedef struct s_plane
 {
@@ -27,7 +26,6 @@ typedef struct s_plane
 	t_color			color;
 	struct s_plane	*next;
 }	t_plane;
-
 
 //parsing
 t_plane		*pars_plane(char **info);
@@ -40,6 +38,5 @@ void		dest_planes(t_plane *pl);
 
 //utils
 void		add_plane(char **info, t_world *world);
-
 
 #endif

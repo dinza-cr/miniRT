@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 17:18:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 16:02:07 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 12:26:06 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,4 @@ int cop_compare(t_color a, t_color b)
 		return (1);
 	else
 		return (0);
-}
-
-t_color cop_shade_hit(t_world *world, t_comps comps) // a terminer (bonus multiple spotlight)
-{
-	t_color res;
-		
-	res = lighting(comps.s->m, world->L, comps.point, comps.eyev, comps.normalv);
-	return (res);
 }

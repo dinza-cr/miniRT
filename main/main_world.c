@@ -6,7 +6,7 @@
 // /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2026/02/23 17:12:49 by dinza-cr          #+#    #+#             */
-// /*   Updated: 2026/02/25 19:13:08 by dinza-cr         ###   ########.fr       */
+// /*   Updated: 2026/02/27 14:51:37 by dinza-cr         ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -14,54 +14,53 @@
 
 // int main(int argc, char **argv)
 // {
-//     (void)argc;
-//     int nb_xpixel = 500;
-//     int nb_ypixel = 500;
-//     t_canva *canva = cons_canva(nb_xpixel, nb_ypixel);
+//     if (argc != 2)
+// 		return (printf("Add a map !\n"), 0);
 
-//     t_world *world = parsing(argv);
+// 	t_world *world = parsing(argv);
 //     if (!world)
 //         return (printf("Parsing failed\n"), 1);
 
-//     t_camera camera;
-//     camera.coord = cons_point(0, 0, -5);
+//     t_canva *canva = cons_canva(world->C.hsize, world->C.vsize);
+// 	if (!canva)
+// 		return (printf("no canva\n"), 0);
 
 //     double wall_zpos = 10.0;
 //     double wall_size = 10.0;
-//     double wall_xunits = wall_size / (double)nb_xpixel;
-//     double wall_yunits = wall_size / (double)nb_ypixel;
+//     double wall_xunits = wall_size / (double)world->C.hsize;
+//     double wall_yunits = wall_size / (double)world->C.vsize;
 //     double half = wall_size / 2.0;
 
-//     for (int y = 0; y < nb_ypixel; y++)
+//     for (int y = 0; y < world->C.vsize; y++)
 //     {
 //         double wall_ypos = half - wall_yunits * (double)y;
-//         for (int x = 0; x < nb_xpixel; x++)
+//         for (int x = 0; x < world->C.hsize; x++)
 //         {
 //             double wall_xpos = -half + wall_xunits * (double)x;
 
 //             t_tuple wall_point = cons_point(wall_xpos, wall_ypos, wall_zpos);
-//             t_tuple dir = top_normalize(top_subs(wall_point, camera.coord));
-//             t_ray   ray = cons_ray(camera.coord, dir);
+//             t_tuple dir = top_normalize(top_subs(wall_point, world->C.coord));
+//             t_ray   ray = cons_ray(world->C.coord, dir);
 //             t_intersections xs = iop_intersect_world(world, ray);
 //             double t = iop_hit(xs);
 //             if (t != INFINITY)
 //             {
-//                 t_tuple point = rop_position(ray, t);
+//                 // t_tuple point = rop_position(ray, t);
 //                 t_sphere *obj = NULL;
+// 				t_comps comps;
 //                 for (int i = 0; i < xs.count; i++)
 //                 {
 //                     if (xs.solutions[i].t == t)
 //                     {
 //                         obj = xs.solutions[i].object;
+// 						comps = cons_comps(xs.solutions[i], ray);
 //                         break;
 //                     }
 //                 }
 
 //                 if (obj)
 //                 {
-//                     t_tuple normal = normal_at(obj, point);
-//                     t_tuple eye = top_negate(ray.direction);
-//                     t_color color = lighting(obj->m, world->L, point, eye, normal);
+//                     t_color color = cop_shade_hit(world, comps);
 //                     write_pixel(canva, x, y, color);
 //                 }
 //             }

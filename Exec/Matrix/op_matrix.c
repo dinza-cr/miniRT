@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 17:03:35 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:37:43 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,8 +260,8 @@ double	mop_cofactor(t_matrix a, int row, int col)
 t_matrix	mop_comat(t_matrix a)
 {
 	t_matrix	res;
-	int	i;
-	int	j;
+	int			i;
+	int			j;
 
 	res = cons_matrix(a.size);
 	i = 0;

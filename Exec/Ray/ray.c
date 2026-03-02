@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 17:26:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 12:24:58 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:37:05 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_tuple	rop_position(t_ray r, float t)
 
 t_ray	rop_transform(t_ray ray, t_matrix matrix)
 {
-	t_ray res;
+	t_ray	res;
 
 	res.origin = mop_multitup(matrix, ray.origin);
 	res.direction = mop_multitup(matrix, ray.direction);

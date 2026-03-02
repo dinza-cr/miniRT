@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:17:26 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:28:19 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,23 @@ t_tuple	reflect(t_tuple in, t_tuple normal)
 	return (res);
 }
 
-t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple normalv)
+int is_shadowed(t_world *world, t_tuple point)
+{
+	t_tuple v = top_subs(world->L.coord, point);
+	double distance = top_magnitude(v);
+	t_tuple direction = top_normalize(v);
+
+	t_ray r = cons_ray(point, direction);
+	t_intersections intersections = iop_intersect_world(world, r);
+
+	double h = iop_hit(intersections);
+	if (h != INFINITY && h < distance)
+		return (1);
+	else
+		return (0);
+}
+
+t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple normalv, int in_shadow)
 {
 	t_color	res;
 	t_color	effective_color;
@@ -81,6 +97,7 @@ t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple n
 	double	reflect_dot_eye;
 	double	factor;
 
+	(void)in_shadow;
 	effective_color = cop_blend(m.color, l.color);
 	lightv = top_normalize(top_subs(l.coord, point));
 	ambient = cop_multi(effective_color, m.ambient);
@@ -103,6 +120,9 @@ t_color lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple n
 			specular = cop_multi(l.color, m.specular * factor);
 		}
 	}
-	res = cop_add(ambient, cop_add(diffuse, specular));
+	if (in_shadow)
+		res = ambient;
+	else
+		res = cop_add(ambient, cop_add(diffuse, specular));
 	return (res);
 }

@@ -107,7 +107,7 @@ Test(lighting, Lighting_with_the_eye_between_the_light_and_the_surface)
 	t_tuple normalv = cons_vector(0, 0, -1);
 	t_light light = cons_light(cons_point(0, 0, -10), cons_color(1, 1, 1));
 
-	t_color result = lighting(m, light, position, eyev, normalv);
+	t_color result = lighting(m, light, position, eyev, normalv, 0);
 
 	cr_expect(cop_compare(result, cons_color(1.9, 1.9, 1.9)));
 }
@@ -121,7 +121,7 @@ Test(lighting, Lighting_with_the_eye_between_light_and_surface_eye_offset_45)
 	t_tuple normalv = cons_vector(0, 0, -1);
 	t_light light = cons_light(cons_point(0, 0, -10), cons_color(1, 1, 1));
 
-	t_color result = lighting(m, light, position, eyev, normalv);
+	t_color result = lighting(m, light, position, eyev, normalv, 0);
 
 	cr_expect(cop_compare(result, cons_color(1.0, 1.0, 1.0)));
 }
@@ -134,7 +134,7 @@ Test(lighting, Lighting_with_eye_opposite_surface_light_offset_45)
 	t_tuple normalv = cons_vector(0, 0, -1);
 	t_light light = cons_light(cons_point(0, 10, -10), cons_color(1, 1, 1));
 
-	t_color result = lighting(m, light, position, eyev, normalv);
+	t_color result = lighting(m, light, position, eyev, normalv, 0);
 
 	cr_expect(cop_compare(result, cons_color(0.7364, 0.7364, 0.7364)));
 }
@@ -147,7 +147,7 @@ Test(lighting, Lighting_with_eye_in_the_path_of_the_reflection_vector)
 	t_tuple normalv = cons_vector(0, 0, -1);
 	t_light light = cons_light(cons_point(0, 10, -10), cons_color(1, 1, 1));
 
-	t_color result = lighting(m, light, position, eyev, normalv);
+	t_color result = lighting(m, light, position, eyev, normalv, 0);
 
 	cr_expect(cop_compare(result, cons_color(1.6364, 1.6364, 1.6364)));
 }
@@ -160,11 +160,54 @@ Test(lighting, Lighting_with_the_light_behind_the_surface)
 	t_tuple normalv = cons_vector(0, 0, -1);
 	t_light light = cons_light(cons_point(0, 0, 10), cons_color(1, 1, 1));
 
-	t_color result = lighting(m, light, position, eyev, normalv);
+	t_color result = lighting(m, light, position, eyev, normalv, 0);
 
 	cr_expect(cop_compare(result, cons_color(0.1, 0.1, 0.1)));
 }
 
+Test(shadow, Lighting_with_the_surface_in_shadow)
+{
+	t_tuple eyev = cons_vector(0, 0, -1);
+	t_tuple normalv = cons_vector(0, 0, -1);
+	t_light light = cons_light(cons_point(0, 0, -10), cons_color(1, 1, 1));
+	int in_shadow = 1;
+	t_material m = init_material();
+	t_tuple position = cons_point(0, 0, 0);
 
+	t_color result = lighting(m, light, position, eyev, normalv, in_shadow);
 
+	cr_expect(cop_compare(result, cons_color(0.1, 0.1, 0.1)));
+}
+
+Test(shadow, There_is_no_shadow_when_nothing_is_collinear_with_point_and_light)
+{
+	t_world *w = default_world();
+	t_tuple p = cons_point(0, 10, 0);
+
+	cr_expect(!is_shadowed(w, p));
+}
+
+Test(shadow, The_shadow_when_an_object_is_between_the_point_and_the_light)
+{
+	t_world *w = default_world();
+	t_tuple p = cons_point(10, -10, 10);
+
+	cr_expect(is_shadowed(w, p));
+}
+
+Test(shadow, There_is_no_shadow_when_an_object_is_behind_the_light)
+{
+	t_world *w = default_world();
+	t_tuple p = cons_point(-20, 20, -20);
+
+	cr_expect(!is_shadowed(w, p));
+}
+
+Test(shadow, There_is_no_shadow_when_an_object_is_behind_the_point)
+{
+	t_world *w = default_world();
+	t_tuple p = cons_point(-2, 2, -2);
+
+	cr_expect(!is_shadowed(w, p));
+}
 

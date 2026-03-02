@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:35:25 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 16:21:27 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:47:15 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,5 @@ void		canvas_to_ppm(t_canva *canva);
 void		canva_to_mlx(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 int			key_hook(int keycode, t_canva *c);
-void	addr_put_pixel(t_canva *canva, int x, int y, int color);
+void		addr_put_pixel(t_canva *canva, int x, int y, int color);
 #endif

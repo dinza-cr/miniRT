@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 12:31:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/02 15:06:51 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	dest_intersections(t_intersections *xs)
 	xs->count = 0;
 }
 
-double	discriminant(t_sphere *s, t_ray r) 
+double	discriminant(t_sphere *s, t_ray r)
 {
 	double	a;
 	double	b;
@@ -107,9 +107,9 @@ t_intersections	iop_intersections(int count, t_intersection *arr)
 
 int count_spheres(t_sphere *s)
 {
-	int res;
-	t_sphere *temp;
-	
+	int			res;
+	t_sphere	*temp;
+
 	res = 0;
 	temp = s;
 	while (temp)
@@ -122,7 +122,7 @@ int count_spheres(t_sphere *s)
 
 void	swap_i(t_intersection *a, t_intersection *b)
 {
-	t_intersection tmp;
+	t_intersection	tmp;
 
 	tmp = *a;
 	*a = *b;

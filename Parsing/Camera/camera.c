@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:06:40 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/28 14:51:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_camera	pars_camera(char **info, t_world *world)
 	res.field_of_view = ft_atod(info[3]);
 	if (!in_range(res.field_of_view, 0.0, 180.0))
 		return (res);
-	res = cons_camera(100, 100, res.field_of_view * (PI/180));
+	res = cons_camera(500, 500, res.field_of_view * (PI/180));
 	res.coord = get_point(info[1]);
 	if (res.coord.w == -1)
 		return (res);

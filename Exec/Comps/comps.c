@@ -6,15 +6,15 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:06:10 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 11:49:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/02 19:15:47 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
-t_comps cons_comps(t_intersection i,t_ray r)
+t_comps	cons_comps(t_intersection i,t_ray r)
 {
-	t_comps res;
+	t_comps	res;
 
 	res.t = i.t;
 	res.s = i.object;
@@ -28,5 +28,6 @@ t_comps cons_comps(t_intersection i,t_ray r)
 	}
 	else
 		res.inside = 0;
+	res.overpoint = top_add(res.point, top_multi(res.normalv, EPSILON));
 	return (res);
 }

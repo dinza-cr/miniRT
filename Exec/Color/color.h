@@ -6,15 +6,16 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:30:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 13:01:41 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:46:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COLOR_H
 # define COLOR_H 
 
-#include "../Comps/comps.h"
-typedef struct s_world t_world;
+# include "../Comps/comps.h"
+
+typedef struct s_world	t_world;
 
 typedef struct s_color
 {

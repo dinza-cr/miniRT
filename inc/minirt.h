@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 18:30:44 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 18:07:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:36:40 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # include "../Exec/Intersection/intersection.h"
 # include "../Exec/Material/material.h"
 # include "../Exec/Comps/comps.h"
-
 
 # include "minirtt.h"
 

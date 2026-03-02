@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:54:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 13:05:44 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/02 19:10:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,40 @@ t_color	cons_color(double r, double g, double b)
 
 t_color cop_shade_hit(t_world *world, t_comps comps) // a terminer (bonus multiple spotlight)
 {
-	t_color res;
-		
-	res = lighting(comps.s->m, world->L, comps.point, comps.eyev, comps.normalv);
+	t_color	res;
+	int in_shadow;
+
+	in_shadow = is_shadowed(world, comps.overpoint);
+	res = lighting(comps.s->m, world->L, comps.overpoint,
+			comps.eyev, comps.normalv, in_shadow);
 	return (res);
 }
 
-t_color color_at(t_world *world, t_ray r)
+t_color	color_at(t_world *world, t_ray r)
 {
-	t_comps comps;
-	t_intersections xs = iop_intersect_world(world, r);
-	double hit = iop_hit(xs);
+	t_comps			comps;
+	t_intersections	xs;
+	double			hit;
+	int				i;
+	t_color			color;
+
+	xs = iop_intersect_world(world, r);
+	hit = iop_hit(xs);
 	if (!xs.count)
 		return (cons_color(0, 0, 0));
 	else
 	{
-		for (int i = 0; i < xs.count; i++)
+		i = 0;
+		while (i < xs.count)
 		{
 			if (hit == xs.solutions[i].t)
 			{
 				comps = cons_comps(xs.solutions[i], r);
 				break ;
 			}
+			i++;
 		}
-		t_color color = cop_shade_hit(world, comps);
+		color = cop_shade_hit(world, comps);
 		return (color);
 	}
 }

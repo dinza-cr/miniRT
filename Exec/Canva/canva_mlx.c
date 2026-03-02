@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:32:29 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/12 14:27:47 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/02/27 18:46:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	canva_to_mlx(t_canva *canva)
 		x = 0;
 		while (x < canva->width)
 		{
-			color = rgb_to_int(canva->pixels[i].r, canva->pixels[i].g, canva->pixels[i].b);
+			color = rgb_to_int(canva->pixels[i].r, canva->pixels[i].g,
+					canva->pixels[i].b);
 			addr_put_pixel(canva, x, y, color);
 			i++;
 			x++;

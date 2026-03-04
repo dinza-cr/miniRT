@@ -73,13 +73,13 @@ Test(camera, The_color_when_a_ray_misses)
 Test(camera, The_color_with_an_intersection_behind_the_ray)
 {
 	t_world *w = default_world();
-	t_sphere *outer = w->spheres;
-	outer->m.ambient = 1;
-	t_sphere *inner = w->spheres->next;
-	inner->m.ambient = 1;
+	t_shape *outer = w->shapes;
+	outer->material.ambient = 1;
+	t_shape *inner = w->shapes->next;
+	inner->material.ambient = 1;
 	t_ray r = cons_ray(cons_point(0, 0, 0.75), cons_vector(0, 0, -1));
 
 	t_color c = color_at(w, r);
 
-	cr_expect(cop_compare(c, inner->m.color));
+	cr_expect(cop_compare(c, inner->material.color));
 }

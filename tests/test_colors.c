@@ -76,7 +76,7 @@ Test(shading, Shading_an_intersection)
 {
 	t_world *w = default_world();
 	t_ray	r = cons_ray(cons_point(0,0,-5), cons_vector(0, 0, 1));
-	t_sphere *s = w->spheres;
+	t_shape *s = w->shapes;
 	t_intersection	i = cons_intersection(4.0, s);
 
 	t_comps comps = cons_comps(i, r);
@@ -90,7 +90,7 @@ Test(shading, Shading_an_intersection_from_the_inside)
 	t_world *w = default_world();
 	w->L = cons_light(cons_point(0, 0.25, 0), cons_color(1, 1, 1));
 	t_ray	r = cons_ray(cons_point(0,0,0), cons_vector(0, 0, 1));
-	t_sphere *s = w->spheres->next;
+	t_shape *s = w->shapes->next;
 	t_intersection	i = cons_intersection(0.5, s);
 
 	t_comps comps = cons_comps(i, r);

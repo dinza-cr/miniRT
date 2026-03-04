@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:01:56 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:30:36 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:42:56 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_shape *cons_shape(void)
     if (!res)
         return (NULL);
     res->transformation = cons_idmatrix();
-    res->inv_transfo = cons_matrix(4);
+    res->inv_transfo = cons_idmatrix();
     res->material = init_material();
     res->next = NULL;
     res->sphere = cons_sphere();

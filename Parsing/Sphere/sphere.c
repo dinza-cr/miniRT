@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:34:21 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:58:37 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ t_matrix	sp_transform(t_shape *s)
 	return (res);
 }
 
-// void	set_transform(t_sphere *s, t_matrix t)
-// {
-// 	s->transform = mop_copy(t);
-// }
+void	set_transform(t_shape *s, t_matrix t)
+{
+	s->transformation = mop_copy(t);
+	s->inv_transfo = mop_inverse(t);
+}

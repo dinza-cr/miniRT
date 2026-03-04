@@ -4,7 +4,8 @@
 Test(ray, A_ray_intersects_a_sphere_at_two_points)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -16,7 +17,8 @@ Test(ray, A_ray_intersects_a_sphere_at_two_points)
 Test(ray, A_ray_intersects_a_sphere_at_a_tangent)
 {
 	t_ray r = cons_ray(cons_point(0, 1, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -28,7 +30,8 @@ Test(ray, A_ray_intersects_a_sphere_at_a_tangent)
 Test(ray, A_ray_misses_a_sphere)
 {
 	t_ray	r = cons_ray(cons_point(0, 2, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -38,7 +41,8 @@ Test(ray, A_ray_misses_a_sphere)
 Test(ray, A_ray_originates_inside_a_sphere)
 {
 	t_ray	r = cons_ray(cons_point(0, 0, 0), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -50,7 +54,8 @@ Test(ray, A_ray_originates_inside_a_sphere)
 Test(ray, A_sphere_is_behind_a_ray)
 {
 	t_ray	r = cons_ray(cons_point(0, 0, 5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -60,7 +65,8 @@ Test(ray, A_sphere_is_behind_a_ray)
 
 Test(inter, An_intersection_encapsulates_t_and_objec)
 {
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 	t_intersection i;
 
 	i = cons_intersection(3.5, s);
@@ -71,7 +77,8 @@ Test(inter, An_intersection_encapsulates_t_and_objec)
 
 Test(inter, Aggregating_intersections)
 {
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 	t_intersection i1 = cons_intersection(1, s);
 	t_intersection i2 = cons_intersection(2, s);
 	t_intersection arr[2];
@@ -88,7 +95,8 @@ Test(inter, Aggregating_intersections)
 Test(inter, Intersect_sets_the_object_on_the_intersection)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -100,7 +108,8 @@ Test(inter, Intersect_sets_the_object_on_the_intersection)
 Test(inter, Intersecting_a_scaled_sphere_with_a_ray)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
+
 
 	set_transform(s, trsf_scaling(2, 2, 2));
 	t_intersections xs = iop_intersect(s, r);
@@ -113,7 +122,7 @@ Test(inter, Intersecting_a_scaled_sphere_with_a_ray)
 Test(inter, Intersecting_a_translated_sphere_with_a_ray)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
-	t_sphere *s = cons_sphere();
+	t_shape *s = cons_shape();
 	
 	set_transform(s, trsf_translation(5, 0, 0));
 	t_intersections xs = iop_intersect(s, r);

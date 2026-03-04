@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:35:00 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:52:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int	pars_sort(char *line, t_world *world)
 		add_sphere(info, world);
 	else if (!strcmp(info[0], "pl"))
 		add_plane(info, world);
-	// else if (!strcmp(info[0], "cy"))
-	// 	add_cylinder(info, world);
-	// free_split(info);
+	else if (!strcmp(info[0], "cy"))
+		add_cylinder(info, world);
+	free_split(info);
 	return (0);
 }
 

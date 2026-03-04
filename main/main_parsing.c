@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 11:58:18 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:42:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:51:41 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	main(int argc, char **argv)
             }
             else if (shapes->plane.valid == 1)
             {
-                printf("plane #%d\n", i);
+                printf("shape #%d [PLANE]\n", i);
                 printf("  valid   : %d\n", shapes->plane.valid);
                 printf("  coord   : x=%f y=%f z=%f\n",
                     shapes->plane.coord.x, shapes->plane.coord.y, shapes->plane.coord.z);
@@ -105,41 +105,24 @@ int	main(int argc, char **argv)
                     shapes->material.color.r, shapes->material.color.g, shapes->material.color.b);
                 printf("\n");
             }
+			else if (shapes->cylinder.valid == 1)
+			{
+				printf("shape #%d [CYLINDER]\n", i);
+				printf("  valid    : %d\n", shapes->cylinder.valid);
+				printf("  coord    : x=%f y=%f z=%f\n",
+					shapes->cylinder.coord.x, shapes->cylinder.coord.y, shapes->cylinder.coord.z);
+				printf("  axis     : x=%f y=%f z=%f\n",
+					shapes->cylinder.axis.x, shapes->cylinder.axis.y, shapes->cylinder.axis.z);
+				printf("  diameter : %f\n", shapes->cylinder.diameter);
+				printf("  height   : %f\n", shapes->cylinder.height);
+				printf("  color    : R=%f G=%f B=%f\n",
+					shapes->material.color.r, shapes->material.color.g, shapes->material.color.b);
+				printf("\n");
+			}
 			shapes = shapes->next;
 			i++;
 		}
 	}
-
-	// /* ---------- CYLINDERS ---------- */
-	// printf("\n---- CYLINDERS ----\n");
-	// if (!world->cylinders)
-	// 	printf("no cylinders\n");
-	// else
-	// {
-	// 	t_cylinder	*cy;
-	// 	int			i;
-
-	// 	cy = world->cylinders;
-	// 	i = 0;
-	// 	while (cy)
-	// 	{
-	// 		printf("cylinder #%d\n", i);
-	// 		printf("  valid    : %d\n", cy->valid);
-	// 		printf("  coord    : x=%f y=%f z=%f\n",
-	// 			cy->coord.x, cy->coord.y, cy->coord.z);
-	// 		printf("  axis     : x=%f y=%f z=%f\n",
-	// 			cy->axis.x, cy->axis.y, cy->axis.z);
-	// 		printf("  diameter : %f\n", cy->diameter);
-	// 		printf("  height   : %f\n", cy->height);
-	// 		printf("  color    : R=%f G=%f B=%f\n",
-	// 			cy->color.r, cy->color.g, cy->color.b);
-	// 		printf("\n");
-	// 		cy = cy->next;
-	// 		i++;
-	// 	}
-	// }
-	// printf("\n=======================\n");
-	// dest_world(world);
 	}
 	else
 		printf("Please add a world :)\n");

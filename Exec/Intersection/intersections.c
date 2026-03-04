@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 18:42:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:14:20 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,7 @@ t_intersections	iop_intersect(t_shape *s, t_ray r)
 	res.solutions[0] = cons_intersection((-b - sqrt(dis)) / (2.0 * a), s);
 	res.solutions[1] = cons_intersection((-b + sqrt(dis)) / (2.0 * a), s);
 	if (res.solutions[0].t > res.solutions[1].t)
-	{
-		a = res.solutions[0].t;
-		res.solutions[0].t = res.solutions[1].t;
-		res.solutions[1].t = a;
-	}
+		swap_i(&res.solutions[0], &res.solutions[1]);
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:00:17 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:34:21 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_shape	*pars_sphere(char **info)
 		return (NULL);
 	if (count_elem(info) != 4)
 		return (NULL);
-	res->sphere = cons_sphere();
 	res->sphere.coord = get_point(info[1]);
 	if (res->sphere.coord.w == -1)
 		return (NULL);
@@ -55,7 +54,7 @@ void	add_sphere(char **info, t_world *world)
 	t_shape *new;
 
 	new = pars_sphere(info);
-	if (!new)
+	if (!new || new->sphere.valid == 0)
 		return ;
 	new->next = world->shapes;
 	world->shapes = new;

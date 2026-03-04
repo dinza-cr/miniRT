@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 19:18:30 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:35:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ t_world	*cons_world(void)
 	res = malloc(sizeof(t_world));
 	if (!res)
 		return (NULL);
-	res->shapes = cons_shape();
-	if (!res->shapes)
-		return (free(res), NULL);
+	res->shapes = NULL;
 	res->valid = 0;
 	res->has_ambient = 0;
 	res->has_camera = 0;

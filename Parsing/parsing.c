@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 18:58:29 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 16:02:15 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ int	pars_sort(char *line, t_world *world)
 		world->L = pars_light(info, world);
 	else if (!strcmp(info[0], "sp"))
 		add_sphere(info, world);
-	else if (!strcmp(info[0], "pl"))
-		add_plane(info, world);
-	else if (!strcmp(info[0], "cy"))
-		add_cylinder(info, world);
-	free_split(info);
+	// else if (!strcmp(info[0], "pl"))
+	// 	add_plane(info, world);
+	// else if (!strcmp(info[0], "cy"))
+	// 	add_cylinder(info, world);
+	// free_split(info);
 	return (0);
 }
 
 int	valid_world(t_world *world)
 {
-	t_sphere	*sp;
-	t_plane		*pl;
-	t_cylinder	*cy;
+	// t_sphere	*sp;
+	// t_plane		*pl;
+	// t_cylinder	*cy;
 
 	if (!world)
 		return (0);
@@ -58,27 +58,27 @@ int	valid_world(t_world *world)
 		return (0);
 	if (!world->A.valid || !world->C.valid || !world->L.valid)
 		return (0);
-	sp = world->spheres;
-	while (sp)
-	{
-		if (!sp->valid)
-			return (0);
-		sp = sp->next;
-	}
-	pl = world->planes;
-	while (pl)
-	{
-		if (!pl->valid)
-			return (0);
-		pl = pl->next;
-	}
-	cy = world->cylinders;
-	while (cy)
-	{
-		if (!cy->valid)
-			return (0);
-		cy = cy->next;
-	}
+	// sp = world->spheres;
+	// while (sp)
+	// {
+	// 	if (!sp->valid)
+	// 		return (0);
+	// 	sp = sp->next;
+	// }
+	// pl = world->planes;
+	// while (pl)
+	// {
+	// 	if (!pl->valid)
+	// 		return (0);
+	// 	pl = pl->next;
+	// }
+	// cy = world->cylinders;
+	// while (cy)
+	// {
+	// 	if (!cy->valid)
+	// 		return (0);
+	// 	cy = cy->next;
+	// }
 	return (1);
 }
 

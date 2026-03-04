@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/02 15:06:51 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:52:23 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,41 +37,34 @@ void	dest_intersections(t_intersections *xs)
 	xs->count = 0;
 }
 
-double	discriminant(t_sphere *s, t_ray r)
+double	discriminant(t_ray r, double *a, double *b)
 {
-	double	a;
-	double	b;
-	double	c;
 	double	res;
+	double	c;
 	t_tuple	sphere_to_ray;
 
-	(void)s;
 	sphere_to_ray = top_subs(r.origin, cons_point(0, 0, 0));
-	a = top_dot(r.direction, r.direction);
-	b = 2.0 * top_dot(r.direction, sphere_to_ray);
+	*a = top_dot(r.direction, r.direction);
+	*b = 2.0 * top_dot(r.direction, sphere_to_ray);
 	c = top_dot(sphere_to_ray, sphere_to_ray) - 1.0;
-	res = (b * b) - (4.0 * a * c);
+	res = ((*b) * (*b)) - (4.0 * (*a) * (c));
 	return (res);
 }
 
-t_intersections	iop_intersect(t_sphere *s, t_ray r)
+t_intersections	iop_intersect(t_shape *s, t_ray r)
 {
 	t_intersections	res;
 	double			dis;
 	double			a;
 	double			b;
-	t_tuple			sphere_to_ray;
 
-	r = rop_transform(r, mop_inverse(s->transform));
-	dis = discriminant(s, r);
+	r = rop_transform(r, s->inv_transfo);
+	dis = discriminant(r, &a, &b);
 	if (dis < 0.0)
 		return (cons_intersections(0));
 	res = cons_intersections(2);
 	if (!res.solutions)
 		return (cons_intersections(0));
-	sphere_to_ray = top_subs(r.origin, cons_point(0, 0, 0));
-	a = top_dot(r.direction, r.direction);
-	b = 2.0 * top_dot(r.direction, sphere_to_ray);
 	res.solutions[0] = cons_intersection((-b - sqrt(dis)) / (2.0 * a), s);
 	res.solutions[1] = cons_intersection((-b + sqrt(dis)) / (2.0 * a), s);
 	if (res.solutions[0].t > res.solutions[1].t)
@@ -105,10 +98,10 @@ t_intersections	iop_intersections(int count, t_intersection *arr)
 	return (res);
 }
 
-int count_spheres(t_sphere *s)
+int count_shapes(t_shape *s)
 {
 	int			res;
-	t_sphere	*temp;
+	t_shape	*temp;
 
 	res = 0;
 	temp = s;
@@ -152,12 +145,12 @@ t_intersections	iop_intersect_world(t_world *w, t_ray r)
 {
 	t_intersections		res;
 	t_intersections		xs;
-	t_sphere			*sp;
+	t_shape			*temp;
 	int					max_hits;
 	int					k;
 	int					i;
 
-	max_hits = 2 * count_spheres(w->spheres);
+	max_hits = 2 * count_shapes(w->shapes);
 	res.count = 0;
 	res.solutions = NULL;
 	if (max_hits == 0)
@@ -166,15 +159,15 @@ t_intersections	iop_intersect_world(t_world *w, t_ray r)
 	if (!res.solutions)
 		return (res);
 	k = 0;
-	sp = w->spheres;
-	while (sp)
+	temp = w->shapes;
+	while (temp)
 	{
-		xs = iop_intersect(sp, r);
+		xs = iop_intersect(temp, r);
 		i = 0;
 		while (i < xs.count)
 			res.solutions[k++] = xs.solutions[i++];
 		dest_intersections(&xs);
-		sp = sp->next;
+		temp = temp->next;
 	}
 	res.count = k;
 	if (res.count > 1)

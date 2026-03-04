@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:06:20 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/03 16:38:53 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include "../Parsing/Sphere/sphere.h"
 # include "../Parsing/Cylinder/cylinder.h"
 # include "../Parsing/Plane/plane.h"
+# include "../Parsing/Shape/shape.h"
 
 //utils
 int			count_elem(char **t);

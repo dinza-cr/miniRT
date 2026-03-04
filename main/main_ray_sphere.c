@@ -6,7 +6,7 @@
 // /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2026/02/23 17:12:49 by dinza-cr          #+#    #+#             */
-// /*   Updated: 2026/02/28 13:31:42 by dinza-cr         ###   ########.fr       */
+// /*   Updated: 2026/03/04 16:15:41 by dinza-cr         ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -43,13 +43,13 @@
 // 			t_tuple dir = top_normalize(top_subs(wall_point, camera.coord));
 
 // 			t_ray ray = cons_ray(camera.coord, dir);
-// 			t_intersections xs = iop_intersect(world->spheres, ray);
+// 			t_intersections xs = iop_intersect(world->shapes, ray);
 // 			if (xs.count > 0)
 // 			{
 // 				t_tuple point = rop_position(ray, iop_hit(xs));
-// 				t_tuple normal = normal_at(world->spheres, point);
+// 				t_tuple normal = normal_at(world->shapes, point);
 // 				t_tuple eye = top_negate(ray.direction);
-// 				t_color color = lighting(world->spheres->m, world->L, point, eye, normal);
+// 				t_color color = lighting(world->shapes->material, world->L, point, eye, normal, 0);
 
 // 				write_pixel(canva, x, y, color);
 // 			}

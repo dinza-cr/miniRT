@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:48:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/24 14:27:03 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:03:57 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_sphere		t_sphere;
 typedef struct s_plane		t_plane;
 typedef struct s_cylinder	t_cylinder;
+typedef struct s_shape		t_shape;
 
 typedef struct s_world
 {
@@ -31,9 +32,7 @@ typedef struct s_world
 	t_amblight	A;
 	t_camera	C;
 	t_light		L;
-	t_sphere	*spheres;
-	t_plane		*planes;
-	t_cylinder	*cylinders;
+	t_shape		*shapes;
 }	t_world;
 
 //constructeur

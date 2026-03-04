@@ -210,4 +210,3 @@ Test(shadow, There_is_no_shadow_when_an_object_is_behind_the_point)
 
 	cr_expect(!is_shadowed(w, p));
 }
-

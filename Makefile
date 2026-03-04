@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/02/24 18:06:48 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/03 16:37:19 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CPPFLAGS		=	-Iinc -Ilibft -Iminilibx-linux
 LDLIBS			=	-lm
 RM				= 	rm -rf
 
-SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Exec/Ray Exec/sphIntersection Exec/Intersection Exec/Material Exec/Comps Parsing Parsing/Amblight Parsing/Camera Parsing/Cylinder Parsing/Light Parsing/Plane Parsing/World Parsing/Sphere 
+SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Exec/Ray Exec/sphIntersection Exec/Intersection Exec/Material Exec/Comps Parsing Parsing/Amblight Parsing/Camera Parsing/Cylinder Parsing/Light Parsing/Plane Parsing/Shape Parsing/World Parsing/Sphere 
 SRC_CORE		=	$(foreach d,$(SRC_DIRS_CORE),$(wildcard $(d)/*.c)) ## TEMPORARY
 
 SRC_DIRS_MAIN	=	main

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:06:06 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/02 19:05:56 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:53:55 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 # include "../Intersection/intersection.h"
 # include "../Ray/ray.h"
 
-typedef struct s_sphere	t_sphere;
+typedef struct s_shape	t_shape;
 
 typedef struct s_comps
 {
 	double		t;
-	t_sphere	*s;
+	t_shape		*shape;
 
 	t_tuple		point;
 	t_tuple		overpoint;

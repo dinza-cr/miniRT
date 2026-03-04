@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:27:29 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:59:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,29 +18,27 @@
 # include "../Exec/Material/material.h"
 
 typedef struct s_world	t_world;
+typedef struct s_shape		t_shape;
+
 
 typedef struct s_sphere
 {
 	int				valid;
+
 	t_tuple			coord;
 	double			diameter;
 	double			radius;
-	t_matrix		transform;
-	t_material		m;
-	struct s_sphere	*next;
 }	t_sphere;
 
 //parsing
-t_sphere	*pars_sphere(char **info);
+t_shape	*pars_sphere(char **info);
 
 //constructor
-t_sphere	*cons_sphere(void);
+t_sphere	cons_sphere(void);
 
-//destructor
-void		dest_spheres(t_sphere *sp);
 
 //fonctions
-t_matrix	sp_transform(t_sphere *s);
+t_matrix	sp_transform(t_shape *s);
 void		set_transform(t_sphere *s, t_matrix t);
 void		add_sphere(char **info, t_world *world);
 

@@ -6,7 +6,7 @@
 // /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 // /*                                                +#+#+#+#+#+   +#+           */
 // /*   Created: 2026/02/23 17:12:49 by dinza-cr          #+#    #+#             */
-// /*   Updated: 2026/02/27 14:51:37 by dinza-cr         ###   ########.fr       */
+// /*   Updated: 2026/03/04 16:14:28 by dinza-cr         ###   ########.fr       */
 // /*                                                                            */
 // /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 //             if (t != INFINITY)
 //             {
 //                 // t_tuple point = rop_position(ray, t);
-//                 t_sphere *obj = NULL;
+//                 t_shape *obj = NULL;
 // 				t_comps comps;
 //                 for (int i = 0; i < xs.count; i++)
 //                 {

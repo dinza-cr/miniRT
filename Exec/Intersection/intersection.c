@@ -6,14 +6,14 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 15:33:14 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/18 16:41:49 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 15:09:43 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minirt.h"
 
 //constructeur
-t_intersection	cons_intersection(double t, t_sphere *object)
+t_intersection	cons_intersection(double t, t_shape *object)
 {
 	t_intersection	res;
 

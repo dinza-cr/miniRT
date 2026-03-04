@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 19:35:23 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/04 19:37:52 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_world	*default_world(void)
 	t_world	*res;
 
 	res = cons_world();
+	res->shapes = cons_shape();
 	res->L = cons_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
 	res->shapes->material.color = cons_color(0.8, 1.0, 0.6);
 	res->shapes->material.diffuse = 0.7;

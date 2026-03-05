@@ -25,6 +25,9 @@ t_world	*cons_world(void)
 	res->has_ambient = 0;
 	res->has_camera = 0;
 	res->has_light = 0;
+	res->A.valid = 0;
+	res->C.valid = 0;
+	res->L.valid = 0;
 	return (res);
 }
 

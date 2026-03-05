@@ -42,6 +42,7 @@ t_shape	*pars_plane(char **info)
 	res->material.color = get_color(info[3]);
 	if (res->material.color.r == -1)
 		return (res);
+	//ajouter matrices transfo + inv
 	res->plane.valid = 1;
 	return (res);
 }
@@ -51,7 +52,7 @@ void	add_plane(char **info, t_world *world)
 	t_shape	*new;
 
 	new = pars_plane(info);
-	if (!new || new->plane.valid == 0)
+	if (!new)
 		return ;
 	new->next = world->shapes;
 	world->shapes = new;

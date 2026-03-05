@@ -25,6 +25,7 @@ typedef struct s_cylinder
 	t_tuple				coord;
 	t_tuple				axis;
 	double				diameter;
+	double				radius;
 	double				height;
 }	t_cylinder;
 

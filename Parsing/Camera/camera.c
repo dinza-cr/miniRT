@@ -18,6 +18,7 @@ t_camera	pars_camera(char **info, t_world *world)
 	t_tuple		to;
 
 	res.valid = 0;
+	world->has_camera = 1;
 	if (count_elem(info) != 4)
 		return (res);
 	res.field_of_view = ft_atod(info[3]);
@@ -33,7 +34,6 @@ t_camera	pars_camera(char **info, t_world *world)
 	to = top_add(res.coord, res.orientation);
 	res.transform = trsf_view_transform(res.coord, to, cons_vector(0, 1, 0));
 	res.valid = 1;
-	world->has_camera = 1;
 	return (res);
 }
 

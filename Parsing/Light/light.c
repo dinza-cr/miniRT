@@ -28,6 +28,7 @@ t_light	pars_light(char **info, t_world *world)
 	t_light	res;
 
 	res = cons_light(cons_point(0, 0, 0), cons_color(0, 0, 0));
+	world->has_light = 1;
 	if (count_elem(info) != 4)
 		return (res);
 	res.coord = get_point(info[1]);
@@ -40,7 +41,6 @@ t_light	pars_light(char **info, t_world *world)
 	if (res.color.r == -1)
 		return (res);
 	res.valid = 1;
-	world->has_light = 1;
 	return (res);
 }
 

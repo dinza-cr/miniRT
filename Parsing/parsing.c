@@ -48,38 +48,24 @@ int	pars_sort(char *line, t_world *world)
 
 int	valid_world(t_world *world)
 {
-	// t_sphere	*sp;
-	// t_plane		*pl;
-	// t_cylinder	*cy;
+	t_shape *temp;
 
 	if (!world)
-		return (0);
-	if (!world->has_ambient || !world->has_camera || !world->has_light)
-		return (0);
-	if (!world->A.valid || !world->C.valid || !world->L.valid)
-		return (0);
-	// sp = world->spheres;
-	// while (sp)
-	// {
-	// 	if (!sp->valid)
-	// 		return (0);
-	// 	sp = sp->next;
-	// }
-	// pl = world->planes;
-	// while (pl)
-	// {
-	// 	if (!pl->valid)
-	// 		return (0);
-	// 	pl = pl->next;
-	// }
-	// cy = world->cylinders;
-	// while (cy)
-	// {
-	// 	if (!cy->valid)
-	// 		return (0);
-	// 	cy = cy->next;
-	// }
-	return (1);
+		return (printf("Error\nInvalid world"), 1);
+	if (!world->has_camera || !world->has_light)
+		return (printf("Error\nWorld needs a camera and light\n"), 1);
+	if ((world->has_ambient && !world->A.valid)
+		|| (world->has_camera && !world->C.valid)
+		|| (world->has_light && !world->L.valid))
+		return (printf("Error\nInvalid scene.\n"), 1);
+	temp = world->shapes;
+	while (temp)
+	{
+		if (!temp->cylinder.valid && !temp->sphere.valid && !temp->plane.valid)
+			return (printf("Error\nInvalid shapes.\n"), 1);
+		temp = temp->next;
+	}
+	return (0);
 }
 
 t_world	*parsing(char **argv)
@@ -99,7 +85,7 @@ t_world	*parsing(char **argv)
 	{
 		if (pars_sort(line, res))
 		{
-			printf("Error\n *explicit message of my choice*\n");
+			printf("Error\n Elements defined by a capital letter can only be declared once in the scene.\n");
 			free(line);
 			close(fd);
 			get_next_line(-1);
@@ -109,7 +95,7 @@ t_world	*parsing(char **argv)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	if (valid_world(res))
+	if (!valid_world(res))
 		res->valid = 1;
 	return (res);
 }

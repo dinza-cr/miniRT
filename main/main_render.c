@@ -18,8 +18,8 @@ int main(int argc, char **argv)
 		return (printf("Add a map !\n"), 0);
 
 	t_world *world = parsing(argv);
-    if (!world)
-		return (printf("Parsing failed\n"), 1);
+    if (!world || !world->valid)
+		return (1);
 
 	t_canva *canva = render(world->C, world);
 		
@@ -29,5 +29,5 @@ int main(int argc, char **argv)
     mlx_loop(canva->mlx);
 
     dest_canva(canva);
-    return 0;
+    return (0);
 }

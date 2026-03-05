@@ -21,6 +21,7 @@ t_cylinder	cons_cylinder(void)
 	res.coord = cons_point(0, 0, 0);
 	res.axis = cons_vector(0, 0, 0);
 	res.diameter = 0;
+	res.radius = 0;
 	res.height = 0;
 	return (res);
 }
@@ -43,12 +44,14 @@ t_shape	*pars_cylinder(char **info)
 	res->cylinder.diameter = ft_atod(info[3]);
 	if (res->cylinder.diameter <= 0)
 		return (res);
+	res->cylinder.radius = res->cylinder.diameter/2;
 	res->cylinder.height = ft_atod(info[4]);
 	if (res->cylinder.height <= 0)
 		return (res);
 	res->material.color = get_color(info[5]);
 	if (res->material.color.r == -1)
 		return (res);
+	//ajouter matrices transo + inv
 	res->cylinder.valid = 1;
 	return (res);
 }
@@ -58,7 +61,7 @@ void	add_cylinder(char **info, t_world *world)
 	t_shape	*new;
 
 	new = pars_cylinder(info);
-	if (!new || new->cylinder.valid == 0)
+	if (!new)
 		return ;
 	new->next = world->shapes;
 	world->shapes = new;

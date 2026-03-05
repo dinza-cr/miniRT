@@ -1,4 +1,5 @@
-#include <criterion.h>
+#include <criterion/criterion.h>
+// #include <criterion.h>
 #include "../inc/minirt.h"
 
 Test(transformation, transformation0)

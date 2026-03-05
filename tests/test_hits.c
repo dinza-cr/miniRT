@@ -1,4 +1,5 @@
-#include <criterion.h>
+#include <criterion/criterion.h>
+// #include <criterion.h>
 #include "../inc/minirt.h"
 
 Test(hit, The_hit_when_all_intersections_have_positive_t)

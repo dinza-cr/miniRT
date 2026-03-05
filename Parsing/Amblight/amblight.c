@@ -17,8 +17,7 @@ t_amblight	pars_amblight(char **info, t_world *world)
 	t_amblight	res;
 
 	res.valid = 0;
-	res.ratio = 0;
-	res.color = cons_color(0, 0, 0);
+	world->has_ambient = 1;
 	if (count_elem(info) != 3)
 		return (res);
 	res.ratio = ft_atod(info[1]);
@@ -28,6 +27,5 @@ t_amblight	pars_amblight(char **info, t_world *world)
 	if (res.color.r == -1)
 		return (res);
 	res.valid = 1;
-	world->has_ambient = 1;
 	return (res);
 }

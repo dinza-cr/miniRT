@@ -32,17 +32,17 @@ t_shape	*pars_sphere(char **info)
 	if (!res)
 		return (NULL);
 	if (count_elem(info) != 4)
-		return (NULL);
+		return (res);
 	res->sphere.coord = get_point(info[1]);
 	if (res->sphere.coord.w == -1)
-		return (NULL);
+		return (res);
 	res->sphere.diameter = ft_atod(info[2]);
 	if (res->sphere.diameter <= 0.0)
-		return (NULL);
+		return (res);
 	res->sphere.radius = res->sphere.diameter / 2;
 	res->material.color = get_color(info[3]);
 	if (res->material.color.r == -1)
-		return (NULL);
+		return (res);
 	res->transformation = sp_transform(res);
 	res->inv_transfo = mop_inverse(res->transformation);
 	res->sphere.valid = 1;
@@ -54,7 +54,7 @@ void	add_sphere(char **info, t_world *world)
 	t_shape *new;
 
 	new = pars_sphere(info);
-	if (!new || new->sphere.valid == 0)
+	if (!new)
 		return ;
 	new->next = world->shapes;
 	world->shapes = new;

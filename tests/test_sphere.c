@@ -1,5 +1,5 @@
-#include <criterion/criterion.h>
-// #include <criterion.h>
+// #include <criterion/criterion.h>
+#include <criterion.h>
 #include "../inc/minirt.h"
 
 Test(sphere, A_sphere_s_default_transformation)

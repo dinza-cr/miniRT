@@ -1,5 +1,5 @@
-#include <criterion/criterion.h>
-// #include <criterion.h>
+// #include <criterion/criterion.h>
+#include <criterion.h>
 #include "../inc/minirt.h"
 
 Test(normal, The_normal_on_a_sphere_at_a_point_on_the_x_axis)

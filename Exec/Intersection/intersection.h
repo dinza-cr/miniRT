@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/16 15:22:26 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 19:06:19 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:09:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ t_intersections		iop_intersect_world(t_world *w, t_ray r);
 //utils
 double				discriminant(t_ray r, double *a, double *b);
 void				swap_i(t_intersection *a, t_intersection *b);
+void				sort_intersections(t_intersections *xs);
+int					count_shapes(t_shape *s);
 
 #endif

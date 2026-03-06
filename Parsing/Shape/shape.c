@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:01:56 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 15:09:59 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/06 15:56:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,10 @@ t_shape *cons_shape(void)
     res->plane = cons_plane();
     res->cylinder = cons_cylinder();
     return (res);
-}   
+}
+
+void	set_transform(t_shape *s, t_matrix t)
+{
+	s->transformation = t;
+	s->inv_transfo = mop_inverse(t);
+}

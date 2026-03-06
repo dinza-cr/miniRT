@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 18:29:36 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/06 15:55:44 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ t_sphere	cons_sphere(void);
 
 //fonctions
 t_matrix	sp_transform(t_shape *s);
-void		set_transform(t_shape *s, t_matrix t);
 void		add_sphere(char **info, t_world *world);
 
 #endif

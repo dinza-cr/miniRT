@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 16:59:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 15:27:44 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/06 15:45:05 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,8 +286,8 @@ t_matrix	mop_inverse(t_matrix a)
 	int			j;
 
 	det = mop_det(a);
-	if (fabs(det) == 0)
-		return (cons_idmatrix());
+	if (fabs(det) <= EPSILON)
+		return (trsf_scaling(-50, -50, -50));
 	res = mop_comat(a);
 	res = mop_transpose(res);
 	i = 0;

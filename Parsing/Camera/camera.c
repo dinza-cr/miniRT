@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/28 14:51:23 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:22:17 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_camera	pars_camera(char **info, t_world *world)
 		return (res);
 	to = top_add(res.coord, res.orientation);
 	res.transform = trsf_view_transform(res.coord, to, cons_vector(0, 1, 0));
+	res.inv_transfo = mop_inverse(res.transform);
 	res.valid = 1;
 	return (res);
 }
@@ -77,9 +78,9 @@ t_ray	ray_for_pixel(t_camera camera, double px, double py)
 	yoffset = (py + 0.5) * camera.pixel_size;
 	world_x = camera.half_width - xoffset;
 	world_y = camera.half_height - yoffset;
-	pixel = mop_multitup(mop_inverse(camera.transform),
+	pixel = mop_multitup(camera.inv_transfo,
 			cons_point(world_x, world_y, -1.0));
-	origin = mop_multitup(mop_inverse(camera.transform), cons_point(0, 0, 0));
+	origin = mop_multitup(camera.inv_transfo, cons_point(0, 0, 0));
 	direction = top_normalize(top_subs(pixel, origin));
 	res = cons_ray(origin, direction);
 	return (res);

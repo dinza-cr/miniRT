@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 15:55:26 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 17:07:26 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,24 @@ t_matrix	sp_transform(t_shape *s)
 	res = mop_multimat(translation, scaling);
 	return (res);
 }
+
+t_intersections	sphere_intersect(t_shape *s, t_ray r)
+{
+	t_intersections	res;
+	double			dis;
+	double			a;
+	double			b;
+
+	dis = discriminant(r, &a, &b);
+	if (dis < 0.0)
+		return (cons_intersections(0));
+	res = cons_intersections(2);
+	if (!res.solutions)
+		return (cons_intersections(0));
+	res.solutions[0] = cons_intersection((-b - sqrt(dis)) / (2.0 * a), s);
+	res.solutions[1] = cons_intersection((-b + sqrt(dis)) / (2.0 * a), s);
+	if (res.solutions[0].t > res.solutions[1].t)
+		swap_i(&res.solutions[0], &res.solutions[1]);
+	return (res);
+}
+

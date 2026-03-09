@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 15:55:02 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 17:08:15 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ t_tuple	normal_at(t_shape *s, t_tuple world_point)
 	t_tuple	object_normal;
 	t_tuple	world_normal;
 
-	object_point = mop_multitup(mop_inverse(s->transformation), world_point);
-	object_normal = top_subs(object_point, cons_point(0, 0, 0));
-	world_normal = mop_multitup(mop_transpose(mop_inverse(s->transformation)),
-			object_normal);
+	object_point = mop_multitup(s->inv_transfo, world_point);
+	if (s->sphere.valid)
+		object_normal = top_subs(object_point, cons_point(0, 0, 0));
+	else if (s->plane.valid)
+		object_normal = cons_vector(0, 1, 0);
+	world_normal = mop_multitup(mop_transpose(s->inv_transfo), object_normal);
 	world_normal.w = 0;
 	world_normal = top_normalize(world_normal);
 	return (world_normal);

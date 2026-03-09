@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:44:28 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 17:53:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:20:44 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_camera // unique
 	double		half_height;
 	double		half_view;
 	t_matrix	transform;
+	t_matrix	inv_transfo;
 }	t_camera;
 
 //parsing

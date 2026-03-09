@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 16:08:37 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 17:18:22 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,12 @@ void	dest_intersections(t_intersections *xs)
 //intersect operations
 t_intersections	iop_intersect(t_shape *s, t_ray r)
 {
-	t_intersections	res;
-	double			dis;
-	double			a;
-	double			b;
-
 	r = rop_transform(r, s->inv_transfo);
-	dis = discriminant(r, &a, &b);
-	if (dis < 0.0)
-		return (cons_intersections(0));
-	res = cons_intersections(2);
-	if (!res.solutions)
-		return (cons_intersections(0));
-	res.solutions[0] = cons_intersection((-b - sqrt(dis)) / (2.0 * a), s);
-	res.solutions[1] = cons_intersection((-b + sqrt(dis)) / (2.0 * a), s);
-	if (res.solutions[0].t > res.solutions[1].t)
-		swap_i(&res.solutions[0], &res.solutions[1]);
-	return (res);
+	if (s->sphere.valid)
+		return (sphere_intersect(s, r));
+	else if (s->plane.valid)
+		return (plane_intersect(s, r));
+	return (cons_intersections(0));
 }
 
 t_intersections	iop_intersections(int count, t_intersection *arr)

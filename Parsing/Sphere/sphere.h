@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:50:16 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 15:55:44 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:06:50 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include "../Exec/Material/material.h"
 
 typedef struct s_world	t_world;
-typedef struct s_shape		t_shape;
+typedef struct s_shape	t_shape;
 
 
 typedef struct s_sphere
@@ -31,14 +31,15 @@ typedef struct s_sphere
 }	t_sphere;
 
 //parsing
-t_shape	*pars_sphere(char **info);
+t_shape			*pars_sphere(char **info);
 
 //constructor
-t_sphere	cons_sphere(void);
+t_sphere		cons_sphere(void);
 
 
 //fonctions
-t_matrix	sp_transform(t_shape *s);
-void		add_sphere(char **info, t_world *world);
+t_matrix		sp_transform(t_shape *s);
+t_intersections	sphere_intersect(t_shape *s, t_ray r);
+void			add_sphere(char **info, t_world *world);
 
 #endif

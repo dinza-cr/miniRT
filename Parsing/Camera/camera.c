@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 18:22:17 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:31:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_camera	cons_camera(int hsize, int vsize, double fov)
 	cam.vsize = vsize;
 	cam.field_of_view = fov;
 	cam.transform = cons_idmatrix();
+	cam.inv_transfo = cons_idmatrix();
 	cam.half_view = tan(cam.field_of_view / 2.0);
 	aspect = ((double)cam.hsize / (double)cam.vsize);
 	if (aspect >= 1.0)

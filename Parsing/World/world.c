@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 19:37:52 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 18:27:36 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ t_world	*default_world(void)
 	res->shapes->material.color = cons_color(0.8, 1.0, 0.6);
 	res->shapes->material.diffuse = 0.7;
 	res->shapes->material.specular = 0.2;
+	res->shapes->sphere.valid = 1;
 	res->shapes->next = cons_shape();
+	res->shapes->next->sphere.valid = 1;
 	res->shapes->next->transformation = trsf_scaling(0.5, 0.5, 0.5);
 	res->shapes->next->inv_transfo = mop_inverse(trsf_scaling(0.5, 0.5, 0.5));
 	return (res);

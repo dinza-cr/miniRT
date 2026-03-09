@@ -6,6 +6,7 @@ Test(ray, A_ray_intersects_a_sphere_at_two_points)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
+	s->sphere.valid = 1;
 
 
 	t_intersections xs = iop_intersect(s, r);
@@ -19,7 +20,7 @@ Test(ray, A_ray_intersects_a_sphere_at_a_tangent)
 {
 	t_ray r = cons_ray(cons_point(0, 1, -5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -32,7 +33,7 @@ Test(ray, A_ray_misses_a_sphere)
 {
 	t_ray	r = cons_ray(cons_point(0, 2, -5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -43,7 +44,7 @@ Test(ray, A_ray_originates_inside_a_sphere)
 {
 	t_ray	r = cons_ray(cons_point(0, 0, 0), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -56,7 +57,7 @@ Test(ray, A_sphere_is_behind_a_ray)
 {
 	t_ray	r = cons_ray(cons_point(0, 0, 5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -97,7 +98,7 @@ Test(inter, Intersect_sets_the_object_on_the_intersection)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	t_intersections xs = iop_intersect(s, r);
 
@@ -110,7 +111,7 @@ Test(inter, Intersecting_a_scaled_sphere_with_a_ray)
 {
 	t_ray r = cons_ray(cons_point(0, 0, -5), cons_vector(0, 0, 1));
 	t_shape *s = cons_shape();
-
+	s->sphere.valid = 1;
 
 	set_transform(s, trsf_scaling(2, 2, 2));
 	t_intersections xs = iop_intersect(s, r);

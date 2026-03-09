@@ -55,6 +55,7 @@ Test(camera, Constructing_a_ray_when_the_camera_is_transformed)
 	t_camera c = cons_camera(201, 101, PI/2);
 
 	c.transform = mop_multimat(trsf_roty(PI/4), trsf_translation(0, -2, 5));
+	c.inv_transfo = mop_inverse(c.transform);
 	t_ray r = ray_for_pixel(c, 100, 50);
 
 	cr_expect(top_compare(r.origin, cons_point(0, 2, -5)));

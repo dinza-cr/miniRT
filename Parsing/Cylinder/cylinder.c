@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 19:10:11 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:44:31 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ t_intersections	cylinder_intersect(t_shape *s, t_ray r)
 	double b;
 	double c;
 	double disc;
+	t_intersection t0;
+	t_intersection t1;
 
 	a = r.direction.x * r.direction.x + r.direction.z * r.direction.z;
 	b = 2 * (r.origin.x * r.direction.x + r.origin.z * r.direction.z);
@@ -119,10 +121,12 @@ t_intersections	cylinder_intersect(t_shape *s, t_ray r)
 	res = cons_intersections(2);
 	if (!res.solutions)
 		return (cons_intersections(0));
-	res.solutions[0] = cons_intersection((-b - sqrt(disc)) / (2 * a), s);
-	res.solutions[1] = cons_intersection((-b + sqrt(disc)) / (2 * a), s);
-	if (res.solutions[0].t > res.solutions[1].t)
-		swap_i(&res.solutions[0], &res.solutions[1]);
+	t0 = cons_intersection((-b - sqrt(disc)) / (2 * a), s);
+	t1 = cons_intersection((-b + sqrt(disc)) / (2 * a), s);
+	if (t0.t > t1.t)
+		swap_i(&t0, &t1);
+	res.solutions[0] = t0;
+	res.solutions[1] = t1;
 	return (res);
 }
 

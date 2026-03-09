@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 16:47:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:11:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void		dest_cylinders(t_cylinder *cy);
 
 //utils
 void		add_cylinder(char **info, t_world *world);
+t_matrix	cy_transform(t_shape *s);
+t_intersections	cylinder_intersect(t_shape *s, t_ray r);
 
 #endif

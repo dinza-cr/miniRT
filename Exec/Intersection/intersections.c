@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 17:18:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/09 19:11:13 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ t_intersections	iop_intersect(t_shape *s, t_ray r)
 		return (sphere_intersect(s, r));
 	else if (s->plane.valid)
 		return (plane_intersect(s, r));
+	else if (s->cylinder.valid)
+		return (cylinder_intersect(s, r));
 	return (cons_intersections(0));
 }
 

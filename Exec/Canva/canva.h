@@ -6,12 +6,16 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:35:25 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:47:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 12:42:15 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVA_H
 # define CANVA_H
+
+
+#define STEP 0.2
+#define ROT  0.1
 
 typedef struct s_color	t_color;
 
@@ -28,7 +32,9 @@ typedef struct s_canva
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int 	rendering;
 
+	t_world *w;
 	t_color	*pixels;
 }	t_canva;
 

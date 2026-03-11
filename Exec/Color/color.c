@@ -40,25 +40,36 @@ t_color	color_at(t_world *world, t_ray r)
 	t_intersections	xs;
 	double			hit;
 	int				i;
+	int				found;
 	t_color			color;
 
 	xs = iop_intersect_world(world, r);
-	hit = iop_hit(xs);
-	if (!xs.count)
+	if (xs.count <= 0 || !xs.solutions)
 		return (cons_color(0, 0, 0));
-	else
+	hit = iop_hit(xs);
+	if (hit == INFINITY)
 	{
-		i = 0;
-		while (i < xs.count)
-		{
-			if (hit == xs.solutions[i].t)
-			{
-				comps = cons_comps(xs.solutions[i], r);
-				break ;
-			}
-			i++;
-		}
-		color = cop_shade_hit(world, comps);
-		return (color);
+		dest_intersections(&xs);
+		return (cons_color(0, 0, 0));
 	}
+	i = 0;
+	found = 0;
+	while (i < xs.count)
+	{
+		if (hit == xs.solutions[i].t)
+		{
+			comps = cons_comps(xs.solutions[i], r);
+			found = 1;
+			break ;
+		}
+		i++;
+	}
+	if (!found)
+	{
+		dest_intersections(&xs);
+		return (cons_color(0, 0, 0));
+	}
+	color = cop_shade_hit(world, comps);
+	dest_intersections(&xs);
+	return (color);
 }

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 19:11:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/10 19:26:33 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_cylinder
 	double				diameter;
 	double				radius;
 	double				height;
+	double 				minimum;
+	double				maximum;
 }	t_cylinder;
 
 //parsing

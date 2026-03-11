@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:54:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 15:55:58 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:28:34 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_color	cons_color(double r, double g, double b)
 t_color cop_shade_hit(t_world *world, t_comps comps) // a terminer (bonus multiple spotlight)
 {
 	t_color	res;
-	int in_shadow;
+	int		in_shadow;
 
 	in_shadow = is_shadowed(world, comps.overpoint);
 	res = lighting(comps.shape->material, world->L, comps.overpoint,

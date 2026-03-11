@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/10 19:42:07 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:33:55 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,47 +70,47 @@ void	add_cylinder(char **info, t_world *world)
 
 t_matrix	cy_transform(t_shape *s)
 {
-    t_tuple	y_axis;
-    t_tuple	helper;
-    t_tuple	x_axis;
-    t_tuple	z_axis;
-    t_matrix	rotation;
-    t_matrix	translation;
-    t_matrix	scaling;
-    double		radius;
-    double		half_h;
+	t_tuple		y_axis;
+	t_tuple		helper;
+	t_tuple		x_axis;
+	t_tuple		z_axis;
+	t_matrix	rotation;
+	t_matrix	translation;
+	t_matrix	scaling;
+	double		radius;
+	double		half_h;
 
-    y_axis = top_normalize(s->cylinder.axis);
-    if (fabs(y_axis.z) < 1 - EPSILON)
-        helper = cons_vector(0, 0, 1);
-    else
-        helper = cons_vector(1, 0, 0);
-    x_axis = top_normalize(top_cross(helper, y_axis));
-    z_axis = top_cross(y_axis, x_axis);
-    rotation = cons_mat4(
-            x_axis.x, y_axis.x, z_axis.x, 0,
-            x_axis.y, y_axis.y, z_axis.y, 0,
-            x_axis.z, y_axis.z, z_axis.z, 0,
-            0, 0, 0, 1);
-    radius = s->cylinder.diameter * 0.5;
-    half_h = s->cylinder.height * 0.5;
-    scaling = trsf_scaling(radius, half_h, radius);
-    translation = trsf_translation(
-            s->cylinder.coord.x,
-            s->cylinder.coord.y,
-            s->cylinder.coord.z);
-    return (mop_multimat(translation, mop_multimat(rotation, scaling)));
+	y_axis = top_normalize(s->cylinder.axis);
+	if (fabs(y_axis.z) < 1 - EPSILON)
+		helper = cons_vector(0, 0, 1);
+	else
+		helper = cons_vector(1, 0, 0);
+	x_axis = top_normalize(top_cross(helper, y_axis));
+	z_axis = top_cross(y_axis, x_axis);
+	rotation = cons_mat4(
+			x_axis.x, y_axis.x, z_axis.x, 0,
+			x_axis.y, y_axis.y, z_axis.y, 0,
+			x_axis.z, y_axis.z, z_axis.z, 0,
+			0, 0, 0, 1);
+	radius = s->cylinder.diameter * 0.5;
+	half_h = s->cylinder.height * 0.5;
+	scaling = trsf_scaling(radius, half_h, radius);
+	translation = trsf_translation(
+			s->cylinder.coord.x,
+			s->cylinder.coord.y,
+			s->cylinder.coord.z);
+	return (mop_multimat(translation, mop_multimat(rotation, scaling)));
 }
 
 t_intersections	cylinder_intersect(t_shape *s, t_ray r)
 {
 	t_intersections	res;
-	double a;
-	double b;
-	double c;
-	double disc;
-	t_intersection t0;
-	t_intersection t1;
+	double			a;
+	double			b;
+	double			c;
+	double			disc;
+	t_intersection	t0;
+	t_intersection	t1;
 
 	a = r.direction.x * r.direction.x + r.direction.z * r.direction.z;
 	b = 2 * (r.origin.x * r.direction.x + r.origin.z * r.direction.z);
@@ -129,5 +129,3 @@ t_intersections	cylinder_intersect(t_shape *s, t_ray r)
 	res.solutions[1] = t1;
 	return (res);
 }
-
-

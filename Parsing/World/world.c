@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 18:27:36 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 14:57:42 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ void	dest_world(t_world *world)
 {
 	if (!world)
 		return ;
-	// dest_spheres(world->spheres);
-	// dest_planes(world->planes);
-	// dest_cylinders(world->cylinders);
 	free(world);
 }
 

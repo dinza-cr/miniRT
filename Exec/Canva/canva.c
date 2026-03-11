@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:26:41 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 12:31:11 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:24:37 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	dest_canva(t_canva *canva)
 		mlx_destroy_display(canva->mlx);
 		free(canva->mlx);
 	}
+	if (canva->w)
+		dest_world(canva->w);
 	free(canva);
 }
 

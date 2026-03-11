@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/10 19:41:55 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:37:02 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,21 @@ t_tuple	reflect(t_tuple in, t_tuple normal)
 	return (res);
 }
 
-int is_shadowed(t_world *world, t_tuple point)
+int	is_shadowed(t_world *world, t_tuple point)
 {
-	t_tuple v = top_subs(world->L.coord, point);
-	double distance = top_magnitude(v);
-	t_tuple direction = top_normalize(v);
+	t_tuple			v;
+	double			distance;
+	t_tuple			direction;
+	t_ray			r;
+	t_intersections	intersections;
+	double			h;
 
-	t_ray r = cons_ray(point, direction);
-	t_intersections intersections = iop_intersect_world(world, r);
-
-	double h = iop_hit(intersections);
+	v = top_subs(world->L.coord, point);
+	distance = top_magnitude(v);
+	direction = top_normalize(v);
+	r = cons_ray(point, direction);
+	intersections = iop_intersect_world(world, r);
+	h = iop_hit(intersections);
 	if (h != INFINITY && h < distance)
 		return (1);
 	else

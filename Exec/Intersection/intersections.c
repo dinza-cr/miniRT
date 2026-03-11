@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 19:08:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 19:11:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:30:05 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ t_intersections	iop_intersect_world(t_world *w, t_ray r)
 {
 	t_intersections		res;
 	t_intersections		xs;
-	t_shape			*temp;
+	t_shape				*temp;
 	int					max_hits;
 	int					k;
 	int					i;
@@ -107,10 +107,10 @@ t_intersections	iop_intersect_world(t_world *w, t_ray r)
 }
 
 //utils
-int count_shapes(t_shape *s)
+int	count_shapes(t_shape *s)
 {
 	int			res;
-	t_shape	*temp;
+	t_shape		*temp;
 
 	res = 0;
 	temp = s;

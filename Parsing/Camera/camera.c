@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 12:11:04 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:27:46 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,16 +112,43 @@ t_canva	*render(t_camera camera, t_world *world)
 	return (canva);
 }
 
-void update_camera(t_camera *C)
+void	update_render(t_canva *canva)
 {
-    t_tuple from;
-    t_tuple to;
-    t_tuple up;
+	int		x;
+	int		y;
+	t_ray	r;
+	t_color	color;
 
-    from = C->coord;
-    to = top_add(C->coord, C->orientation);
-    up = cons_vector(0, 1, 0);
+	if (canva->rendering)
+		return ;
+	canva->rendering = 1;
+	y = 0;
+	update_camera(&canva->w->C);
+	while (y < canva->w->C.vsize)
+	{
+		x = 0;
+		while (x < canva->w->C.hsize)
+		{
+			r = ray_for_pixel(canva->w->C, x, y);
+			color = color_at(canva->w, r);
+			write_pixel(canva, x, y, color);
+			x++;
+		}
+		y++;
+	}
+	canva_to_mlx(canva);
+	canva->rendering = 0;
+}
 
-    C->transform = trsf_view_transform(from, to, up);
-    C->inv_transfo = mop_inverse(C->transform);
+void	update_camera(t_camera *C)
+{
+	t_tuple	from;
+	t_tuple	to;
+	t_tuple	up;
+
+	from = C->coord;
+	to = top_add(C->coord, C->orientation);
+	up = cons_vector(0, 1, 0);
+	C->transform = trsf_view_transform(from, to, up);
+	C->inv_transfo = mop_inverse(C->transform);
 }

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:55:53 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/09 18:23:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:38:21 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void			dest_planes(t_plane *pl);
 //utils
 void			add_plane(char **info, t_world *world);
 t_intersections	plane_intersect(t_shape *s, t_ray r);
-t_matrix	pl_transform(t_shape *s);
-
+t_matrix		pl_transform(t_shape *s);
 
 #endif

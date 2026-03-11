@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/06 15:14:57 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 14:58:18 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	pars_sort(char *line, t_world *world)
 
 int	valid_world(t_world *world)
 {
-	t_shape *temp;
+	t_shape	*temp;
 
 	if (!world)
 		return (printf("Error\nInvalid world"), 1);

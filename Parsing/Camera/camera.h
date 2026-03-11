@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:44:28 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 12:10:19 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/11 13:27:03 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ t_camera	cons_camera(int hsize, int vsize, double fov);
 //fonctions
 t_ray		ray_for_pixel(t_camera camera, double px, double py);
 t_canva		*render(t_camera camera, t_world *world);
-void update_camera(t_camera *C);
+void		update_render(t_canva *canva);
+void		update_camera(t_camera *C);
 #endif

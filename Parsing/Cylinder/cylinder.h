@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 13:34:25 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 13:55:45 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,7 @@ void			dest_cylinders(t_cylinder *cy);
 void			add_cylinder(char **info, t_world *world);
 t_matrix		cy_transform(t_shape *s);
 t_intersections	cylinder_intersect(t_shape *s, t_ray r);
-
+t_tuple 		cylinder_normal_at(t_shape *s, t_tuple object_point);
+int				check_cap(t_ray r, double t);
+int				cylinder_count_caps(t_shape *s, t_ray r);
 #endif

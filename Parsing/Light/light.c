@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 13:37:02 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 13:55:28 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ t_tuple	normal_at(t_shape *s, t_tuple world_point)
 	else if (s->plane.valid)
 		object_normal = cons_vector(0, 1, 0);
 	else if (s->cylinder.valid)
-		object_normal = cons_vector(object_point.x, 0, object_point.z);
+		object_normal = cylinder_normal_at(s, object_point);
+		// object_normal = cons_vector(object_point.x, 0, object_point.z);
 	else
 		object_normal = cons_vector(0, 0, 0);
 	world_normal = mop_multitup(mop_transpose(s->inv_transfo), object_normal);

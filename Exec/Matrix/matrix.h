@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:31:43 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:48:15 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:58:02 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 typedef struct s_matrix
 {
 	int		size;
-	double	m[4][4];  // [row][col]
-} t_matrix;
+	double	m[4][4];
+}	t_matrix;
 
 //constructeurs
 t_matrix	cons_matrix(int size);
 t_matrix	cons_idmatrix(void);
-t_matrix	cons_mat4(double a0, double a1, double a2, double a3, double b0, double b1, double b2, double b3, double c0, double c1, double c2, double c3, double d0, double d1, double d2, double d3);
+t_matrix	cons_mat4(t_tuple a, t_tuple b, t_tuple c, t_tuple d);
 
 //matrix operations(mop)
 int			mop_compare(t_matrix a, t_matrix b);
@@ -52,7 +52,6 @@ t_matrix	trsf_scaling(double x, double y, double z);
 t_matrix	trsf_rotx(double radian);
 t_matrix	trsf_roty(double radian);
 t_matrix	trsf_rotz(double radian);
-t_matrix	trsf_shearing(double xy, double xz, double yx, double yz, double zx, double zy);
 t_matrix	trsf_view_transform(t_tuple from, t_tuple to, t_tuple up);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:28:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 11:56:35 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:59:54 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_tuple
 //constructeurs
 t_tuple		cons_point(double x, double y, double z);
 t_tuple		cons_vector(double x, double y, double z);
+t_tuple		cons_tuple(double x, double y, double z, double w);
 
 //tuple operations (top)
 int			top_compare(t_tuple a, t_tuple b);

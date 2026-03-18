@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:03:32 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 15:41:11 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,15 @@ t_matrix	cy_transform(t_shape *s)
 	x_axis = top_normalize(top_cross(helper, y_axis));
 	z_axis = top_cross(y_axis, x_axis);
 	rotation = cons_mat4(
-			x_axis.x, y_axis.x, z_axis.x, 0,
-			x_axis.y, y_axis.y, z_axis.y, 0,
-			x_axis.z, y_axis.z, z_axis.z, 0,
-			0, 0, 0, 1);
+			cons_tuple(x_axis.x, y_axis.x, z_axis.x, 0),
+			cons_tuple(x_axis.y, y_axis.y, z_axis.y, 0),
+			cons_tuple(x_axis.z, y_axis.z, z_axis.z, 0),
+			cons_tuple(0, 0, 0, 1));
+	// rotation = cons_mat4(
+	// 		x_axis.x, y_axis.x, z_axis.x, 0,
+	// 		x_axis.y, y_axis.y, z_axis.y, 0,
+	// 		x_axis.z, y_axis.z, z_axis.z, 0,
+	// 		0, 0, 0, 1);
 	radius = s->cylinder.diameter * 0.5;
 	half_h = s->cylinder.height * 0.5;
 	scaling = trsf_scaling(radius, half_h, radius);

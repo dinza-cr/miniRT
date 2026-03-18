@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:06:06 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:23:00 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:35:46 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ typedef struct s_comps
 }	t_comps;
 
 //constructeur
-t_comps	cons_comps(t_intersection i,t_ray r);
+t_comps	cons_comps(t_intersection i, t_ray r);
 
 #endif

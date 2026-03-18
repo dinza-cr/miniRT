@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:28:13 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:59:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 16:00:25 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ typedef struct s_tuple
 	double	x;
 	double	y;
 	double	z;
-	double	w; // 1.0 for points 0.0 for vectors
+	double	w;
 }	t_tuple;
 
 //constructeurs

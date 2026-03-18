@@ -6,15 +6,12 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:35:25 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 13:26:13 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:11:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CANVA_H
 # define CANVA_H
-
-# define STEP 0.2
-# define ROT  0.1
 
 typedef struct s_color	t_color;
 
@@ -31,7 +28,6 @@ typedef struct s_canva
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		rendering;
 
 	t_world	*w;
 	t_color	*pixels;
@@ -46,8 +42,6 @@ void		dest_canva(t_canva *canva);
 //canva actions
 void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_color pixel);
 int			ft_convertcolor(double a);
-void		write_header(int fd, t_canva *canva);
-void		canvas_to_ppm(t_canva *canva);
 void		canva_to_mlx(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 int			key_hook(int keycode, t_canva *c);

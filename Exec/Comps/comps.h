@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:06:06 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 15:53:55 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:23:00 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_shape	t_shape;
 
 typedef struct s_comps
 {
+	int			valid;
 	double		t;
 	t_shape		*shape;
 

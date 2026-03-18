@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 13:55:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:03:32 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ t_shape	*pars_cylinder(char **info)
 	res->cylinder.diameter = ft_atod(info[3]);
 	if (res->cylinder.diameter <= 0)
 		return (res);
-	res->cylinder.radius = res->cylinder.diameter/2;
+	res->cylinder.radius = res->cylinder.diameter / 2;
 	res->cylinder.height = ft_atod(info[4]);
 	if (res->cylinder.height <= 0)
 		return (res);
-	res->cylinder.minimum = -res->cylinder.height/2;
-	res->cylinder.maximum = res->cylinder.height/2;
+	res->cylinder.minimum = -res->cylinder.height / 2;
+	res->cylinder.maximum = res->cylinder.height / 2;
 	res->material.color = get_color(info[5]);
 	if (res->material.color.r == -1)
 		return (res);
@@ -118,7 +118,7 @@ int	cylinder_count_caps(t_shape *s, t_ray r)
 {
 	double	t;
 	int		count;
-	
+
 	count = 0;
 	if (fabs(r.direction.y) <= EPSILON)
 		return (0);
@@ -196,9 +196,10 @@ t_intersections	cylinder_intersect(t_shape *s, t_ray r)
 
 t_tuple cylinder_normal_at(t_shape *s, t_tuple object_point)
 {
-	double dist;
+	double	dist;
 
-	dist = (object_point.x * object_point.x) + (object_point.z * object_point.z);
+	dist = (object_point.x * object_point.x)
+		+ (object_point.z * object_point.z);
 	if (dist < 1 && object_point.y >= s->cylinder.maximum - EPSILON)
 		return (cons_vector(0, 1, 0));
 	else if (dist < 1 && object_point.y <= s->cylinder.minimum + EPSILON)
@@ -206,4 +207,3 @@ t_tuple cylinder_normal_at(t_shape *s, t_tuple object_point)
 	else
 		return (cons_vector(object_point.x, 0, object_point.z));
 }
-

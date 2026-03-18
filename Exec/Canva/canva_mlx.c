@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 11:32:29 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 13:26:34 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 14:08:55 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,26 +51,5 @@ int	key_hook(int keycode, t_canva *c)
 {
 	if (keycode == 65307)
 		safe_exit(c, NULL);
-	if ((keycode == 119))
-		c->w->C.coord.z += STEP;
-	if ((keycode == 115))
-		c->w->C.coord.z -= STEP;
-	if ((keycode == 97))
-		c->w->C.coord.x -= STEP;
-	if ((keycode == 100))
-		c->w->C.coord.x += STEP;
-	if ((keycode == 65362))
-		c->w->C.orientation.y += ROT;
-	if ((keycode == 65364))
-		c->w->C.orientation.y -= ROT;
-	if ((keycode == 65361))
-		c->w->C.orientation.x -= ROT;
-	if ((keycode == 65363))
-		c->w->C.orientation.x += ROT;
-	if ((keycode == 113))
-		c->w->C.coord.y += STEP;
-	if ((keycode == 101))
-		c->w->C.coord.y -= STEP;
-	update_render(c);
 	return (0);
 }

@@ -20,14 +20,32 @@ t_canva	*cons_canva(int width, int height)
 	res = malloc (sizeof(t_canva));
 	if (!(res))
 		return (NULL);
+	res->mlx = NULL;
+	res->win = NULL;
+	res->img = NULL;
+	res->addr = NULL;
+	res->bpp = 0;
+	res->line_len = 0;
+	res->endian = 0;
+	res->w = NULL;
+	res->pixels = NULL;
 	res->width = width;
 	res->height = height;
 	res->pixels = ft_calloc(width * height, sizeof(t_color));
 	if (!res->pixels)
 		return (free(res), NULL);
 	res->mlx = mlx_init();
+	if (!res->mlx)
+		return (free(res->pixels), free(res), NULL);
 	res->win = mlx_new_window((res->mlx), width, height, "miniRT");
+	if (!res->win)
+		return (mlx_destroy_display(res->mlx), free(res->mlx), \
+			free(res->pixels), free(res), NULL);
 	res->img = mlx_new_image(res->mlx, res->width, res->height);
+	if (!res->img)
+		return (mlx_destroy_window(res->mlx, res->win), \
+			mlx_destroy_display(res->mlx), free(res->mlx), \
+			free(res->pixels), free(res), NULL);
 	res->addr = mlx_get_data_addr(res->img, &res->bpp,
 			&res->line_len, &res->endian);
 	return (res);

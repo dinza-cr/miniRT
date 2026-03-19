@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:16:56 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 12:32:59 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_camera	pars_camera(char **info, t_world *world)
 	res.field_of_view = ft_atod(info[3]);
 	if (!in_range(res.field_of_view, 0.0, 180.0))
 		return (res);
-	res = cons_camera(500, 500, res.field_of_view * (PI/180));
+	res = cons_camera(500, 500, res.field_of_view * (PI / 180));
 	res.coord = get_point(info[1]);
 	if (res.coord.w == -1)
 		return (res);
@@ -67,20 +67,17 @@ t_camera	cons_camera(int hsize, int vsize, double fov)
 t_ray	ray_for_pixel(t_camera camera, double px, double py)
 {
 	t_ray	res;
-	double	xoffset;
-	double	yoffset;
-	double	world_x;
-	double	world_y;
+	t_tuple	coord;
 	t_tuple	pixel;
 	t_tuple	origin;
 	t_tuple	direction;
 
-	xoffset = (px + 0.5) * camera.pixel_size;
-	yoffset = (py + 0.5) * camera.pixel_size;
-	world_x = camera.half_width - xoffset;
-	world_y = camera.half_height - yoffset;
+	coord.x = (px + 0.5) * camera.pixel_size;
+	coord.y = (py + 0.5) * camera.pixel_size;
+	coord.z = camera.half_width - coord.x;
+	coord.w = camera.half_height - coord.y;
 	pixel = mop_multitup(camera.inv_transfo,
-			cons_point(world_x, world_y, -1.0));
+			cons_point(coord.z, coord.w, -1.0));
 	origin = mop_multitup(camera.inv_transfo, cons_point(0, 0, 0));
 	direction = top_normalize(top_subs(pixel, origin));
 	res = cons_ray(origin, direction);
@@ -95,12 +92,15 @@ t_canva	*render(t_camera camera, t_world *world)
 	int		x;
 	int		y;
 
-	canva = cons_canva(world->C.hsize, world->C.vsize);
+	canva = cons_canva(world->cam.hsize, world->cam.vsize);
+	if (!canva)
+		return (NULL);
+	canva->w = world;
 	y = 0;
-	while (y < world->C.vsize)
+	while (y < world->cam.vsize)
 	{
 		x = 0;
-		while (x < world->C.hsize)
+		while (x < world->cam.hsize)
 		{
 			r = ray_for_pixel(camera, x, y);
 			color = color_at(world, r);

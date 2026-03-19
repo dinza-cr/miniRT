@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:01:10 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 14:55:54 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 14:12:57 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_shape
 }	t_shape;
 
 t_shape	*cons_shape(void);
+void dest_shape(t_shape *shape);
 
 void	set_transform(t_shape *s, t_matrix t);
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:21:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 14:57:42 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 14:13:04 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_world	*cons_world(void)
 	res->has_ambient = 0;
 	res->has_camera = 0;
 	res->has_light = 0;
-	res->A.valid = 0;
-	res->C.valid = 0;
-	res->L.valid = 0;
+	res->amb.valid = 0;
+	res->cam.valid = 0;
+	res->light.valid = 0;
 	return (res);
 }
 
@@ -36,6 +36,7 @@ void	dest_world(t_world *world)
 {
 	if (!world)
 		return ;
+	dest_shape(world->shapes);
 	free(world);
 }
 
@@ -45,7 +46,7 @@ t_world	*default_world(void)
 
 	res = cons_world();
 	res->shapes = cons_shape();
-	res->L = cons_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
+	res->light = cons_light(cons_point(-10, 10, -10), cons_color(1, 1, 1));
 	res->shapes->material.color = cons_color(0.8, 1.0, 0.6);
 	res->shapes->material.diffuse = 0.7;
 	res->shapes->material.specular = 0.2;

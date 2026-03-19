@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:42:51 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/25 19:01:02 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 16:43:08 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_world	t_world;
 
-typedef struct s_amblight // unique
+typedef struct s_amblight
 {
 	int		valid;
 	double	ratio;

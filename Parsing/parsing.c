@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 14:58:18 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 12:50:17 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ int	pars_sort(char *line, t_world *world)
 	if (check_capital(info[0], world))
 		return (free_split(info), 1);
 	else if (!ft_strcmp(info[0], "A"))
-		world->A =  pars_amblight(info, world);
+		world->amb = pars_amblight(info, world);
 	else if (!ft_strcmp(info[0], "C"))
-		world->C = pars_camera(info, world);
+		world->cam = pars_camera(info, world);
 	else if (!ft_strcmp(info[0], "L"))
-		world->L = pars_light(info, world);
+		world->light = pars_light(info, world);
 	else if (!strcmp(info[0], "sp"))
 		add_sphere(info, world);
 	else if (!strcmp(info[0], "pl"))
@@ -54,9 +54,9 @@ int	valid_world(t_world *world)
 		return (printf("Error\nInvalid world"), 1);
 	if (!world->has_camera || !world->has_light)
 		return (printf("Error\nWorld needs a camera and light\n"), 1);
-	if ((world->has_ambient && !world->A.valid)
-		|| (world->has_camera && !world->C.valid)
-		|| (world->has_light && !world->L.valid))
+	if ((world->has_ambient && !world->amb.valid)
+		|| (world->has_camera && !world->cam.valid)
+		|| (world->has_light && !world->light.valid))
 		return (printf("Error\nInvalid scene.\n"), 1);
 	temp = world->shapes;
 	while (temp)
@@ -75,21 +75,16 @@ t_world	*parsing(char **argv)
 	int		fd;
 
 	res = cons_world();
-	if (!res)
-		return (NULL);
 	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		return (free(res), NULL);
+	if (fd < 0 || !res)
+		return (res);
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (pars_sort(line, res))
 		{
-			printf("Error\n Elements defined by a capital letter can only be declared once in the scene.\n");
-			free(line);
-			close(fd);
-			get_next_line(-1);
-			return (res);
+			printf("Error\n too many capital elements\n");
+			return (free(line), close(fd), get_next_line(-1), res);
 		}
 		free(line);
 		line = get_next_line(fd);

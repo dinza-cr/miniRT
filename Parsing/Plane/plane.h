@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:55:53 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 13:38:21 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 12:29:49 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../../Exec/Color/color.h"
 # include "../../Exec/Tuples/tuple.h"
 
-typedef struct s_world t_world;
+typedef struct s_world	t_world;
 
 typedef struct s_plane
 {

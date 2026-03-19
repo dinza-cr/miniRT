@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:48:45 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/04 15:03:57 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 12:31:41 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ typedef struct s_world
 	int			has_camera;
 	int			has_light;
 
-	t_amblight	A;
-	t_camera	C;
-	t_light		L;
+	t_amblight	amb;
+	t_camera	cam;
+	t_light		light;
 	t_shape		*shapes;
 }	t_world;
 

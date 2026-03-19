@@ -33,7 +33,7 @@ double	iop_hit(t_intersections xs)
 	i = 0;
 	while (i < xs.count)
 	{
-		if (xs.solutions[i].t >= 0 && xs.solutions[i].t < best)
+		if (xs.solutions[i].t > EPSILON && xs.solutions[i].t < best)
 			best = xs.solutions[i].t;
 		i++;
 	}

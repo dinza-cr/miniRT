@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/03/03 16:37:19 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/19 14:39:19 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ _WHITE=$'\033[37m
 #                                VARIABLES									   #
 ################################################################################
 
-NAME			= 	minirt
+NAME			= 	miniRT
 CC				=	gcc
 CFLAGS			=	-Wall -Werror -Wextra
 CPPFLAGS		=	-Iinc -Ilibft -Iminilibx-linux

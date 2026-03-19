@@ -6,14 +6,12 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:21:00 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/03 16:38:53 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/18 16:04:11 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 # define PARSING_H
-
-# include "minirt.h"
 
 # include "../Parsing/World/world.h"
 # include "../Parsing/Amblight/amblight.h"

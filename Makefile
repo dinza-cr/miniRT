@@ -6,25 +6,9 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/03/19 14:39:19 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/20 17:00:55 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# This is a minimal set of ANSI/VT100 color codes
-_END=$'\033[0m
-_BOLD=$'\033[1m
-_UNDER=$'\033[4m
-_REV=$'\033[7m
-
-# Colors
-_GREY=$'\033[30m
-_RED=$'\033[31m
-_GREEN=$'\033[32m
-_YELLOW=$'\033[33m
-_BLUE=$'\033[34m
-_PURPLE=$'\033[35m
-_CYAN=$'\033[36m
-_WHITE=$'\033[37m
 
 ################################################################################
 #                                VARIABLES									   #
@@ -37,11 +21,26 @@ CPPFLAGS		=	-Iinc -Ilibft -Iminilibx-linux
 LDLIBS			=	-lm
 RM				= 	rm -rf
 
-SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Exec/Ray Exec/sphIntersection Exec/Intersection Exec/Material Exec/Comps Parsing Parsing/Amblight Parsing/Camera Parsing/Cylinder Parsing/Light Parsing/Plane Parsing/Shape Parsing/World Parsing/Sphere 
-SRC_CORE		=	$(foreach d,$(SRC_DIRS_CORE),$(wildcard $(d)/*.c)) ## TEMPORARY
+SRC_CORE		=	Exec/Canva/canva_mlx.c Exec/Canva/canva.c \
+				Exec/Color/color.c Exec/Color/op_color.c \
+				Exec/Comps/comps.c \
+				Exec/gnl/get_next_line.c Exec/gnl/get_next_line_utils.c \
+				Exec/Intersection/int_utils.c Exec/Intersection/intersection.c Exec/Intersection/intersections.c \
+				Exec/Material/material.c \
+				Exec/Matrix/matrix.c Exec/Matrix/op_matrix.c Exec/Matrix/op_matrix2.c Exec/Matrix/op_matrix3.c Exec/Matrix/op_matrix4.c Exec/Matrix/op_transformation.c Exec/Matrix/op_transformation2.c \
+				Exec/Ray/ray.c \
+				Exec/Tuples/op_tuples.c Exec/Tuples/op_tuples2.c Exec/Tuples/tuple.c \
+				Parsing/pars_utils.c Parsing/parsing.c Parsing/parsing2.c \
+				Parsing/Amblight/amblight.c \
+				Parsing/Camera/camera.c \
+				Parsing/Cylinder/cylinder.c Parsing/Cylinder/cylinder2.c Parsing/Cylinder/cylinder_utils.c \
+				Parsing/Light/light.c Parsing/Light/light_utils.c \
+				Parsing/Plane/plane.c \
+				Parsing/Shape/shape.c \
+				Parsing/Sphere/sphere.c \
+				Parsing/World/world.c
 
-SRC_DIRS_MAIN	=	main
-SRC_MAIN		=	$(foreach d,$(SRC_DIRS_MAIN),$(wildcard $(d)/*.c)) ##TEMPORARY
+SRC_MAIN		=	main/main.c
 
 SRC				=	$(SRC_CORE) $(SRC_MAIN)
 
@@ -57,6 +56,7 @@ MLX_DIR			=	minilibx-linux
 MLX_LIB			=	$(MLX_DIR)/libmlx.a
 
 LDFLAGS			=	-L$(MLX_DIR)
+
 ################################################################################
 #                                MAIN RULES								       #
 ################################################################################
@@ -77,42 +77,11 @@ $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
 
 ################################################################################
-#                              	TEST VARIABLES					   		   	   #
-################################################################################
-
-CR_HEADER_PATH	=	-I${HOME}/Criterion/include/criterion
-CR_LIB_PATH		=	-Wl,-rpath=${HOME}/Criterion/build/src -L${HOME}/Criterion/build/src
-T_FLAGS			=	-lcriterion
-T_NAME			= 	test_minirt
-TESTS_DIRS		=	tests
-T_SRCS			=	$(foreach d,$(TESTS_DIRS),$(wildcard $(d)/*.c)) ## TEMPORARY
-T_OBJECTS 		=	$(subst /,/build/,${T_SRCS:.c=.o})
-T_CC			=	gcc $(CR_HEADER_PATH) $(CFLAGS)
-T_LD			=	gcc $(CR_HEADER_PATH) $(CR_LIB_PATH) $(CFLAGS)
-
-################################################################################
-#                                TEST RULES								       #
-################################################################################
-
-$(T_OBJECTS): $(subst .o,.c,$(subst /build/,/,$@))
-	@mkdir -p $(dir $@)
-	@$(T_CC) $(CPPFLAGS) -c $(subst .o,.c,$(subst /build/,/,$@)) -o $@
-
-tests: tclean $(LIBFT) $(MLX_LIB) $(OBJ) $(T_OBJECTS)
-	@echo "${_UNDER}${_RED}Creating binary for Tests${_END}"
-	@$(T_LD) -o $(T_NAME) $(OBJ_CORE) $(T_OBJECTS) $(LIBFT) $(LDFLAGS) $(LDLIBS) -lmlx -lX11 -lXext $(T_FLAGS)
-	@./$(T_NAME)
-
-tclean:
-	$(RM) tests/build ${T_NAME}
-
-################################################################################
 #                               	CLEANUP								       #
 ################################################################################
 
-clean: tclean
+clean:
 	$(RM) $(O_DIR)
-	$(RM) tests/build
 	$(MAKE) -C $(LIBFT_DIR) clean
 	$(MAKE) -C $(MLX_DIR) clean
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:50:17 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 16:33:27 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	valid_world(t_world *world)
 
 	if (!world)
 		return (printf("Error\nInvalid world"), 1);
-	if (!world->has_camera || !world->has_light)
-		return (printf("Error\nWorld needs a camera and light\n"), 1);
+	if (!world->has_camera || !world->has_light || !world->has_ambient)
+		return (printf("Error\nneed 1 camera, 1 spot and 1 ambient light\n"), 1);
 	if ((world->has_ambient && !world->amb.valid)
 		|| (world->has_camera && !world->cam.valid)
 		|| (world->has_light && !world->light.valid))
@@ -68,6 +68,17 @@ int	valid_world(t_world *world)
 	return (0);
 }
 
+int	check_rt(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (len < 3 || str[len - 3] != '.'
+		|| str[len - 2] != 'r' || str[len - 1] != 't')
+		return (printf("Error\nnot a .rt file.\n"), 1);
+	return (0);
+}
+
 t_world	*parsing(char **argv)
 {
 	t_world	*res;
@@ -75,6 +86,8 @@ t_world	*parsing(char **argv)
 	int		fd;
 
 	res = cons_world();
+	if (check_rt(argv[1]))
+		return (res);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0 || !res)
 		return (res);

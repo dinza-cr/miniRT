@@ -14,6 +14,7 @@
 # define MINIRT_H
 
 # define EPSILON 0.00001
+# define SHADOW_BIAS 0.0001
 # define PI 3.14159265358979323846
 
 # include <math.h>

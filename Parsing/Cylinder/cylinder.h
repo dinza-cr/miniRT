@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 12:53:42 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:38:52 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 15:41:12 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,11 @@ t_matrix		cy_transform(t_shape *s);
 t_intersections	cylinder_intersect(t_shape *s, t_ray r);
 t_tuple			cylinder_normal_at(t_shape *s, t_tuple object_point);
 int				check_cap(t_ray r, double t);
-int				cylinder_count_caps(t_shape *s, t_ray r);
+int				count_caps(t_shape *s, t_ray r);
+int				count_sides(t_shape *s, double *y);
+void			cy_discriminant(double *disc, t_ray r,
+					t_shape *s, t_intersection *t);
+int				cylinder_add_caps(t_shape *s, t_ray r,
+					t_intersections *xs, int start);
+
 #endif

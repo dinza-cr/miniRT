@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/19 12:42:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:44:17 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 13:04:41 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,19 @@ t_tuple	reflect(t_tuple in, t_tuple normal)
 int	is_shadowed(t_world *world, t_tuple point)
 {
 	t_tuple			v;
-	double			distance;
 	t_tuple			direction;
 	t_ray			r;
 	t_intersections	intersections;
-	double			h;
+	double			distances[2];
 
 	v = top_subs(world->light.coord, point);
-	distance = top_magnitude(v);
+	distances[0] = top_magnitude(v);
 	direction = top_normalize(v);
 	r = cons_ray(point, direction);
 	intersections = iop_intersect_world(world, r);
-	h = iop_hit(intersections);
+	distances[1] = iop_hit(intersections);
 	dest_intersections(&intersections);
-	if (h != INFINITY && h < distance)
+	if (distances[1] != INFINITY && distances[1] < distances[0] - SHADOW_BIAS)
 		return (1);
 	else
 		return (0);

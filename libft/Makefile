@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/29 19:28:01 by anbelose          #+#    #+#              #
-#    Updated: 2026/01/23 15:37:51 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/20 14:07:03 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ SRC = ft_atoi.c \
 	ft_strrchr.c \
 	ft_strtrim.c \
 	ft_substr.c \
-	ft_atof.c
+	ft_atod.c
 
 SRC_BONUS = ft_lstadd_back.c \
 	    	ft_lstadd_front.c \

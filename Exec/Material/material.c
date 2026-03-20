@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:53:01 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:54:11 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:43:53 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_material	cons_material(void)
 {
 	t_material	res;
 
-	res.color = cons_color(0, 0, 0);
+	res.color = cons_color(1.0, 1.0, 1.0);
 	res.ambient = 0.0;
 	res.diffuse = 0.0;
 	res.specular = 0.0;
@@ -28,7 +28,7 @@ t_material	init_material(void)
 {
 	t_material	res;
 
-	res.color = cons_color(1, 1, 1);
+	res.color = cons_color(1.0, 1.0, 1.0);
 	res.ambient = 0.1;
 	res.diffuse = 0.9;
 	res.specular = 0.9;

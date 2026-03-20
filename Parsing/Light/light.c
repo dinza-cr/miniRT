@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:43:35 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 13:02:34 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,42 +44,25 @@ t_light	pars_light(char **info, t_world *world)
 	return (res);
 }
 
-t_color	lighting(t_material m, t_light l, t_tuple point, t_tuple eyev, t_tuple normalv, int in_shadow)
+t_color	lighting(t_world *world, t_comps comps, int in_shadow)
 {
 	t_color	res;
-	t_color	effective_color;
 	t_tuple	lightv;
 	t_color	ambient;
-	double	light_dot_normal;
 	t_color	diffuse;
 	t_color	specular;
-	t_tuple	reflectv;
-	double	reflect_dot_eye;
-	double	factor;
 
-	(void)in_shadow;
-	effective_color = cop_blend(m.color, l.color);
-	lightv = top_normalize(top_subs(l.coord, point));
-	ambient = cop_multi(effective_color, m.ambient);
-	light_dot_normal = top_dot(lightv, normalv);
-	if (light_dot_normal < 0)
-	{
+	res = cop_blend(comps.shape->material.color, world->light.color);
+	lightv = top_normalize(top_subs(world->light.coord, comps.point));
+	ambient = cop_multi(cop_blend(comps.shape->material.color, world
+				->amb.color), comps.shape->material.ambient * world->amb.ratio);
+	if (top_dot(lightv, comps.normalv) < 0)
 		diffuse = cons_color(0, 0, 0);
-		specular = cons_color(0, 0, 0);
-	}
 	else
-	{
-		diffuse = cop_multi(effective_color, m.diffuse * light_dot_normal);
-		reflectv = reflect(top_negate(lightv), normalv);
-		reflect_dot_eye = top_dot(reflectv, eyev);
-		if (reflect_dot_eye <= 0)
-			specular = cons_color(0, 0, 0);
-		else
-		{
-			factor = pow(reflect_dot_eye, m.shininess);
-			specular = cop_multi(l.color, m.specular * factor);
-		}
-	}
+		diffuse = cop_multi(res,
+				comps.shape->material.diffuse * top_dot(lightv, comps.normalv)
+				* world->light.brightness);
+	specular = cons_color(0, 0, 0);
 	if (in_shadow)
 		res = ambient;
 	else

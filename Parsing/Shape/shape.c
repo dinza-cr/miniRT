@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 16:01:56 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 14:19:31 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 13:05:22 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_shape	*cons_shape(void)
 	return (res);
 }
 
-void dest_shape(t_shape *shape)
+void	dest_shape(t_shape *shape)
 {
 	t_shape	*temp;
 

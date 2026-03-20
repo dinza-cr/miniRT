@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atof.c                                          :+:      :+:    :+:   */
+/*   ft_atod.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:37:17 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/01/26 17:46:23 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 14:08:30 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,24 +58,15 @@ double	ft_atod(char *str)
 	while (str[i] && ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
+		if (str[i++] == '-')
 			sign = -1.0;
-		i++;
-	}
 	while (str[i] && ft_isdigit(str[i]))
-	{
-		res = res * 10 + str[i] - '0';
-		i++;
-	}
+		res = res * 10 + str[i++] - '0';
 	if (str[i] == '.')
 	{
 		i++;
 		while (str[i] && ft_isdigit(str[i]))
-		{
-			res = res * 10 + (str[i] - '0');
-			i++;
-		}
+			res = res * 10 + (str[i++] - '0');
 	}
 	return (res * sign / (double)vir);
 }

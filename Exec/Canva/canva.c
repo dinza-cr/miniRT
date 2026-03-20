@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:26:41 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:11:50 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/20 13:58:11 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ t_canva	*cons_canva(int width, int height)
 	res = malloc (sizeof(t_canva));
 	if (!(res))
 		return (NULL);
-	res->mlx = NULL;
-	res->win = NULL;
-	res->img = NULL;
-	res->addr = NULL;
-	res->bpp = 0;
-	res->line_len = 0;
-	res->endian = 0;
-	res->w = NULL;
-	res->pixels = NULL;
 	res->width = width;
 	res->height = height;
 	res->pixels = ft_calloc(width * height, sizeof(t_color));

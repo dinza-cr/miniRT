@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 14:54:24 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:32:01 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:24:48 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ t_color	cop_shade_hit(t_world *world, t_comps comps)
 	int		in_shadow;
 
 	in_shadow = is_shadowed(world, comps.overpoint);
-	res = lighting(comps.shape->material, world->light, comps.overpoint,
-			comps.eyev, comps.normalv, in_shadow);
+	res = lighting(world, comps, in_shadow);
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 18:06:10 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 14:23:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 16:05:37 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_comps	cons_comps(t_intersection i, t_ray r)
 	}
 	else
 		res.inside = 0;
-	res.overpoint = top_add(res.point, top_multi(res.normalv, EPSILON));
+	res.overpoint = top_add(res.point, top_multi(res.normalv, SHADOW_BIAS));
 	res.valid = 1;
 	return (res);
 }

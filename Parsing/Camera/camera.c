@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:18:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 12:32:59 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/19 17:12:19 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_camera	pars_camera(char **info, t_world *world)
 	if (res.coord.w == -1)
 		return (res);
 	res.orientation = get_vector(info[2]);
-	if (res.orientation.z == -1)
+	if (res.orientation.w == -1)
 		return (res);
 	to = top_add(res.coord, res.orientation);
 	res.transform = trsf_view_transform(res.coord, to, cons_vector(0, 1, 0));
@@ -43,6 +43,9 @@ t_camera	cons_camera(int hsize, int vsize, double fov)
 	t_camera	cam;
 	double		aspect;
 
+	cam.valid = 0;
+	cam.coord = cons_point(0, 0, 0);
+	cam.orientation = cons_vector(0, 0, 1);
 	cam.hsize = hsize;
 	cam.vsize = vsize;
 	cam.field_of_view = fov;

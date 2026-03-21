@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_render.c                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:24:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/19 14:35:56 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/21 10:32:22 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ int	main(int argc, char **argv)
 			dest_world(world);
 		return (1);
 	}
+
 	canva = render(world->cam, world);
+	
 	if (!canva)
 		return (dest_world(world), 1);
 	canva_to_mlx(canva);

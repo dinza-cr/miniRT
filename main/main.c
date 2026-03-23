@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 14:24:47 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/21 10:32:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/23 15:11:20 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	t_canva	*canva;
 
 	if (argc != 2)
-		return (printf("Add a map !\n"), 0);
+		return (printf("Error\nAdd a map !\n"), 0);
 	world = parsing(argv);
 	if (!world || !world->valid)
 	{
@@ -26,9 +26,7 @@ int	main(int argc, char **argv)
 			dest_world(world);
 		return (1);
 	}
-
 	canva = render(world->cam, world);
-	
 	if (!canva)
 		return (dest_world(world), 1);
 	canva_to_mlx(canva);

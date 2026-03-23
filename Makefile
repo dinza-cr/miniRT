@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/03/20 17:00:55 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/23 14:39:26 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,4 +94,4 @@ re:	fclean all
 
 -include $(DEP)
 
-.PHONY:	all clean fclean re tests tclean
+.PHONY:	all clean fclean re 

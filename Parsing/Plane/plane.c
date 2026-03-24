@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:21:34 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/20 13:13:51 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/24 11:29:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,12 @@ t_matrix	pl_transform(t_shape *s)
 	x_axis = top_cross(helper, y_axis);
 	x_axis = top_normalize(x_axis);
 	z_axis = top_cross(y_axis, x_axis);
-	res = mop_multimat(cons_mat4(cons_tuple(x_axis.x, y_axis.x, z_axis.x, 0),
+	res = mop_multimat(trsf_translation(s->plane.coord.x,
+				s->plane.coord.y, s->plane.coord.z),
+			cons_mat4(cons_tuple(x_axis.x, y_axis.x, z_axis.x, 0),
 				cons_tuple(x_axis.y, y_axis.y, z_axis.y, 0),
 				cons_tuple(x_axis.z, y_axis.z, z_axis.z, 0),
-				cons_tuple(0, 0, 0, 1)), trsf_translation(s->plane.coord.x,
-				s->plane.coord.y, s->plane.coord.z));
+				cons_tuple(0, 0, 0, 1)));
 	return (res);
 }
 

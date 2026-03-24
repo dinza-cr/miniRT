@@ -21,7 +21,7 @@ t_amblight	pars_amblight(char **info, t_world *world)
 	if (count_elem(info) != 3)
 		return (res);
 	res.ratio = ft_atod(info[1]);
-	if (res.ratio < 0.0 || res.ratio > 1.0)
+	if (!in_finite_range(res.ratio, 0.0, 1.0))
 		return (res);
 	res.color = get_color(info[2]);
 	if (res.color.r == -1)

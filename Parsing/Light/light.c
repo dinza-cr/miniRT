@@ -34,8 +34,12 @@ t_light	pars_light(char **info, t_world *world)
 	res.coord = get_point(info[1]);
 	if (res.coord.w == -1)
 		return (res);
+	if (!in_finite_range(res.coord.x, -MAX_SHAPE_SIZE, MAX_SHAPE_SIZE)
+		|| !in_finite_range(res.coord.y, -MAX_SHAPE_SIZE, MAX_SHAPE_SIZE)
+		|| !in_finite_range(res.coord.z, -MAX_SHAPE_SIZE, MAX_SHAPE_SIZE))
+		return (res);
 	res.brightness = ft_atod(info[2]);
-	if (!in_range(res.brightness, 0.0, 1.0))
+	if (!in_finite_range(res.brightness, 0.0, 1.0))
 		return (res);
 	res.color = get_color(info[3]);
 	if (res.color.r == -1)

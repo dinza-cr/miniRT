@@ -40,8 +40,9 @@ t_shape	*pars_cylinder(char **info)
 	res->cylinder.diameter = ft_atod(info[3]);
 	res->material.color = get_color(info[5]);
 	res->cylinder.height = ft_atod(info[4]);
-	if (res->cylinder.height <= 0 || res->material.color.r == -1
-		|| res->cylinder.diameter <= 0 || res->cylinder.axis.w == -1
+	if (!in_finite_range(res->cylinder.height, EPSILON, MAX_SHAPE_SIZE)
+		|| !in_finite_range(res->cylinder.diameter, EPSILON, MAX_SHAPE_SIZE)
+		|| res->material.color.r == -1 || res->cylinder.axis.w == -1
 		|| res->cylinder.coord.w == -1)
 		return (res);
 	res->cylinder.radius = res->cylinder.diameter / 2;

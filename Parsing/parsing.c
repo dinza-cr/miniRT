@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/20 16:33:27 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/24 19:24:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	pars_sort(char *line, t_world *world)
 		world->cam = pars_camera(info, world);
 	else if (!ft_strcmp(info[0], "L"))
 		world->light = pars_light(info, world);
-	else if (!strcmp(info[0], "sp"))
+	else if (!ft_strcmp(info[0], "sp"))
 		add_sphere(info, world);
-	else if (!strcmp(info[0], "pl"))
+	else if (!ft_strcmp(info[0], "pl"))
 		add_plane(info, world);
-	else if (!strcmp(info[0], "cy"))
+	else if (!ft_strcmp(info[0], "cy"))
 		add_cylinder(info, world);
 	free_split(info);
 	return (0);

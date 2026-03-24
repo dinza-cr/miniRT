@@ -37,7 +37,7 @@ t_shape	*pars_sphere(char **info)
 	if (res->sphere.coord.w == -1)
 		return (res);
 	res->sphere.diameter = ft_atod(info[2]);
-	if (res->sphere.diameter <= 0.0)
+	if (!in_finite_range(res->sphere.diameter, EPSILON, MAX_SHAPE_SIZE))
 		return (res);
 	res->sphere.radius = res->sphere.diameter / 2;
 	res->material.color = get_color(info[3]);

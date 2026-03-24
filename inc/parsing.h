@@ -26,6 +26,7 @@
 int			count_elem(char **t);
 void		free_split(char **t);
 int			in_range(double x, double a, double b);
+int			in_finite_range(double x, double a, double b);
 int			check_capital(char *info, t_world *world);
 int			pars_sort(char *line, t_world *world);
 int			valid_world(t_world *world);

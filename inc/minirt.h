@@ -16,6 +16,7 @@
 # define EPSILON 0.00001
 # define SHADOW_BIAS 0.0001
 # define PI 3.14159265358979323846
+# define MAX_SHAPE_SIZE 1000000.0
 
 # include <math.h>
 # include <stdlib.h>

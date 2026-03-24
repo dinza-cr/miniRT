@@ -39,6 +39,11 @@ int	in_range(double x, double a, double b)
 	return (x >= a && x <= b);
 }
 
+int	in_finite_range(double x, double a, double b)
+{
+	return (isfinite(x) && x >= a && x <= b);
+}
+
 int	safe_exit(t_canva *canva, t_world *world)
 {
 	dest_canva(canva);

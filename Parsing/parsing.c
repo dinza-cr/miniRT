@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:16:22 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/24 19:24:10 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/25 14:09:57 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	valid_world(t_world *world)
 	if (!world)
 		return (printf("Error\nInvalid world"), 1);
 	if (!world->has_camera || !world->has_light || !world->has_ambient)
-		return (printf("Error\nneed 1 camera, 1 spot and 1 ambient light\n"), 1);
+		return (printf("Error\nNeed 1 camera, 1 spot and 1 ambient light\n"), 1);
 	if ((world->has_ambient && !world->amb.valid)
 		|| (world->has_camera && !world->cam.valid)
 		|| (world->has_light && !world->light.valid))
@@ -75,7 +75,7 @@ int	check_rt(char *str)
 	len = ft_strlen(str);
 	if (len < 3 || str[len - 3] != '.'
 		|| str[len - 2] != 'r' || str[len - 1] != 't')
-		return (printf("Error\nnot a .rt file.\n"), 1);
+		return (printf("Error\nNot a .rt file.\n"), 1);
 	return (0);
 }
 
@@ -90,13 +90,13 @@ t_world	*parsing(char **argv)
 		return (res);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0 || !res)
-		return (res);
+		return (printf("Error\nCould not open file\n"), res);
 	line = get_next_line(fd);
 	while (line)
 	{
 		if (pars_sort(line, res))
 		{
-			printf("Error\n too many capital elements\n");
+			printf("Error\nToo many capital elements\n");
 			return (free(line), close(fd), get_next_line(-1), res);
 		}
 		free(line);

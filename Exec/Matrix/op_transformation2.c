@@ -23,6 +23,15 @@ t_matrix	trsf_view_transform(t_tuple from, t_tuple to, t_tuple up)
 	forward = top_normalize(top_subs(to, from));
 	upn = top_normalize(up);
 	left = top_cross(forward, upn);
+	if (top_magnitude(left) <= EPSILON)
+	{
+		if (fabs(forward.y) > 0.999)
+			upn = cons_vector(0, 0, 1);
+		else
+			upn = cons_vector(0, 1, 0);
+		left = top_cross(forward, upn);
+	}
+	left = top_normalize(left);
 	true_up = top_cross(left, forward);
 	orientation = cons_mat4(cons_tuple(left.x, left.y, left.z, 0),
 			cons_tuple(true_up.x, true_up.y, true_up.z, 0),

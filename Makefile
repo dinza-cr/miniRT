@@ -6,7 +6,7 @@
 #    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/03/03 16:37:19 by dinza-cr         ###   ########.fr        #
+#    Updated: 2026/03/30 19:41:24 by dinza-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,11 @@ SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Exec/Ray 
 SRC_CORE		=	$(foreach d,$(SRC_DIRS_CORE),$(wildcard $(d)/*.c)) ## TEMPORARY
 
 SRC_DIRS_MAIN	=	main
-SRC_MAIN		=	$(foreach d,$(SRC_DIRS_MAIN),$(wildcard $(d)/*.c)) ##TEMPORARY
+SRC_MAIN		=	$(filter-out main/main_test.c,$(foreach d,$(SRC_DIRS_MAIN),$(wildcard $(d)/*.c))) ##TEMPORARY
+
+MAIN_TEST_SRC	=	main/main_test.c
+MAIN_TEST_OBJ	=	$(patsubst %.c,$(O_DIR)/%.o,$(MAIN_TEST_SRC))
+TEST_SCENE_BIN	=	minirt_test
 
 SRC				=	$(SRC_CORE) $(SRC_MAIN)
 
@@ -62,6 +66,12 @@ LDFLAGS			=	-L$(MLX_DIR)
 ################################################################################
 
 all:	$(NAME)
+
+test_scene: $(LIBFT) $(MLX_LIB) $(OBJ_CORE) $(MAIN_TEST_OBJ)
+	$(CC) $(CFLAGS) $(OBJ_CORE) $(MAIN_TEST_OBJ) $(LIBFT) $(LDFLAGS) $(LDLIBS) -lmlx -lXext -lX11 -o $(TEST_SCENE_BIN)
+
+run_test_scene: test_scene
+	./$(TEST_SCENE_BIN)
 
 $(NAME): $(LIBFT) $(MLX_LIB) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LDFLAGS) $(LDLIBS) -lmlx -lXext -lX11 -o $@
@@ -125,4 +135,4 @@ re:	fclean all
 
 -include $(DEP)
 
-.PHONY:	all clean fclean re tests tclean
+.PHONY:	all clean fclean re tests tclean test_scene run_test_scene

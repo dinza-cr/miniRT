@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 15:52:43 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/02/27 18:40:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/30 19:41:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_material
 	double	diffuse;
 	double	specular;
 	double	shininess;
+	double	reflective;
 }	t_material;
 
 //constructeur

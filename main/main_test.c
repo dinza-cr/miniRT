@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   material.c                                         :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 15:53:01 by dinza-cr          #+#    #+#             */
+/*   Created: 2026/03/30 16:00:00 by dinza-cr          #+#    #+#             */
 /*   Updated: 2026/03/30 19:41:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minirt.h"
+#include "minirt.h"
 
-t_material	cons_material(void)
+int	main(void)
 {
-	t_material	res;
+	t_world	*world;
+	t_canva	*canva;
+	char	*argv[3];
 
-	res.color = cons_color(0, 0, 0);
-	res.ambient = 0.0;
-	res.diffuse = 0.0;
-	res.specular = 0.0;
-	res.shininess = 0.0;
-	res.reflective = 0.0;
-	return (res);
-}
-
-t_material	init_material(void)
-{
-	t_material	res;
-
-	res.color = cons_color(1, 1, 1);
-	res.ambient = 0.1;
-	res.diffuse = 0.9;
-	res.specular = 0.9;
-	res.shininess = 200.0;
-	res.reflective = 0.0;
-	return (res);
+	argv[0] = "./minirt_test";
+	argv[1] = "scenes/test.rt";
+	argv[2] = NULL;
+	world = parsing(argv);
+	if (!world || !world->valid)
+		return (1);
+	canva = render(world->C, world);
+	canva->w = world;
+	canva_to_mlx(canva);
+	mlx_hook(canva->win, 17, 0, safe_exit, canva);
+	mlx_key_hook(canva->win, key_hook, canva);
+	mlx_loop(canva->mlx);
+	dest_canva(canva);
+	return (0);
 }

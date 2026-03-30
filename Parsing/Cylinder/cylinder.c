@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:47:35 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 13:55:22 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/30 19:41:24 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_shape	*pars_cylinder(char **info)
 	res = cons_shape();
 	if (!res)
 		return (NULL);
-	if (count_elem(info) != 6)
+	if (count_elem(info) != 6 && count_elem(info) != 7)
 		return (res);
 	res->cylinder.coord = get_point(info[1]);
 	if (res->cylinder.coord.w == -1)
@@ -53,6 +53,12 @@ t_shape	*pars_cylinder(char **info)
 	res->material.color = get_color(info[5]);
 	if (res->material.color.r == -1)
 		return (res);
+	if (count_elem(info) == 7)
+	{
+		res->material.reflective = ft_atod(info[6]);
+		if (!in_range(res->material.reflective, 0.0, 1.0))
+			return (res);
+	}
 	res->transformation = cy_transform(res);
 	res->inv_transfo = mop_inverse(res->transformation);
 	res->cylinder.valid = 1;

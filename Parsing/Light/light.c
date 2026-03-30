@@ -6,7 +6,7 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 15:19:37 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/18 13:55:28 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/30 20:08:10 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	is_shadowed(t_world *world, t_tuple point)
 	intersections = iop_intersect_world(world, r);
 	h = iop_hit(intersections);
 	if (h != INFINITY && h < distance)
-		return (1);
+		return (0);
 	else
 		return (0);
 }

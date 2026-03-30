@@ -6,11 +6,25 @@
 /*   By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 14:20:21 by dinza-cr          #+#    #+#             */
-/*   Updated: 2026/03/11 14:57:30 by dinza-cr         ###   ########.fr       */
+/*   Updated: 2026/03/30 20:07:59 by dinza-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+static int	parse_reflective(char *token, double *reflective)
+{
+	char	*end;
+
+	*reflective = strtod(token, &end);
+	if (end == token)
+		return (0);
+	if (*end == '\n')
+		end++;
+	if (*end != '\0')
+		return (0);
+	return (1);
+}
 
 //constructeur
 t_sphere	cons_sphere(void)
@@ -27,11 +41,12 @@ t_sphere	cons_sphere(void)
 t_shape	*pars_sphere(char **info)
 {
 	t_shape	*res;
+	double	reflective;
 
 	res = cons_shape();
 	if (!res)
 		return (NULL);
-	if (count_elem(info) != 4)
+	if (count_elem(info) != 4 && count_elem(info) != 5)
 		return (res);
 	res->sphere.coord = get_point(info[1]);
 	if (res->sphere.coord.w == -1)
@@ -43,6 +58,13 @@ t_shape	*pars_sphere(char **info)
 	res->material.color = get_color(info[3]);
 	if (res->material.color.r == -1)
 		return (res);
+	if (count_elem(info) == 5)
+	{
+		if (!parse_reflective(info[4], &reflective)
+			|| !in_range(reflective, 0.0, 1.0))
+			return (res);
+		res->material.reflective = reflective;
+	}
 	res->transformation = sp_transform(res);
 	res->inv_transfo = mop_inverse(res->transformation);
 	res->sphere.valid = 1;

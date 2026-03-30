@@ -91,7 +91,7 @@ int	is_shadowed(t_world *world, t_tuple point)
 	intersections = iop_intersect_world(world, r);
 	h = iop_hit(intersections);
 	if (h != INFINITY && h < distance)
-		return (0);
+		return (1);
 	else
 		return (0);
 }

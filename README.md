@@ -154,7 +154,3 @@ README.
 ![Circle rendering](rendered%20examples/circle.png)
 
 ![Circle variant B rendering](rendered%20examples/circle_b.png)
-
-### flower.rt
-
-![Flower rendering](rendered%20examples/flower.png)

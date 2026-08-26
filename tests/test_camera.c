@@ -1,6 +1,5 @@
-// #include <criterion/criterion.h>
-#include <criterion.h>
-#include "../inc/minirt.h"
+#include <criterion/criterion.h>
+#include "minirt.h"
 
 Test(camera, Constructing_a_camera)
 {

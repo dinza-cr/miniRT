@@ -1,6 +1,5 @@
-// #include <criterion/criterion.h>
-#include <criterion.h>
-#include "../inc/minirt.h"
+#include <criterion/criterion.h>
+#include "minirt.h"
 
 Test(world, Creating_a_world0)
 {

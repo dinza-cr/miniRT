@@ -1,6 +1,5 @@
-// #include <criterion/criterion.h>
-#include <criterion.h>
-#include "../inc/minirt.h"
+#include <criterion/criterion.h>
+#include "minirt.h"
 
 Test(ray, A_ray_intersects_a_sphere_at_two_points)
 {

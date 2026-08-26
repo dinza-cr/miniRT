@@ -1,128 +1,84 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: dinza-cr <dinza-cr@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2026/01/15 19:00:11 by dinza-cr          #+#    #+#              #
-#    Updated: 2026/03/03 16:37:19 by dinza-cr         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME        := minirt
+CC          := cc
+CFLAGS      := -Wall -Wextra -Werror
+CPPFLAGS    := -Iinclude -Ilibft
+LDLIBS      := -lm
 
-# This is a minimal set of ANSI/VT100 color codes
-_END=$'\033[0m
-_BOLD=$'\033[1m
-_UNDER=$'\033[4m
-_REV=$'\033[7m
+SRC_DIR     := src
+OBJ_DIR     := obj
+SRC         := $(SRC_DIR)/main.c \
+	$(SRC_DIR)/exec/canva.c \
+	$(SRC_DIR)/exec/color.c \
+	$(SRC_DIR)/exec/comps.c \
+	$(SRC_DIR)/exec/get_next_line.c \
+	$(SRC_DIR)/exec/get_next_line_utils.c \
+	$(SRC_DIR)/exec/intersection.c \
+	$(SRC_DIR)/exec/intersections.c \
+	$(SRC_DIR)/exec/material.c \
+	$(SRC_DIR)/exec/matrix.c \
+	$(SRC_DIR)/exec/op_color.c \
+	$(SRC_DIR)/exec/op_matrix.c \
+	$(SRC_DIR)/exec/op_transformation.c \
+	$(SRC_DIR)/exec/op_tuples.c \
+	$(SRC_DIR)/exec/ray.c \
+	$(SRC_DIR)/exec/tuple.c \
+	$(SRC_DIR)/parsing/amblight.c \
+	$(SRC_DIR)/parsing/camera.c \
+	$(SRC_DIR)/parsing/cylinder.c \
+	$(SRC_DIR)/parsing/light.c \
+	$(SRC_DIR)/parsing/pars_utils.c \
+	$(SRC_DIR)/parsing/parsing.c \
+	$(SRC_DIR)/parsing/plane.c \
+	$(SRC_DIR)/parsing/shape.c \
+	$(SRC_DIR)/parsing/sphere.c \
+	$(SRC_DIR)/parsing/world.c
+OBJ         := $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+DEP         := $(OBJ:.o=.d)
+CORE_OBJ    := $(filter-out $(OBJ_DIR)/main.o,$(OBJ))
 
-# Colors
-_GREY=$'\033[30m
-_RED=$'\033[31m
-_GREEN=$'\033[32m
-_YELLOW=$'\033[33m
-_BLUE=$'\033[34m
-_PURPLE=$'\033[35m
-_CYAN=$'\033[36m
-_WHITE=$'\033[37m
+TEST_NAME   := test_minirt
+TEST_DIR    := tests
+TEST_SRC    := $(wildcard $(TEST_DIR)/*.c)
+TEST_OBJ    := $(TEST_SRC:$(TEST_DIR)/%.c=$(OBJ_DIR)/tests/%.o)
+TEST_DEP    := $(TEST_OBJ:.o=.d)
+TEST_LIBS   := -lcriterion
 
-################################################################################
-#                                VARIABLES									   #
-################################################################################
+LIBFT_DIR   := libft
+LIBFT       := $(LIBFT_DIR)/libft.a
 
-NAME			= 	minirt
-CC				=	gcc
-CFLAGS			=	-Wall -Werror -Wextra
-CPPFLAGS		=	-Iinc -Ilibft -Iminilibx-linux
-LDLIBS			=	-lm
-RM				= 	rm -rf
+all: $(NAME)
 
-SRC_DIRS_CORE	=	Exec/Canva Exec/Color Exec/gnl Exec/Matrix Exec/Tuples Exec/Ray Exec/sphIntersection Exec/Intersection Exec/Material Exec/Comps Parsing Parsing/Amblight Parsing/Camera Parsing/Cylinder Parsing/Light Parsing/Plane Parsing/Shape Parsing/World Parsing/Sphere 
-SRC_CORE		=	$(foreach d,$(SRC_DIRS_CORE),$(wildcard $(d)/*.c)) ## TEMPORARY
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LDLIBS) -o $@
 
-SRC_DIRS_MAIN	=	main
-SRC_MAIN		=	$(foreach d,$(SRC_DIRS_MAIN),$(wildcard $(d)/*.c)) ##TEMPORARY
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
-SRC				=	$(SRC_CORE) $(SRC_MAIN)
-
-O_DIR			=	obj
-OBJ_CORE		=	$(patsubst %.c,$(O_DIR)/%.o,$(SRC_CORE))
-OBJ				=	$(patsubst %.c,$(O_DIR)/%.o,$(SRC))
-DEP				=	$(OBJ:.o=.d)
-
-LIBFT_DIR		=	libft
-LIBFT			=	$(LIBFT_DIR)/libft.a
-
-MLX_DIR			=	minilibx-linux
-MLX_LIB			=	$(MLX_DIR)/libmlx.a
-
-LDFLAGS			=	-L$(MLX_DIR)
-################################################################################
-#                                MAIN RULES								       #
-################################################################################
-
-all:	$(NAME)
-
-$(NAME): $(LIBFT) $(MLX_LIB) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LDFLAGS) $(LDLIBS) -lmlx -lXext -lX11 -o $@
-
-$(O_DIR)/%.o: %.c
+$(OBJ_DIR)/tests/%.o: $(TEST_DIR)/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -MMD -MP -c $< -o $@
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) CC="$(CC)"
 
-$(MLX_LIB):
-	$(MAKE) -C $(MLX_DIR)
+tests: $(CORE_OBJ) $(TEST_OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(CORE_OBJ) $(TEST_OBJ) $(LIBFT) \
+		$(LDLIBS) $(TEST_LIBS) -o $(TEST_NAME)
+	./$(TEST_NAME)
 
-################################################################################
-#                              	TEST VARIABLES					   		   	   #
-################################################################################
-
-CR_HEADER_PATH	=	-I${HOME}/Criterion/include/criterion
-CR_LIB_PATH		=	-Wl,-rpath=${HOME}/Criterion/build/src -L${HOME}/Criterion/build/src
-T_FLAGS			=	-lcriterion
-T_NAME			= 	test_minirt
-TESTS_DIRS		=	tests
-T_SRCS			=	$(foreach d,$(TESTS_DIRS),$(wildcard $(d)/*.c)) ## TEMPORARY
-T_OBJECTS 		=	$(subst /,/build/,${T_SRCS:.c=.o})
-T_CC			=	gcc $(CR_HEADER_PATH) $(CFLAGS)
-T_LD			=	gcc $(CR_HEADER_PATH) $(CR_LIB_PATH) $(CFLAGS)
-
-################################################################################
-#                                TEST RULES								       #
-################################################################################
-
-$(T_OBJECTS): $(subst .o,.c,$(subst /build/,/,$@))
-	@mkdir -p $(dir $@)
-	@$(T_CC) $(CPPFLAGS) -c $(subst .o,.c,$(subst /build/,/,$@)) -o $@
-
-tests: tclean $(LIBFT) $(MLX_LIB) $(OBJ) $(T_OBJECTS)
-	@echo "${_UNDER}${_RED}Creating binary for Tests${_END}"
-	@$(T_LD) -o $(T_NAME) $(OBJ_CORE) $(T_OBJECTS) $(LIBFT) $(LDFLAGS) $(LDLIBS) -lmlx -lX11 -lXext $(T_FLAGS)
-	@./$(T_NAME)
-
-tclean:
-	$(RM) tests/build ${T_NAME}
-
-################################################################################
-#                               	CLEANUP								       #
-################################################################################
-
-clean: tclean
-	$(RM) $(O_DIR)
-	$(RM) tests/build
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+clean:
+	$(RM) -r $(OBJ_DIR)
+	$(RM) $(TEST_NAME)
+	$(RM) canva.ppm
+	$(MAKE) -C $(LIBFT_DIR) clean CC="$(CC)"
 
 fclean: clean
 	$(RM) $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean CC="$(CC)"
 
+re: fclean all
 
-re:	fclean all
+-include $(DEP) $(TEST_DEP)
 
--include $(DEP)
-
-.PHONY:	all clean fclean re tests tclean
+.PHONY: all clean fclean re tests

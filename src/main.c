@@ -28,8 +28,9 @@ int	main(int argc, char **argv)
 	canva = render(world->C, world);
 	if (!canva)
 		return (dest_world(world), 1);
-	canvas_to_ppm(canva);
-	printf("Image generated: canva.ppm\n");
+	if (!canvas_to_png(canva))
+		return (dest_canva(canva), dest_world(world), 1);
+	printf("Image generated: canva.png\n");
 	dest_canva(canva);
 	dest_world(world);
 	return (0);

@@ -35,5 +35,6 @@ t_color		cop_blend(t_color a, t_color b);
 int			cop_compare(t_color a, t_color b);
 t_color		cop_shade_hit(t_world *world, t_comps comps);
 t_color		color_at(t_world *world, t_ray r);
+t_color		color_at_sample(t_world *world, t_ray r, int *opaque);
 
 #endif

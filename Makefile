@@ -2,12 +2,13 @@ NAME        := minirt
 CC          := cc
 CFLAGS      := -Wall -Wextra -Werror
 CPPFLAGS    := -Iinclude -Ilibft
-LDLIBS      := -lm
+LDLIBS      := -lm -lz
 
 SRC_DIR     := src
 OBJ_DIR     := obj
 SRC         := $(SRC_DIR)/main.c \
 	$(SRC_DIR)/exec/canva.c \
+	$(SRC_DIR)/exec/png.c \
 	$(SRC_DIR)/exec/color.c \
 	$(SRC_DIR)/exec/comps.c \
 	$(SRC_DIR)/exec/get_next_line.c \
@@ -70,7 +71,7 @@ tests: $(CORE_OBJ) $(TEST_OBJ) $(LIBFT)
 clean:
 	$(RM) -r $(OBJ_DIR)
 	$(RM) $(TEST_NAME)
-	$(RM) canva.ppm
+	$(RM) canva.png
 	$(MAKE) -C $(LIBFT_DIR) clean CC="$(CC)"
 
 fclean: clean

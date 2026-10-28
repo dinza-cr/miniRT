@@ -34,7 +34,7 @@ t_color cop_shade_hit(t_world *world, t_comps comps) // a terminer (bonus multip
 	return (res);
 }
 
-t_color	color_at(t_world *world, t_ray r)
+t_color	color_at_sample(t_world *world, t_ray r, int *opaque)
 {
 	t_comps			comps;
 	t_intersections	xs;
@@ -43,6 +43,7 @@ t_color	color_at(t_world *world, t_ray r)
 	int				found;
 	t_color			color;
 
+	*opaque = 0;
 	xs = iop_intersect_world(world, r);
 	if (xs.count <= 0 || !xs.solutions)
 		return (cons_color(0, 0, 0));
@@ -69,7 +70,15 @@ t_color	color_at(t_world *world, t_ray r)
 		dest_intersections(&xs);
 		return (cons_color(0, 0, 0));
 	}
+	*opaque = 1;
 	color = cop_shade_hit(world, comps);
 	dest_intersections(&xs);
 	return (color);
+}
+
+t_color	color_at(t_world *world, t_ray r)
+{
+	int	opaque;
+
+	return (color_at_sample(world, r, &opaque));
 }

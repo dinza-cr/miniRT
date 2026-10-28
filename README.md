@@ -8,10 +8,9 @@ miniRT is a small ray tracer written in C. Its goal is to introduce the main
 concepts of computer-generated images: rays, camera projection, intersections,
 surface normals, lighting, shadows and matrix transformations.
 
-The program reads a scene from a `.rt` file, renders it at 1000 × 1000 pixels and
-writes the result to `canva.ppm`. The generated image uses the portable pixmap
-PPM format in its textual `P3` representation, so it can be inspected directly
-or opened with most image viewers.
+The program reads a scene from a `.rt` file, renders it at 500 × 500 pixels and
+writes the result to `canva.png` in RGBA format. Pixels whose rays miss all
+objects are transparent; object pixels remain opaque, including black surfaces.
 
 Supported scene elements include:
 
@@ -49,13 +48,14 @@ The project requires:
 - a C compiler available as `cc`;
 - GNU Make;
 - the standard math library;
+- zlib for PNG compression;
 - Criterion to compile and run the unit tests.
 
 On Debian or Ubuntu, the required packages can be installed with:
 
 ```sh
 sudo apt update
-sudo apt install build-essential libcriterion-dev
+sudo apt install build-essential zlib1g-dev libcriterion-dev
 ```
 
 ### Compilation
@@ -69,7 +69,7 @@ make
 Other available rules are:
 
 ```sh
-make clean   # Remove object files, test executable and generated PPM
+make clean   # Remove object files, test executable and generated PNG
 make fclean  # Also remove the miniRT executable and libft archive
 make re      # Rebuild the whole project
 make tests   # Compile and run the Criterion test suite
@@ -83,10 +83,10 @@ Run miniRT with exactly one `.rt` scene:
 ./minirt scenes/solo_sphere.rt
 ```
 
-The rendered image is written to `canva.ppm` in the current directory. Running
+The rendered image is written to `canva.png` in the current directory. Running
 the program again replaces the previous image.
 
-The result can be opened with an image viewer that supports PPM.
+The result can be opened with an image viewer that supports PNG transparency.
 
 ### Scene format
 
@@ -132,7 +132,7 @@ requires a camera and a light.
 - Points, vectors and colors use floating-point components.
 - Transformations are represented by 4 × 4 matrices.
 - The windowing dependency was removed: rendering is performed off-screen and
-  exported directly as a PPM image.
+  exported directly as a PNG image with transparency.
 
 ## Resources
 

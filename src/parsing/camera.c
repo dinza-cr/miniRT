@@ -94,8 +94,11 @@ t_canva	*render(t_camera camera, t_world *world)
 	t_color	color;
 	int		x;
 	int		y;
+	int		opaque;
 
 	canva = cons_canva(world->C.hsize, world->C.vsize);
+	if (!canva)
+		return (NULL);
 	y = 0;
 	while (y < world->C.vsize)
 	{
@@ -103,8 +106,9 @@ t_canva	*render(t_camera camera, t_world *world)
 		while (x < world->C.hsize)
 		{
 			r = ray_for_pixel(camera, x, y);
-			color = color_at(world, r);
+			color = color_at_sample(world, r, &opaque);
 			write_pixel(canva, x, y, color);
+			canva->alpha[x + y * canva->width] = opaque * 255;
 			x++;
 		}
 		y++;

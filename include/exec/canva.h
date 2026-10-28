@@ -21,6 +21,7 @@ typedef struct s_canva
 	int		height;
 
 	t_color	*pixels;
+	unsigned char	*alpha;
 }	t_canva;
 
 //constructeur
@@ -32,7 +33,6 @@ void		dest_canva(t_canva *canva);
 //canva actions
 void		write_pixel(t_canva *canva, int x_pos, int y_pos, t_color pixel);
 int			ft_convertcolor(double a);
-void		write_header(int fd, t_canva *canva);
-void		canvas_to_ppm(t_canva *canva);
+int			canvas_to_png(t_canva *canva);
 int			rgb_to_int(double r, double g, double b);
 #endif
